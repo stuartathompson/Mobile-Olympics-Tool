@@ -1,0 +1,81 @@
+/*
+.gi-gallery{
+	display: relative;
+	margin-bottom:10px;
+	width:660px;
+	margin-left:-70px;
+}
+.gi-gallery img.alignnone, .gi-gallery .wp-caption{
+	margin-left:0 !important;
+}
+.gi-gallery .gi-gallery-images{
+	position: relative;
+}
+.gi-gallery .gi-gallery-images .gi-gallery-image{
+	display:none;
+}
+.gi-gallery .gi-gallery-images .gi-gallery-image:first-child{
+	display:block;
+}
+.gi-gallery .gi-gallery-images .gi-gallery-image.showing{
+	display:block;
+}
+.gi-gallery .gi-gallery-nav{
+	border-left: 5px solid red;
+	min-height: 15px;
+	padding:5px 0;
+	position: relative;
+	background-color: #2B2B2B;
+	color: #fff;
+	width:100%;
+	float: left;
+}
+.gi-gallery-nav a{
+	color: #fff;
+	display: block;
+	float: right;
+	height: 20px;
+	padding: 3px 10px 0px 10px;
+	text-transform: uppercase;
+	font: normal 12px/1.2 "PrattHeavy", Georgia, Palatino, "Book Antiqua", "Times New Roman", serif;
+}
+.gi-gallery-nav a:hover{
+	color:#fff;
+}
+.gi-gallery-image img{
+	width:100%;
+}
+.gi-gallery-image.wp-caption{
+	padding:0 !important;
+	display: none;
+}
+
+/* Smartphones */
+/*
+@media only screen and (max-width:480px) {
+	.gi-gallery .wp-caption,.gi-gallery img.alignnone,.gi-gallery{
+		width:100% !important;
+		margin-left:-20px !important;
+	}
+	.gi-gallery .wp-caption img,img.alignnone{
+		width:113% !important;
+	}
+	.gi-gallery-nav, .gi-gallery-image img{
+		width:113% !important;
+	}
+	.gi-gallery{
+		width:113% !important;
+	}
+	.gi-gallery .gi-gallery-images .gi-gallery-image.gi-gallery-second{
+		display:block;
+		position: absolute;
+		top:0;
+		right:-100%;
+		margin-right: -40px;
+	}
+	.gi-gallery .wp-caption img, .gi-gallery img.alignnone {
+		width: 100% !important;
+		max-width: 100% !important;
+	}	
+}
+*/

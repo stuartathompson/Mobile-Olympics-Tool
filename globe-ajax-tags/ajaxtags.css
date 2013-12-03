@@ -1,0 +1,157 @@
+#filters-bar{
+	width:640px;
+	padding: 10px 20px;
+	background-color:#f5f5f5;
+	border:1px solid #d2d2d2;
+	margin-bottom: -11px;
+	float:left;
+}
+.filters {
+}
+.filters .select {
+-webkit-font-smoothing: antialiased;
+}
+.filters .select .dropdown.field {
+width: 160px;
+float:right;
+}
+.filters .select .dropdown {
+-webkit-appearance: none;
+-webkit-border-radius: 0;
+background: url("http://beta.images.theglobeandmail.com/static/ROB/interactives/crisis/images/select-arrow.png") no-repeat scroll right center transparent;
+}
+.filters .select .dropdown {
+height: 27px;
+font: 12px/14px "OpenSans",Helvetica,Arial,sans-serif;
+font-weight:bold;
+color: #000;
+border: 1px solid #e6e6e6;
+padding: 2px;
+vertical-align: top;
+display: block;
+float: left;
+text-transform: uppercase;
+}
+.filters .select .dropdown.field {
+padding-left: 4px;
+background-color: white;
+}
+.filters .select .dropdown.field {
+width: 160px;
+}
+.topics {
+width: 100%;
+float: left;
+margin-right: 15px;
+min-height: 1px;
+overflow: hidden;
+padding-top: 10px;
+display: none;
+}
+.topics.showing{
+	display:block;
+}
+.display {
+float: left;
+text-transform: uppercase;
+margin-top: 2px;
+-webkit-font-smoothing: antialiased;
+}
+.total {
+font: 29px/29px 'Oswald','PrattRegular',Georgia,'Times New Roman',serif;
+color: #da161f;
+display: block;
+float: left;
+text-align: right;
+margin: 0 4px 0 0;
+width: 50px;
+min-height: 10px;
+}
+.total-label {
+font: 12px/15px 'Oswald','PrattRegular',Georgia,'Times New Roman',serif;
+display: block;
+float: left;
+}
+.topics .item {
+font: 12px/11px 'Oswald','PrattRegular',Georgia,'Times New Roman',serif;
+text-transform: uppercase;
+color: #fff;
+padding: 8px 24px 8px 8px;
+margin: 0px 5px 5px 0;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+display: inline-block;
+background: url("http://beta.images.theglobeandmail.com/static/ROB/interactives/crisis/images/filter-close.png") no-repeat scroll right center #da161f;
+cursor: pointer;
+}
+.noselect {
+-moz-user-select: none;
+-khtml-user-select: none;
+-webkit-user-select: none;
+user-select: none;
+}
+#filters-error{
+	padding: 10px 0;
+	font-size: 14px;
+	display:none;
+	clear: both;
+}
+#filters-error a{
+	font-family:"PrattHeavy",Georgia,sans-serif;
+	color:red;
+}
+#ajaxtags-loader{
+	float:right;
+	display: none;
+	margin-top: 3px;
+	margin-right: 15px;
+}
+
+/* Mobile */
+.ajaxtags-container{
+	position: relative;
+	margin-top:35px;
+	overflow:scroll;
+	height:300px;
+}
+.ajaxtags-container h3{
+	position: fixed;
+	top:0;
+	background-color:#eeeeee;
+	padding:10px;
+	width:100%;
+}
+.ajaxtags-container .ajaxtags-option span{
+	display:block;
+	width:14px;
+	height:14px;
+	float:left;
+	margin:0px 10px 0;
+	background-image:url('ajaxtags-option.png');
+	background-position: 0 -14px;
+}
+.ajaxtags-container .ajaxtags-option.ajaxtags-on span{
+	background-position: 0 0;
+}
+.ajaxtags-container .ajaxtags-option{
+	padding:10px;
+	border-bottom:1px solid #b2b2b2;
+	font-family:Verdana,Helvetica,sans-serif;
+	font-size:12px;
+}
+
+/* Smartphones */
+@media only screen and (max-width:480px) {
+	#filters-error{
+		padding:10px 0;
+	}
+	.filters .select{
+		display:none;
+	}
+	#filters-bar{
+		width:100%;
+		margin-top: 15px;
+		background-color:#eeeeee;
+	}
+}
