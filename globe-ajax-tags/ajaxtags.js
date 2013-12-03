@@ -1,5 +1,6 @@
 jQuery('document').ready(function($){
-
+	// Another comment
+	
 	// All variables and arrays
 	var curFilters = [],
 		touch = false;
