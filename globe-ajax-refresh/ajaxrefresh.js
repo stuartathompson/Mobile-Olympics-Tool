@@ -1,4 +1,3 @@
-// dfgfsdg
 jQuery(document).ready(function($) {
 	
 	var postIds = '';
