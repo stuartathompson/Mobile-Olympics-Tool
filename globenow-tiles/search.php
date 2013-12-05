@@ -3,7 +3,7 @@
 	<!-- section -->
 	<section role="main">
 	
-		<h1><?php echo sprintf( __( '%s Search Results for ', 'html5blank' ), $wp_query->found_posts ); echo get_search_query(); ?></h1>
+		<h3 class="searchresults"><?php echo sprintf( __( 'Search Results for ', 'html5blank' ), $wp_query->found_posts ); echo get_search_query(); ?></h3>
 		
 		<?php get_template_part('loop'); ?>
 		

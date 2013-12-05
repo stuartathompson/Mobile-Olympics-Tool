@@ -9,19 +9,24 @@
    License: GPL2
    */
 
+// Enqueue styles and scripts
+add_action( 'wp_enqueue_scripts', 'userlike_scripts' );
+
 add_action("wp_ajax_nopriv_userlike_addLike", "userlike_addLike");
 add_action("wp_ajax_userlike_addLike", "userlike_addLike");
 
 add_action("wp_ajax_nopriv_userlike_removeLike", "userlike_removeLike");
 add_action("wp_ajax_userlike_removeLike", "userlike_removeLike");
 
-// embed the javascript file that makes the AJAX request
-wp_enqueue_script( 'userlike-ajax', plugin_dir_url( __FILE__ ) . 'userlike.js', array( 'jquery' ) );
-wp_enqueue_style( 'userlike-ajax', plugin_dir_url( __FILE__ ) . 'userlike.css');
+function userlike_scripts(){
+	// embed the javascript file that makes the AJAX request
+	wp_enqueue_script( 'userlike-ajax', plugin_dir_url( __FILE__ ) . 'userlike.js', array( 'jquery' ) );
+	wp_enqueue_style( 'userlike-ajax', plugin_dir_url( __FILE__ ) . 'userlike.css');
 
-// declare the URL to the file that handles the AJAX request (wp-admin/admin-ajax.php)
-wp_localize_script( 'userlike-ajax', 'ajaxurl', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+	// declare the URL to the file that handles the AJAX request (wp-admin/admin-ajax.php)
+	wp_localize_script( 'userlike-ajax', 'ajaxurl', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 
+}
 // addLikes
 function userlike_addLike(){
 	global $post;

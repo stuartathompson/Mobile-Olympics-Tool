@@ -79,3 +79,12 @@
 	}	
 }
 */
+.gi-gallery-image{
+	display:none;
+}
+.gi-gallery-image.showing{
+	display:block;
+}
+.gi-gallery-label{
+	font-weight:bold;
+}

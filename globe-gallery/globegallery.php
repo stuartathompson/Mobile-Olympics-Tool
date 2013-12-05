@@ -35,35 +35,22 @@ function globe_gallery($atts){
 	$w = 100;
 ?>
 	<div class="gi-gallery">
+		<!-- <div class="gi-gallery-label"><?php //echo count($images); ?> Photos</div> -->
 		<div style="width:<?php echo $w; ?>%" class="gi-gallery-images">
 <?php
 	$i=0;
 	$secondId = '';
 	$dataList = array();
 	foreach($images as $image){
-		//if($i==0){
+		if($i==0){
 		// Show image
 		echo "<div class='wp-caption gi-gallery-image gallery-icon showing'>" . '<a href="' . wp_get_attachment_image_src( $image->ID, 'large' )[0] . '">' . wp_get_attachment_image($image->ID,'large') . "</a><p class='wp-caption-text'>" . $image->post_excerpt . "</a></p></div>";
-		/*
-} else if($i==1) {
-		// Add to data list
-			$secondId = $image->ID;
-		} else {
-			array_push($dataList,$image->ID);
+		} else  {
+		// Leave source blank
+		echo "<div class='wp-caption gi-gallery-image gallery-icon'>" . '<a href="' . wp_get_attachment_image_src( $image->ID, 'large' )[0] . '"><img src="" data-image-src="' . wp_get_attachment_image_src($image->ID,'large')[0] . "\" alt=\"\" /></a><p class='wp-caption-text'>" . $image->post_excerpt . "</a></p></div>";
 		}
-*/
-		$i++;
-	}
-		// Add second image with data list
-	/*
-echo "<div class='wp-caption gi-gallery-image gallery-icon showing gi-gallery-second' data-images='";
-	// Show data list
-	foreach($dataList as $data){
-		echo $data . ' ';
-	}
-	echo "'>" . '<a href="' . wp_get_attachment_image_src( $secondId, 'large' )[0] . '">' . wp_get_attachment_image($secondId,'large') . "</a><p class='wp-caption-text'>" . $image->post_excerpt . "</a></p></div>";
-*/
-	
+		$i++; 
+	}	
 		
 ?>
 		</div>

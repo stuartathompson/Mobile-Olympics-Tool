@@ -8,14 +8,16 @@
    Author URI: http://www.theglobeandmail.com
    License: GPL2
    */
+add_action( 'wp_enqueue_scripts', 'ajax_tags_scripts' );
+
 add_action("wp_ajax_nopriv_ajax_tags_loop", "ajax_tags_loop");
 add_action("wp_ajax_ajax_tags_loop", "ajax_tags_loop");
 
-wp_enqueue_script('globe_ajax_tags',plugin_dir_url( __FILE__ ) . 'ajaxtags.js',array( 'jquery','modernizr' ));
-
-wp_enqueue_style('globe_ajax_tags',plugin_dir_url( __FILE__ ) . 'ajaxtags.css');
-
-wp_localize_script( 'globe_ajax_tags', 'ajaxurl', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );	
+function ajax_tags_scripts(){
+	wp_enqueue_script('globe_ajax_tags',plugin_dir_url( __FILE__ ) . 'ajaxtags.js',array( 'jquery','modernizr' ));
+	wp_enqueue_style('globe_ajax_tags',plugin_dir_url( __FILE__ ) . 'ajaxtags.css');
+	wp_localize_script( 'globe_ajax_tags', 'ajaxurl', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );	
+}
 
 function ajax_tags_create_front_end(){
  // Do not get header for single post pages
@@ -23,7 +25,7 @@ function ajax_tags_create_front_end(){
 	$tags = $_GET['tags'];
 ?>
 	<div id="filters-bar">
-	<h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">Live Updates</a></h3>
+	<?php if(is_home()){ ?> <h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">Live Updates</a></h3> <?php } else { ?> <h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">Globe Olympics</a></h3><?php } ?>
 	<div id="filters" class="filters">
 		<div class="select">
 			<select id="filterSelect" class="dropdown field" autocomplete="off">

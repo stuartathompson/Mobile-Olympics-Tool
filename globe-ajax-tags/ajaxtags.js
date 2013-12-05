@@ -1,6 +1,5 @@
 jQuery('document').ready(function($){
-	// Another comment
-	
+
 	// All variables and arrays
 	var curFilters = [],
 		touch = false;
@@ -97,7 +96,7 @@ jQuery('document').ready(function($){
 						title:'Add tag to filters'
 					});
 					$('.star').tooltip({
-						placement:'right'
+						placement:'top'
 					});
 				} else {
 					$('#filters-error').slideDown();

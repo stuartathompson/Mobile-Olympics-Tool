@@ -68,21 +68,25 @@
 			}			
 			?>
 			<div id="mobile-header">
-				<?php if(function_exists('ajax_tags_create_front_end') && is_mobile()) { ?><a href="#menu" id="mobile-header-menu"><img src="<?php bloginfo('template_url'); ?>/img/menu-icon.png"></a><?php } ?>
-				<a href="http://www.theglobeandmail.com"><img id="mobile-header-logo" src="<?php bloginfo('template_url'); ?>/img/theglobeandmail.png"></a>
-			
-				<?php if(function_exists('ajax_refresh_front_end') && is_home()) ajax_refresh_front_end(); ?>
+				<div id="mobile-header-wrapper">
+				<?php if(function_exists('ajax_tags_create_front_end') && is_mobile() ) { ?><a href="#menu" id="mobile-header-menu"><img src="<?php bloginfo('template_url'); ?>/img/menu-icon-retina.png"></a><?php } ?>
+				<a href="http://www.theglobeandmail.com"><img id="mobile-header-logo" src="<?php bloginfo('template_url'); ?>/img/globelogo.png"></a> <a id="header-olympics-home" href="<?php bloginfo('url'); ?>"> Live Olympics</a>
+				<a id="menu-search-button" href="#search"><img id="mobile-header-search" src="<?php bloginfo('template_url'); ?>/img/search-icon-retina.png"></a>
+				</div>
+			</div>
+			<div id="search-box">
+				<?php get_search_form(); ?>
 			</div>
 			
 		<div class="strip small"></div>
 
 		<div id="new-alert-container">
 			<a href="#loadnew" id="new-alert">
-				<img src="<?php bloginfo('template_url'); ?>/img/plus.png?1" /> <span id="new-alert-number">0</span> <span id="new-alert-text">new update</span>
+				<span id="new-alert-number">0</span> <span id="new-alert-text">new update</span>
 			</a>
 		</div>
 
 		<?php 
-			// Get filter bar for all but single pages
-			if(!is_single() && function_exists('ajax_tags_create_front_end')) ajax_tags_create_front_end(); 
+			// Get filter bar for all but single, searrch pages
+			if(function_exists('ajax_tags_create_front_end')) ajax_tags_create_front_end(); 
 		?>

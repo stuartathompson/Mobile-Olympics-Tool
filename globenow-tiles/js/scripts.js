@@ -34,35 +34,59 @@ $(function() {
 	$('.tags .tag').tooltip({
 		title:'Add tag to filters'
 	});
-/*
-	$('.share-reaction-icon.star').tooltip({
-		placement:'right'
-	})	
-*/
 	
-	// Arrow navigation
+	
+	
+	/* - Last Seen Post - Cookie: Storing the latest post and changing colours - */
+	var lastSeenPostId = parseInt($.cookie('globeolympics-lastseenpost'));
+	var newLastSeenPostId = 0;
+	// Get latest post
+	$('#loop article').each(function(){
+		thisId = parseInt($(this).attr('id').split('-')[1]);
+		if(thisId > lastSeenPostId){
+			if(thisId > newLastSeenPostId) newLastSeenPostId = thisId;
+			$(this).addClass('unseen');
+		}
+	});
+	// If new posts, apply new cookie
+	if(newLastSeenPostId != 0) $.cookie('globeolympics-lastseenpost',newLastSeenPostId);
+	// Waypoint trigger back to normal
+	var initWaypoint = true;
+	$(window).scroll(function(){
+		if(initWaypoint && $(window).scrollTop() > 0){
+			$('#loop article.unseen').waypoint(function(){
+				$(this).removeClass('unseen');
+			},{'offset':'60%'});
+			$('#loop article.unseen').hover(function(){
+				$(this).removeClass('unseen');
+			})
+			initWaypoint = false;
+		}
+	})
+	
+	
+	/* Keyboard/arrow navigation */
 	var trackSpot = 0;
 	$("body").keydown(function(e) {
 	  if(e.keyCode == 37) { // left
     	trackSpot--;
-    	$("body,html").animate({
+    	$("body,html").stop().animate({
 	      scrollTop: $('#loop article').eq(trackSpot).offset().top-50-$('#mobile-header').height()
    	  	});
   	  } else if(e.keyCode == 39) { // right
     	trackSpot++;
-    	$("body,html").animate({
+    	$("body,html").stop().animate({
 	      scrollTop: $('#loop article').eq(trackSpot).offset().top-50-$('#mobile-header').height()
    	  	});
   	  }
 	});
 	
-	// YouTube video resize
+	/* YouTube video resize */
 	var $allVideos = $("iframe[src^='//www.youtube.com']"),
 	    // The element that is fluid width
 	    $fluidEl = $("#loop");
 	// Figure out and save aspect ratio for each video
 	$allVideos.each(function() {
-
 	$(this)
 		.data('aspectRatio', this.height / this.width)
 		// and remove the hard coded width/height
@@ -82,6 +106,34 @@ $(function() {
 	// Kick off one resize to fix all videos on page load
 	}).resize();
 	
+	
+	/* - Search button - */
+	$('#menu-search-button').click(function(){
+		if(!$(this).hasClass('selected')){
+			$('#search-box').animate({
+				'marginTop':0
+			},250);
+			$('.search-input').focus();
+		} else {
+			$('#search-box').animate({
+				'marginTop':-50
+			},250);
+		}
+		$(this).toggleClass('selected');
+		return false;
+	})
+	$('.search-cancel').click(function(){
+		$('#menu-search-button').removeClass('selected');
+		$('#search-box').animate({
+			'marginTop':-50
+		},250);
+		return false;
+	});
+	$('form.search').keyup(function(e){
+		if(e.keyCode == 13){
+			$(this).submit();
+		}
+	});
 	
 	/* *********************** SHARING *************************** */
 	//add sharing to item

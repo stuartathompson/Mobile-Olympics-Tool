@@ -46,7 +46,7 @@
 				$replace = array(
 		        	'mins' => 'minutes'
     			);
-    			echo strtr($deskdiff,$replace) . ' ago';
+    			echo '<a href="' . get_permalink() . '" title="' . get_the_title() . '">' . strtr($deskdiff,$replace) . ' ago' . '</a>';
 			?>
 			</div>
 			</div>
@@ -94,7 +94,7 @@
 
 	<?php 
 		// Mobile ad
-		if($postCount==1 && false){	?>
+		if($postCount==1){	?>
 		<!-- Beginning Sync AdSlot 2 for Ad unit theglobeandmail.com/sports/olympics ### size: [[300,250]]  -->
 		
 		<div class="ad-unit-square" id='div-gpt-ad-311805903592310440-2'>

@@ -4,7 +4,12 @@
 	
 	<div id="loop-wrapper">
 		
-	<?php $extra_classes = 'standalone'; ?>
+	<?php 
+		
+		$extra_classes = 'standalone'; 
+		$postCount = 1;
+	
+	?>
 	
 	<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 	

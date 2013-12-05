@@ -66,6 +66,11 @@ function html5blank_header_scripts()
 		// jQuery mobile
 		wp_register_script('jquerymobile','http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js',array(),'1.0');
         wp_enqueue_script('jquerycookie'); // Enqueue it!
+        
+        // jQuery Waypoints
+		wp_register_script('jquerywaypoints','//cdn.jsdelivr.net/jquery.waypoints/2.0.2/waypoints.min.js',array(),'1.0');
+        wp_enqueue_script('jquerywaypoints'); // Enqueue it!
+        
     }
 }
 

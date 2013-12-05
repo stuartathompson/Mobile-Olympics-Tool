@@ -1,9 +1,8 @@
 			<!-- footer -->
 			<footer class="footer" role="contentinfo">
-			<?php if(!is_mobile()){
-?>
-				<?php if(function_exists('globe_footer')) globe_footer(); ?>
-			<?php } ?>
+			© Copyright 2013 The Globe and Mail Inc. All Rights Reserved.<br />
+444 Front St. W., Toronto,  ON  Canada  M5V 2S9 <br />
+Phillip Crawley, Publisher
 			</footer>
 			<!-- /footer -->
 		

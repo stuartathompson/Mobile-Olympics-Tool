@@ -1,0 +1,11 @@
+.widget_globe_tags_widget{
+	margin:10px 0 20px 0;
+}
+.widget_globe_tags_widget span{
+	font-family:Helvetica,Arial,Verdana,sans-serif;
+	font-size:10px;
+	color:rgb(68,68,68);
+}
+.widget_globe_tags_widget img{
+	vertical-align: middle;
+}
