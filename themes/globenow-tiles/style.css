@@ -572,7 +572,6 @@ margin-left: 15px;
 /* Error pages - 404 and 503 */
 .fourohfour{
 	text-align:center;
-	margin: 0 -20px !important;
 }
 .fourohfour h2 {
 font-size: 50px;
@@ -585,13 +584,8 @@ line-height: 1.4;
 margin: 10px 0;
 }
 .suggestions {
-width: 540px;
 margin: 0 auto;
 }
-/*.fourohfour{
-padding: 20px;
-width: 1000px;
-}*/
 
 /*------------------------------------*\
     PAGES
