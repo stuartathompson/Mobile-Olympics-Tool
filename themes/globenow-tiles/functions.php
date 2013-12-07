@@ -161,7 +161,7 @@ function remove_thumbnail_dimensions( $html )
 \*------------------------------------*/
 
 // Add Actions
-//add_action('init', 'html5blank_header_scripts'); // Add Custom Scripts to wp_head
+add_action('init', 'html5blank_header_scripts'); // Add Custom Scripts to wp_head
 //add_action('wp_print_scripts', 'html5blank_conditional_scripts'); // Add Conditional Page Scripts
 add_action('wp_enqueue_scripts', 'html5blank_styles'); // Add Theme Stylesheet
 //add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
@@ -243,6 +243,24 @@ $s_account = 'bellgmpnewprod';
 if($args = 'development'){
 	$s_account = 'bellgmpgpsdev';
 }
+
+// Sports for use in filters
+$acceptedFilters = array(
+	"Hockey",
+	"Alpine skiing",
+	"Biathlon",
+	"Bobsleigh",
+	"Cross-country skiing",
+	"Curling",
+	"Figure skating",
+	"Freestyle skiing",
+	"Luge",
+	"Nordic combined",
+	"Short track speed skating",
+	"Skeleton",
+	"Ski jumping",
+	"Speed skating"
+);
 ?>
 <!-- Begin SiteCatalyst code -->
 <script type="text/javascript">
