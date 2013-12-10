@@ -247,18 +247,18 @@ if($args = 'development'){
 // Sports for use in filters
 $acceptedFilters = array(
 	"Hockey",
-	"Alpine skiing",
-	"Biathlon",
+	//"Alpine skiing",
+	//"Biathlon",
 	"Bobsleigh",
-	"Cross-country skiing",
+	//"Cross-country skiing",
 	"Curling",
 	"Figure skating",
-	"Freestyle skiing",
-	"Luge",
-	"Nordic combined",
+	//"Freestyle skiing",
+	//"Luge",
+	//"Nordic combined",
 	"Short track speed skating",
-	"Skeleton",
-	"Ski jumping",
+	//"Skeleton",
+	//"Ski jumping",
 	"Speed skating"
 );
 ?>

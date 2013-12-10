@@ -20,30 +20,39 @@ function ajax_tags_scripts(){
 }
 
 function ajax_tags_create_front_end(){
- // Do not get header for single post pages
+ 	// Sports for use in filters
+	$acceptedFilters = array(
+		"Hockey",
+		//"Alpine skiing",
+		//"Biathlon",
+		"Bobsleigh",
+		//"Cross-country skiing",
+		"Curling",
+		"Figure skating",
+		//"Freestyle skiing",
+		//"Luge",
+		//"Nordic combined",
+		"Short track speed skating",
+		//"Skeleton",
+		//"Ski jumping",
+		"Speed skating"
+	);
 	// Get query vars suggesting tags
 	$tags = $_GET['tags'];
 ?>
 	<div id="filters-bar">
-	<?php if(is_home()){ ?> <h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">Live Updates</a></h3> <?php } else { ?> <h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">Globe Olympics</a></h3><?php } ?>
+	<?php 
+ 	// Only get header for homepage
+	if(is_home()){ ?> <h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">Live Updates</a></h3> <?php } else { ?> <h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">Globe Olympics</a></h3><?php } ?>
 	<div id="filters" class="filters">
 		<div class="select">
 			<select id="filterSelect" class="dropdown field" autocomplete="off">
 				<option value="">Select sports</option>
-				<option value="hockey">Hockey</option>
-				<option value="Alpine skiing">Alpine skiing</option>
-				<option value="Biathlon">Biathlon</option>
-				<option value="Bobsleigh">Bobsleigh</option>
-				<option value="Cross-country skiing">Cross-country skiing</option>
-				<option value="Curling">Curling</option>
-				<option value="Figure skating">Figure skating</option>
-				<option value="Freestyle skiing">Freestyle skiing</option>
-				<option value="Luge">Luge</option>
-				<option value="Nordic combined">Nordic combined</option>
-				<option value="Short track speed skating">Short track speed skating</option>
-				<option value="Skeleton">Skeleton</option>
-				<option value="Ski jumping">Ski jumping</option>
-				<option value="Speed skating">Speed skating</option>
+			<?php
+				foreach($acceptedFilters as $filter){
+					echo "<option value='" . $filter . "'>" . $filter . "</option>";
+				}
+			?>
 			</select>
 		</div>
 		<div id="ajaxtags-loader"><img src="http://beta.images.theglobeandmail.com/static/templates/images/loader.gif" /></div>
@@ -99,20 +108,28 @@ function ajax_tags_create_mobile_front_end(){
 ?>
 <div class="ajaxtags-container">
 	<h3>Your filters</h3>
-	<div class="ajaxtags-option"><span></span>Hockey</div>
-	<div class="ajaxtags-option"><span></span>Alpine skiing</div>
-	<div class="ajaxtags-option"><span></span>Biathlon</div>
-	<div class="ajaxtags-option"><span></span>Bobsleigh</div>
-	<div class="ajaxtags-option"><span></span>Cross-country skiing</div>
-	<div class="ajaxtags-option"><span></span>Curling</div>
-	<div class="ajaxtags-option"><span></span>Figure skating</div>
-	<div class="ajaxtags-option"><span></span>Freestyle skiing</div>
-	<div class="ajaxtags-option"><span></span>Luge</div>
-	<div class="ajaxtags-option"><span></span>Nordic combined</div>
-	<div class="ajaxtags-option"><span></span>Short track speed skating</div>
-	<div class="ajaxtags-option"><span></span>Skeleton</div>
-	<div class="ajaxtags-option"><span></span>Ski jumping</div>
-	<div class="ajaxtags-option"><span></span>Speed skating</div>
+	<?php
+	// Sports for use in filters
+	$acceptedFilters = array(
+		"Hockey",
+		//"Alpine skiing",
+		//"Biathlon",
+		"Bobsleigh",
+		//"Cross-country skiing",
+		"Curling",
+		"Figure skating",
+		//"Freestyle skiing",
+		//"Luge",
+		//"Nordic combined",
+		"Short track speed skating",
+		//"Skeleton",
+		//"Ski jumping",
+		"Speed skating"
+	);
+		foreach($acceptedFilters as $filter){
+			echo "<div class='ajaxtags-option'><span></span>" . $filter . "</div>";
+		}
+	?>
 </div>
 <?php
 }
