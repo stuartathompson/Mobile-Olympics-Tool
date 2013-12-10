@@ -223,6 +223,9 @@ article h2 a:hover{
 .content{
 	width: 100%;
 }
+.content #tgam_video{
+	width:100% !important;
+}
 .single h3.moreposts,.search h3.searchresults{
 	font-size: 13px;
 	text-transform: uppercase;
