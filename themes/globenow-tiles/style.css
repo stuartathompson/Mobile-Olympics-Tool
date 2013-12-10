@@ -226,16 +226,15 @@ article h2 a:hover{
 .single h3.moreposts,.search h3.searchresults{
 	font-size: 13px;
 	text-transform: uppercase;
-	margin:20px 0 -11px !important;
+	margin:90px 0 -11px !important;
 	border:1px solid #DBDBDB;
 	padding:10px 0;
 	background-color:#F8F8F8;
 	text-align: center;
 }
-
 .single .standalone{
-	margin-bottom:100px;
 }
+
 /* tags */
 .tags {
 clear: both;
