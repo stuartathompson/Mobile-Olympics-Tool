@@ -234,15 +234,6 @@ function tags_pre_loop($query){
     }
 }
 
-// Tracking
-function globe_external_assets($args = 'development'){
-// production varibales
-$s_account = 'bellgmpnewprod';
-
-// Development variables
-if($args = 'development'){
-	$s_account = 'bellgmpgpsdev';
-}
 
 // Sports for use in filters
 $acceptedFilters = array(
@@ -261,6 +252,20 @@ $acceptedFilters = array(
 	//"Ski jumping",
 	"Speed skating"
 );
+
+// Tracking
+function globe_external_assets($args = 'development'){
+
+wp_reset_postdata();
+
+// production varibales
+$s_account = 'bellgmpnewprod';
+
+// Development variables
+if($args = 'development'){
+	$s_account = 'bellgmpgpsdev';
+}
+
 ?>
 <!-- Begin SiteCatalyst code -->
 <script type="text/javascript">
