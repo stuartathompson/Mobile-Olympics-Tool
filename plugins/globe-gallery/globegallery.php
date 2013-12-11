@@ -11,7 +11,7 @@
 
 
 remove_shortcode('gallery');
-add_shortcode('gallery','globe_gallery');
+add_shortcode('gallery','globe_gallery_regular');
 
 function globe_gallery($atts){
 	wp_enqueue_style('globe_gallery',plugin_dir_url( __FILE__ ) . 'globegallery.css');
@@ -79,6 +79,7 @@ function globe_gallery_regular($atts){
 	$images = get_posts($args);
 ?>
 	<div class="gi-gallery">
+		<div class="gi-gallery-sprite"></div>
 		<div class="gi-gallery-nav">
 			<a class="next" href="#next">Next</a>
 			<a class="prev" href="#Prev">Prev</a>
@@ -87,11 +88,19 @@ function globe_gallery_regular($atts){
 <?php
 	$i=0;
 	foreach($images as $image){
-		$showing = '';
-		if($i==0) $showing = ' showing';
-		echo "<div class='wp-caption gi-gallery-image gallery-icon" . $showing . "'>" . '<a href="' . wp_get_attachment_image_src( $image->ID, 'large' )[0] . '">' . wp_get_attachment_image($image->ID,'large') . "</a><p class='wp-caption-text'>" . $image->post_excerpt . "</a></p></div>";
-		$i++;
-	}
+		if($i==0){
+		// Show image
+		echo "<div class='wp-caption gi-gallery-image gallery-icon showing'>" . '<a href="' . wp_get_attachment_image_src( $image->ID, 'large' )[0] . '">' . wp_get_attachment_image($image->ID,'large') . "</a>";
+		if(strlen($image->post_excerpt) > 0) echo "<p class='wp-caption-text'>" . $image->post_excerpt . "</a></p>";
+		echo "</div>";
+		} else  {
+		// Leave source blank
+		echo "<div class='wp-caption gi-gallery-image gallery-icon'>" . '<a href="' . wp_get_attachment_image_src( $image->ID, 'large' )[0] . '"><img src="" data-image-src="' . wp_get_attachment_image_src($image->ID,'large')[0] . "\" alt=\"\" /></a>";
+		if(strlen($image->post_excerpt) > 0) echo "<p class='wp-caption-text'>" . $image->post_excerpt . "</a></p>";
+		echo "</div>";
+		}
+		$i++; 
+	}	
 ?>
 		</div>
 	</div>

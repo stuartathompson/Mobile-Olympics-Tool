@@ -1,9 +1,6 @@
-/*
 .gi-gallery{
-	display: relative;
+	position: relative;
 	margin-bottom:10px;
-	width:660px;
-	margin-left:-70px;
 }
 .gi-gallery img.alignnone, .gi-gallery .wp-caption{
 	margin-left:0 !important;
@@ -49,36 +46,29 @@
 	padding:0 !important;
 	display: none;
 }
-
+.gi-gallery-sprite{
+	display:none;
+}
 /* Smartphones */
-/*
 @media only screen and (max-width:480px) {
 	.gi-gallery .wp-caption,.gi-gallery img.alignnone,.gi-gallery{
 		width:100% !important;
-		margin-left:-20px !important;
 	}
-	.gi-gallery .wp-caption img,img.alignnone{
-		width:113% !important;
+	.gi-gallery-nav{
+		display:none;
 	}
-	.gi-gallery-nav, .gi-gallery-image img{
-		width:113% !important;
-	}
-	.gi-gallery{
-		width:113% !important;
-	}
-	.gi-gallery .gi-gallery-images .gi-gallery-image.gi-gallery-second{
-		display:block;
+	.gi-gallery-sprite{
+		display: block;
+		background-image:url('globegallery-icon.png');
+		width:50px;
+		height:25px;
 		position: absolute;
-		top:0;
-		right:-100%;
-		margin-right: -40px;
+		z-index: 10;
+		bottom:10px;
+		right:10px;		
 	}
-	.gi-gallery .wp-caption img, .gi-gallery img.alignnone {
-		width: 100% !important;
-		max-width: 100% !important;
-	}	
 }
-*/
+/*
 .gi-gallery-image{
 	display:none;
 }
@@ -88,3 +78,4 @@
 .gi-gallery-label{
 	font-weight:bold;
 }
+*/
