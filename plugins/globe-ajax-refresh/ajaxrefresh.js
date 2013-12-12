@@ -47,7 +47,6 @@ jQuery(document).ready(function($) {
 			'postId':postId
 		},
 		success: function(response){
-			console.log(response);
 			if(response != ''){
 				responseHtml = response;
 				$('#loop-wrapper').prepend('<div class="ajaxposts-new">' + responseHtml + '</div>');
@@ -110,7 +109,6 @@ $.ajax({
 				'postIds':postIds
 			},
 			success: function(response){
-				console.log(response);
 				if(response){
 					$('#loop-wrapper').prepend(response);
 					document.title = document.title.split(')')[1];
