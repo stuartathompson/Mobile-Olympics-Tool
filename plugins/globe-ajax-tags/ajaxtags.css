@@ -94,7 +94,7 @@ cursor: pointer;
 user-select: none;
 }
 #filters-error{
-	padding: 20px 0 0px 0
+	padding: 20px 0 0px 0;
 	font-size: 14px;
 	display:none;
 	clear: both;

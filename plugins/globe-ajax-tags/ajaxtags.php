@@ -61,7 +61,7 @@ function ajax_tags_create_front_end(){
 
 	<?php 
 		$showing = '';
-		if(is_home() || is_tag() && ((isset($tags) && $tags != '') || $_COOKIE['globe-ajaxtags_cookie'])) $showing = ' showing';
+		if(is_home() && ((isset($tags) && $tags != '') || $_COOKIE['globe-ajaxtags_cookie']) || is_tag() && ((isset($tags) && $tags != '') || $_COOKIE['globe-ajaxtags_cookie'])) $showing = ' showing';
 	?>
 	<div id="topics" class="topics<?php echo $showing; ?>">
 		<?php
