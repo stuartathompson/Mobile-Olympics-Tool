@@ -67,6 +67,12 @@ a:hover,
 a:active {
 	outline:0;
 }
+input{
+	font: 13px/1.5 "OpenSans", Verdana, Helvetica, Arial, sans-serif !important;
+	box-shadow:0;
+	-webkit-box-shadow: 0;
+	-moz-box-shadow: 0;
+}
 input:focus {
 	outline:0;
 	border:1px solid #04A4CC;
