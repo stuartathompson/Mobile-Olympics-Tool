@@ -182,7 +182,7 @@ article h2 a:hover{
 /* Post types */
 .breaking h2{
 }
-.breaking .date span{
+.breaking .date span, .breaking .date span a{
 	color:#d60000;
 }
 /* Meta */
@@ -205,6 +205,9 @@ article h2 a:hover{
 }
 .date span{
 	margin-right:5px;
+}
+.date span a{
+	color:black;
 }
 .datedate,.datetime{
 	float:left;

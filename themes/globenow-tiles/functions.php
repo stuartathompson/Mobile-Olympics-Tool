@@ -193,10 +193,34 @@ function globe_social_share(){
 ?>
 		<div class="gig-button-container">
 			<div title="Share on Twitter" class="tw share-reaction-icon"><a href="https://twitter.com/share?url=<?php the_permalink(); ?>&text=<?php the_title(); ?>" rel="<?php the_title(); ?>"><img src="http://beta.images.theglobeandmail.com/static/ROB/interactives/crisis/images/tw20over.png" /></a></div>
-			<div title="Share on Facebook" class="fb share-reaction-icon"><a href="http://www.facebook.com/share.php?u=<?php the_permalink(); ?>"><img src="http://beta.images.theglobeandmail.com/static/ROB/interactives/crisis/images/fb20over.png" /></a></div>
+			<!-- http://www.facebook.com/share.php?u=&picture= -->
+			<div title="Share on Facebook" class="fb share-reaction-icon"><a href="<?php 
+	$args = array(
+		'numberposts' => 1,
+		'order' => 'ASC',
+		'post_mime_type' => 'image',
+		'post_parent' => get_the_ID(),
+		'post_status' => null,
+		'post_type' => 'attachment',
+	);
+	$images = get_children( $args );
+	
+		$i = 0;
+		foreach($images as $img){
+			if($i==0) $image = urlencode(wp_get_attachment_image_src( $img->ID, 'thumbnail' )[0]);
+			$i++;
+		}
+	$title=urlencode(get_the_title());
+	$url=urlencode(get_permalink());
+	$summary= urlencode(get_the_excerpt());
+	$summary = str_replace("/<[^>]*>/","",(string)$sumnary);
+
+	?>http://www.facebook.com/sharer.php?s=100&amp;p[title]=<?php echo $title;?>&amp;p[summary]=<?php echo $summary;?>&amp;p[url]=<?php echo $url; ?>&amp;p[images][0]=<?php echo $image;?>">
+			<img src="http://beta.images.theglobeandmail.com/static/ROB/interactives/crisis/images/fb20over.png" /></a></div>
 			<div title="Email" class="email share-reaction-icon"><a href="mailto:?subject=<?php the_title(); ?>&body=<?php the_title(); ?> - <?php the_permalink() ?>"><img src="http://beta.images.theglobeandmail.com/static/national/timetolead/wealth/images/em-share-50b.png" /></a></div>
 			<?php if(function_exists('userlike_create_front_end')) userlike_create_front_end(); ?>
 		</div>
+		
 <?php
 }
 
