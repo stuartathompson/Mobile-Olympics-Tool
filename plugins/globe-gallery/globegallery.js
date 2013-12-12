@@ -7,12 +7,15 @@ $('.gi-gallery-label').click(function(){
 // Iterate through gallery
 if($('body').hasClass('desktop')){
 	// If desktop, show each new photo as clicked
-$('.gi-gallery-image,.gi-gallery-image a').click(function(){
-	// Fix gallery height to avoid flicker
-	$(this).parents('.gi-gallery').height($(this).parents('.gi-gallery').find('.gi-gallery-image.showing img').height()+$('.gi-gallery-nav').height());
+$('.gi-gallery-image,.gi-gallery-image a,.gi-gallery-nav a').click(function(){
 	// Navigate
 	var $parent = $(this).parents('.gi-gallery');
+	
+	// Fix gallery height to avoid flicker
+	$parent.height($(this).parents('.gi-gallery').find('.gi-gallery-image.showing img').height()+$('.gi-gallery-nav').height());
+	
 	show = $parent.find('.gi-gallery-image.showing').index();
+	
 	if($(this).hasClass('prev')){
 		if(show==0){
 			show = $parent.find('.gi-gallery-image').length-1;
@@ -26,6 +29,11 @@ $('.gi-gallery-image,.gi-gallery-image a').click(function(){
 			show++;
 		}
 	}
+	
+	// Change number
+	$parent.find('.gi-gallery-num span').text(show+1);
+	
+	// Toggle image visibility
 	$parent.find('.gi-gallery-image').hide().removeClass('showing');
 	var $showImage = $parent.find('.gi-gallery-image').eq(show);
 	$showImage.addClass('showing').show().find('img').attr('src',$showImage.find('img').data('imageSrc'));
