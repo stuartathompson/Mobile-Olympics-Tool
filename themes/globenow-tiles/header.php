@@ -14,11 +14,11 @@
 		<meta name="description" content="<?php bloginfo('description'); ?>">
 		
 		<!-- icons -->
-<link rel="shortcut icon" type="image/x-icon" href="http://beta.images.theglobeandmail.com/media/www/images/flag/favicon.ico">
-<link rel="apple-touch-icon-precomposed" media="screen and (resolution: 163dpi)" href="http://beta.images.theglobeandmail.com/media/mobile/images/iphone.icon.png">
-<link rel="apple-touch-icon-precomposed" media="screen and (resolution: 132dpi)" href="http://beta.images.theglobeandmail.com/media/mobile/images/ipad.icon.png">
-<link rel="apple-touch-icon-precomposed" media="screen and (resolution: 326dpi)" href="http://beta.images.theglobeandmail.com/media/mobile/images/iphone.icon.highres.png">
-<link rel="stylesheet" type="text/css" media="screen" href="http://beta.images.theglobeandmail.com/bundle-css/gzip_1716237129/www-css-core-composite-section.css" />
+		<link rel="shortcut icon" type="image/x-icon" href="http://beta.images.theglobeandmail.com/media/www/images/flag/favicon.ico">
+		<link rel="apple-touch-icon-precomposed" media="screen and (resolution: 163dpi)" href="http://beta.images.theglobeandmail.com/media/mobile/images/iphone.icon.png">
+		<link rel="apple-touch-icon-precomposed" media="screen and (resolution: 132dpi)" href="http://beta.images.theglobeandmail.com/media/mobile/images/ipad.icon.png">
+		<link rel="apple-touch-icon-precomposed" media="screen and (resolution: 326dpi)" href="http://beta.images.theglobeandmail.com/media/mobile/images/iphone.icon.highres.png">
+		<link rel="stylesheet" type="text/css" media="screen" href="http://beta.images.theglobeandmail.com/bundle-css/gzip_1716237129/www-css-core-composite-section.css" />
 			
 		<!-- css + javascript -->
 		<?php wp_head(); ?>

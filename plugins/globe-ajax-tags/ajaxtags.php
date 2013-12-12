@@ -29,12 +29,13 @@ function ajax_tags_create_front_end(){
 		//"Cross-country skiing",
 		"Curling",
 		"Figure skating",
-		//"Freestyle skiing",
-		//"Luge",
+		"Freestyle skiing",
+		"Luge",
 		//"Nordic combined",
-		"Short track speed skating",
-		//"Skeleton",
+		// "Short track speed skating",
+		"Skeleton",
 		//"Ski jumping",
+		"Snowboarding",
 		"Speed skating"
 	);
 	// Get query vars suggesting tags

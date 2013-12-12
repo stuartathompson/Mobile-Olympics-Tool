@@ -104,7 +104,6 @@ position: relative;
 }
 /* loop */
 #loop{
-	float:left;
 	width:100%;
 }
 #new-alert-container{
@@ -508,8 +507,10 @@ margin-left: 15px;
 	color:#eeeeee !important;
 }
 #infscr-loading{
-	text-align:center !important;
-	padding:20px 0;
+	text-align: center !important;
+	padding: 20px 0;
+	width: 30px;
+	margin: 0 auto;
 }
 /* logo */
 .logo {
@@ -569,6 +570,7 @@ margin-left: 15px;
 .footer {
 	padding:60px 0;
 	color:#5C5C5C;
+	background-color:#eeeeee;
 	text-align: center;
 }
 /* Error pages - 404 and 503 */

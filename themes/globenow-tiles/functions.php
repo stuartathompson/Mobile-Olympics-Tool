@@ -234,25 +234,6 @@ function tags_pre_loop($query){
     }
 }
 
-
-// Sports for use in filters
-$acceptedFilters = array(
-	"Hockey",
-	//"Alpine skiing",
-	//"Biathlon",
-	"Bobsleigh",
-	//"Cross-country skiing",
-	"Curling",
-	"Figure skating",
-	//"Freestyle skiing",
-	//"Luge",
-	//"Nordic combined",
-	"Short track speed skating",
-	//"Skeleton",
-	//"Ski jumping",
-	"Speed skating"
-);
-
 // Tracking
 function globe_external_assets($args = 'development'){
 
