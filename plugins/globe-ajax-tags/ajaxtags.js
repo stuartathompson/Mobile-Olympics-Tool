@@ -67,7 +67,7 @@ jQuery('document').ready(function($){
 	function initFilters(){
 		$('#ajaxtags-loader').show();
 		$('body,html').animate({
-			scrollTop:$('#filters-bar').offset().top-40
+			scrollTop:$('#filters-bar').offset().top-60
 		});
 		var query = '';
 		$.each(curFilters,function(i,d){
