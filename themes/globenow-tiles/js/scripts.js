@@ -40,14 +40,18 @@ $(function() {
 	/* - Last Seen Post - Cookie: Storing the latest post and changing colours - */
 	var lastSeenPostId = parseInt($.cookie('globeolympics-lastseenpost'));
 	var newLastSeenPostId = 0;
-	// Get latest post
-	$('#loop article').each(function(){
-		thisId = parseInt($(this).attr('id').split('-')[1]);
-		if(thisId > lastSeenPostId){
-			if(thisId > newLastSeenPostId) newLastSeenPostId = thisId;
-			$(this).addClass('unseen');
-		}
-	});
+	if(isNaN(lastSeenPostId)) lastSeenPostId = 0;
+	// Get latest post if exists
+	if($('#loop article').length > 1){
+		$('#loop article').each(function(){
+			thisId = parseInt($(this).attr('id').split('-')[1]);
+			if(thisId > lastSeenPostId){
+				if(thisId > newLastSeenPostId) newLastSeenPostId = thisId;
+				$(this).addClass('unseen');
+			}
+		});
+	}
+
 	// If new posts, apply new cookie
 	if(newLastSeenPostId != 0) $.cookie('globeolympics-lastseenpost',newLastSeenPostId);
 	// Waypoint trigger back to normal
@@ -57,13 +61,12 @@ $(function() {
 			$('#loop article.unseen').waypoint(function(){
 				$(this).removeClass('unseen');
 			},{'offset':'60%'});
-			$('#loop article.unseen').hover(function(){
-				$(this).removeClass('unseen');
-			})
 			initWaypoint = false;
 		}
 	})
-	
+	$('#loop article.unseen').hover(function(){
+		$(this).removeClass('unseen');
+	});
 	
 	/* Keyboard/arrow navigation */
 	var trackSpot = 0;

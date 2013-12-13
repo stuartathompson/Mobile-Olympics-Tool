@@ -71,24 +71,31 @@ jQuery(document).ready(function($) {
 		},checkTime);
 	}
 	
-	// Load new posts on click
+	// Show new posts on click
 	$('#new-alert-container a').click(function(){
 		if(responseHtml){
-			//$('#loop-wrapper').prepend(responseHtml);
 			$('.ajaxposts-new').show();
-			$('.ajaxposts-new article').css('background-color','#fffeef');
-			setTimeout(function(){
-					$('.ajaxposts-new article').css('background-color','white');
-			},1000);
-			document.title = document.title.replace(/^\([0-9]*\)/,'');
-	/*
-$.each(postIds.split(','),function(i,d){
-				$('#post-' + d).css('background-color','#fffeef');
-				setTimeout(function(){
-					$('#post-' + d).css('background-color','white');
-				},1000);
+
+			/* - De-highlight posts that are in frame - */
+			// Ensure user scrolls before registering their waypoint
+			var initWaypoint = false;
+			// Remove old window binds
+			$('.ajaxposts-new article').waypoint('destroy');
+			$(window).off('scroll').scroll(function(){
+				// Init waypoint once
+				if(!initWaypoint){
+					$('.ajaxposts-new article').waypoint(function(){
+						$(this).addClass('seen');
+					},{'offset':'60%'});
+					initWaypoint = true;
+				}
 			});
-*/
+			$('.ajaxposts-new article').hover(function(){
+				$(this).addClass('seen');
+			});
+			
+			/* - Reset window overall - */
+			document.title = document.title.replace(/^\([0-9]*\)/,'');
 			$('.refreshing').removeClass('refreshing');
 			$('body,html').animate({
 				'scrollTop':0
@@ -97,40 +104,18 @@ $.each(postIds.split(','),function(i,d){
 				$('#new-alert-text').text('new update');
 				$('#new-alert-number').text('0');
 			});
-		}
-		/*
-$.ajax({
-			url:ajaxurl.ajaxurl,
-			type:'POST',
-			dataType:'html',
-			cache: false,
-			data:{
-				'action':'ajax_refresh_loop',
-				'postIds':postIds
-			},
-			success: function(response){
-				if(response){
-					$('#loop-wrapper').prepend(response);
-					document.title = document.title.split(')')[1];
-					$.each(postIds.split(','),function(i,d){
-						$('#post-' + d).css('background-color','#fffeef');
-						setTimeout(function(){
-							$('#post-' + d).css('background-color','white');
-						},1000);
-					});
-					$('.refreshing').removeClass('refreshing');
-					$('body,html').animate({
-						'scrollTop':0
-					});
-					$('#new-alert-container').slideUp(function(){
-						$('#new-alert-text').text('new update');
-						$('#new-alert-number').text('0');
-					});
-				} else {
+			
+			/* - Update the latest ID cookie - */
+			var lastSeenPostId = $.cookie('globeolympics-lastseenpost'),
+				newLastSeenPostId = 0;
+			$('#loop article').each(function(){
+				thisId = parseInt($(this).attr('id').split('-')[1]);
+				if(thisId > lastSeenPostId){
+					if(thisId > newLastSeenPostId) newLastSeenPostId = thisId;
 				}
-			}
-		});
-*/
+			});
+			$.cookie('globeolympics-lastseenpost',newLastSeenPostId)
+		}
 		return false;
 	})
 });
