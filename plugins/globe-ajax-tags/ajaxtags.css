@@ -12,16 +12,17 @@
 -webkit-font-smoothing: antialiased;
 }
 .filters .select .dropdown.field {
-width: 160px;
+width: 205px;
 float:right;
 }
 .filters .select .dropdown {
 -webkit-appearance: none;
 -webkit-border-radius: 0;
-background: url("http://beta.images.theglobeandmail.com/static/ROB/interactives/crisis/images/select-arrow.png") no-repeat scroll right center transparent;
+background: url("dropdown.png") no-repeat scroll right center transparent;
+background-position: 180px;
 }
 .filters .select .dropdown {
-height: 27px;
+height: 33px;
 font: 12px/14px "OpenSans",Helvetica,Arial,sans-serif;
 font-weight:bold;
 color: #000;
@@ -33,20 +34,21 @@ float: left;
 text-transform: uppercase;
 }
 .filters .select .dropdown.field {
-padding-left: 4px;
+padding-left: 8px;
 background-color: white;
-}
-.filters .select .dropdown.field {
-width: 160px;
+margin-right: -10px;
 }
 .topics {
-width: 100%;
+width: 678px;
 float: left;
-margin-right: 15px;
 min-height: 1px;
 overflow: hidden;
-padding-top: 10px;
 display: none;
+padding:10px 20px 8px;
+margin: 10px -20px -11px;
+background-color: #E9E9E9;
+border-top: 1px solid #d1d1d1;
+border-bottom: 1px solid #d1d1d1;
 }
 .topics.showing{
 	display:block;
@@ -92,7 +94,7 @@ cursor: pointer;
 user-select: none;
 }
 #filters-error{
-	padding: 10px 0;
+	padding: 20px 0 0px 0;
 	font-size: 14px;
 	display:none;
 	clear: both;

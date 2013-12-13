@@ -67,6 +67,12 @@ a:hover,
 a:active {
 	outline:0;
 }
+input{
+	font: 13px/1.5 "OpenSans", Verdana, Helvetica, Arial, sans-serif !important;
+	box-shadow:0;
+	-webkit-box-shadow: 0;
+	-moz-box-shadow: 0;
+}
 input:focus {
 	outline:0;
 	border:1px solid #04A4CC;
@@ -176,7 +182,7 @@ article h2 a:hover{
 /* Post types */
 .breaking h2{
 }
-.breaking .date span{
+.breaking .date span, .breaking .date span a{
 	color:#d60000;
 }
 /* Meta */
@@ -199,6 +205,9 @@ article h2 a:hover{
 }
 .date span{
 	margin-right:5px;
+}
+.date span a{
+	color:black;
 }
 .datedate,.datetime{
 	float:left;

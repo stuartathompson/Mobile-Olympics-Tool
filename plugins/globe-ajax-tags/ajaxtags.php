@@ -61,14 +61,14 @@ function ajax_tags_create_front_end(){
 
 	<?php 
 		$showing = '';
-		if(is_tag() || (isset($tags) && $tags != '') || $_COOKIE['globe-ajaxtags_cookie']) $showing = ' showing';
+		if(is_home() && ((isset($tags) && $tags != '') || $_COOKIE['globe-ajaxtags_cookie']) || is_tag() && ((isset($tags) && $tags != '') || $_COOKIE['globe-ajaxtags_cookie'])) $showing = ' showing';
 	?>
 	<div id="topics" class="topics<?php echo $showing; ?>">
 		<?php
 			// Show tag if tag page
 			if(is_tag()){
 				echo '<span class="item noselect" data-filter="';
-				$needle = array(' ','\'');
+				$needle = array(',','\'');
 				$haystack = array('-','');
 				echo str_replace($needle,$haystack,single_tag_title('',false));
 				echo '">';
@@ -77,7 +77,7 @@ function ajax_tags_create_front_end(){
 			}
 			// Show tags if _GET tags has results
 			if(isset($tags) && $tags != ''){
-				$tagArr = explode(' ',$tags);
+				$tagArr = explode(',',$tags);
 				foreach($tagArr as $tag){
 					echo '<span class="item noselect" data-filter="';
 					echo $tag;
@@ -87,7 +87,7 @@ function ajax_tags_create_front_end(){
 			}
 			// Show tags for cookied tags
 			if(is_home() && $_COOKIE['globe-ajaxtags_cookie']){
-				$tagArr = explode(' ',$_COOKIE['globe-ajaxtags_cookie']);
+				$tagArr = explode(',',$_COOKIE['globe-ajaxtags_cookie']);
 				foreach($tagArr as $tag){
 					echo '<span class="item noselect" data-filter="';
 					echo $tag;

@@ -81,6 +81,7 @@ function globe_gallery_regular($atts){
 	<div class="gi-gallery">
 		<div class="gi-gallery-sprite"></div>
 		<div class="gi-gallery-nav">
+			<div class="gi-gallery-num"><span>1</span> of <?php echo count($images); ?></div>
 			<a class="next" href="#next">Next</a>
 			<a class="prev" href="#Prev">Prev</a>
 		</div>

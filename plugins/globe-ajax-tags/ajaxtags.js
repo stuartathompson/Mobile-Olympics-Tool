@@ -11,7 +11,6 @@ jQuery('document').ready(function($){
 		$filtersItem = $('#topics span'),
 		$sections = $('article'),
 		filterCookie = $.cookie('globe-ajaxtags_cookie');
-		
 	/* - Mobile and other devices - */
 	//check if this is a touch device
     if ($("html").hasClass('touch') || $("body").hasClass('touch')) {
@@ -68,12 +67,12 @@ jQuery('document').ready(function($){
 	function initFilters(){
 		$('#ajaxtags-loader').show();
 		$('body,html').animate({
-			scrollTop:$('#filters-bar').offset().top-40
+			scrollTop:$('#filters-bar').offset().top-60
 		});
 		var query = '';
 		$.each(curFilters,function(i,d){
 			query += d.trim();
-			if(i!=curFilters.length-1) query += '+';
+			if(i!=curFilters.length-1) query += ',';
 		});
 		if(curFilters.length == 0) query = '';
 		$.ajax({
@@ -90,7 +89,6 @@ jQuery('document').ready(function($){
 					$('#filters-error').slideUp();
 					$('#loop-wrapper').empty();
 					$('#loop-wrapper').append(response);
-					console.log(response);
 					// Re-add tooltip
 					$('.tags .tag').tooltip({
 						title:'Add tag to filters'
@@ -109,7 +107,7 @@ jQuery('document').ready(function($){
 		var query = '';
 		$.each(curFilters,function(i,d){
 			query+=d.trim();
-			if(i!=curFilters.length-1) query+= '+';
+			if(i!=curFilters.length-1) query+= ',';
 		});
 		window.location.href = 'http://www.stuartathompson.com/globeolympics?tags=' + query;	
 	}

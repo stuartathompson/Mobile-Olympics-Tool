@@ -21,18 +21,18 @@
 			<?php
 				$posttags = get_the_tags();
 				if($posttype=='breaking'){
-					echo '<span class="glyphicon glyphicon-exclamation-sign"></span> <span>Breaking</span>';
+					echo '<a href="' . get_permalink() . '" title="' . get_the_title() . '"><span class="glyphicon glyphicon-exclamation-sign"></span> <span>Breaking</span></a>';
 				} else {
 					if($posttype == 'fullwidth'){
 						$glyphicon = 'glyphicon-camera';
 					} else {
 						$glyphicon = 'glyphicon-pencil';
 					}
-					echo '<span class="glyphicon ' . $glyphicon . '"></span>';
+					echo '<a href="' . get_permalink() . '" title="' . get_the_title() . '">' . '<span class="glyphicon ' . $glyphicon . '"></span></a>';
 					if($posttags){
 						$i = 0;
 						foreach($posttags as $posttag){
-							if($i == 0)	echo '<span>' . $posttag->name . '</span>';	
+							if($i == 0)	echo '<span>' . '<a href="' . get_permalink() . '" title="' . get_the_title() . '">' . $posttag->name . '</a></span>';	
 							$i++;
 						}
 					}

@@ -7,6 +7,7 @@
 }
 .gi-gallery .gi-gallery-images{
 	position: relative;
+	float:left;
 }
 .gi-gallery .gi-gallery-images .gi-gallery-image{
 	display:none;
@@ -16,6 +17,13 @@
 }
 .gi-gallery .gi-gallery-images .gi-gallery-image.showing{
 	display:block;
+}
+.gi-gallery .gi-gallery-num{
+	font-family: Georgia,sans-serif;
+	float: left;
+	margin: 0 10px;
+	color: white;
+	font-weight: bold;
 }
 .gi-gallery .gi-gallery-nav{
 	border-left: 5px solid red;
