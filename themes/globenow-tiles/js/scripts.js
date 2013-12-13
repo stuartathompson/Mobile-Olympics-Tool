@@ -35,12 +35,11 @@ $(function() {
 		title:'Add tag to filters'
 	});
 	
-	
-	
 	/* - Last Seen Post - Cookie: Storing the latest post and changing colours - */
 	var lastSeenPostId = parseInt($.cookie('globeolympics-lastseenpost'));
 	var newLastSeenPostId = 0;
-	if(isNaN(lastSeenPostId)) lastSeenPostId = 0;
+	// If no lastseenpost, set to the most recent
+	if(isNaN(lastSeenPostId) || lastSeenPostId == '' || typeof lastSeenPostId == 'undefined') lastSeenPostId = $('#loop article').eq(0).attr('id').split('-')[1];
 	// Get latest post if exists
 	if($('#loop article').length > 1){
 		$('#loop article').each(function(){

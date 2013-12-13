@@ -18,6 +18,8 @@ float:right;
 .filters .select .dropdown {
 -webkit-appearance: none;
 -webkit-border-radius: 0;
+-moz-border-radius: 0;
+-moz-appearance: none;
 background: url("dropdown.png") no-repeat scroll right center transparent;
 background-position: 180px;
 }
@@ -142,6 +144,15 @@ user-select: none;
 	border-bottom:1px solid #b2b2b2;
 	font-family:Verdana,Helvetica,sans-serif;
 	font-size:12px;
+}
+
+/* Firefox */
+@-moz-document url-prefix() { 
+	.filters .select .dropdown{
+		background-image:none;
+		padding:10px;
+		height:auto;
+	}
 }
 
 /* Smartphones */

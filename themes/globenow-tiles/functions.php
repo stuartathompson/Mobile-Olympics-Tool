@@ -96,7 +96,11 @@ function html5blank_styles()
     wp_enqueue_style('jqueryuicss'); // Enqueue it!
 
 	wp_register_style('jquerymobilecss','http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css',array(),'1.0','all');
-
+	if(preg_match('/(?i)msie [2-9]/',$_SERVER['HTTP_USER_AGENT'])){
+	    // if IE<=9
+		 wp_register_style('styleie', get_template_directory_uri() . '/css/style-ie.css', array(), '1.0', 'all');
+    	wp_enqueue_style('styleie');
+	}
 }
 
 // If Dynamic Sidebar Exists

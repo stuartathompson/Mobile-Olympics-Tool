@@ -7,7 +7,6 @@
 }
 .gi-gallery .gi-gallery-images{
 	position: relative;
-	float:left;
 }
 .gi-gallery .gi-gallery-images .gi-gallery-image{
 	display:none;
