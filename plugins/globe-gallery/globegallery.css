@@ -61,6 +61,7 @@
 @media only screen and (max-width:480px) {
 	.gi-gallery .wp-caption,.gi-gallery img.alignnone,.gi-gallery{
 		width:100% !important;
+		float:left;
 	}
 	.gi-gallery-nav{
 		display:none;
