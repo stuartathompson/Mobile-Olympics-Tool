@@ -90,12 +90,14 @@ jQuery('document').ready(function($){
 					$('#loop-wrapper').empty();
 					$('#loop-wrapper').append(response);
 					// Re-add tooltip
-					$('.tags .tag').tooltip({
-						title:'Add tag to filters'
-					});
-					$('.star').tooltip({
-						placement:'top'
-					});
+					if($('body').hasClass('desktop')){
+						$('.tags .tag').tooltip({
+							title:'Add tag to filters'
+						});
+						$('.star').tooltip({
+							placement:'top'
+						});
+					}
 				} else {
 					$('#filters-error').slideDown();
 				}

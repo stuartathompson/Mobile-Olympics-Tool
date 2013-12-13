@@ -58,7 +58,7 @@ function ajax_tags_create_front_end(){
 		</div>
 		<div id="ajaxtags-loader"><img src="http://beta.images.theglobeandmail.com/static/templates/images/loader.gif" /></div>
 	</div>
-
+	</div>
 	<?php 
 		$showing = '';
 		if(is_home() && ((isset($tags) && $tags != '') || $_COOKIE['globe-ajaxtags_cookie']) || is_tag() && ((isset($tags) && $tags != '') || $_COOKIE['globe-ajaxtags_cookie'])) $showing = ' showing';
@@ -99,7 +99,7 @@ function ajax_tags_create_front_end(){
 		</div>
 	<div id="filters-error">
 		Sorry, no articles were found using those tags. <a id="ajaxtags-clear-tags" href="#clear">Clear tags?</a>
-	</div>
+	
 	</div>
 	<div class="clearfloat"></div>
 <?php
