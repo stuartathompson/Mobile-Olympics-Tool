@@ -47,11 +47,11 @@ function globefields_inner_custom_box( $post ) {
        _e( "Byline:", 'globefields_textdomain' );
   echo '</label><Br /> ';
 ?>
-  <input name="globefields_byline" type="text" size="32" value="<?php echo esc_attr($byline); ?>"/>
+  <input name="globefields_byline" type="text" value="<?php echo esc_attr($byline); ?>"/>
   
   <p>
   	<label for="globefields_placeline">Placeline:</label><br />
-  	<input name="globefields_placeline" type="text" size="32" value="<?php echo esc_attr($placeline); ?>"/>
+  	<input name="globefields_placeline" type="text" value="<?php echo esc_attr($placeline); ?>"/>
   </p>
   <?php
 

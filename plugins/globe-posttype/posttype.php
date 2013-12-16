@@ -45,8 +45,6 @@ function posttype_inner_custom_box( $post ) {
   echo '<label for="posttype_newfield">';
        _e( "Post type", 'posttype_textdomain' );
   echo '</label> ';
-  echo esc_attr($value);
-  echo $value;
 ?>
   <select id="posttype_newfield" name="posttype_newfield" value="<?php esc_attr($value); ?>">
   
