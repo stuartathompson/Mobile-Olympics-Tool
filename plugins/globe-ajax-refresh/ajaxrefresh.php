@@ -75,18 +75,17 @@ function ajax_check_new_posts($args) {
 			array_push($postIds,$querypost->ID);
 		}
 	}
-	$tags = '';
-	if($_COOKIE['globe-ajaxtags_cookie'] != '') $tags = array(explode(' ',$_COOKIE['globe-ajaxtags_cookie']));
+	$tags = array();
+	if($_COOKIE['globe-ajaxtags_cookie'] != '') $tags = explode(' ',$_COOKIE['globe-ajaxtags_cookie']);
 	if(count($postIds) > 0){
 	$args = array(
 		'post__in'=> $postIds,
 		'ignore_sticky_posts'=>true,
-		'tag__in'=>$tags
+		'tag_slug__in'=>$tags
  	);
 
 	$queryposts = new WP_Query( $args );
-
-	$postCount = 2; // Setting above 0 prevents ad from showing
+	$postCount = 0; // Setting above 0 prevents ad from showing
 	
 	if ($queryposts->have_posts()): while ($queryposts->have_posts()) : $queryposts->the_post();
 	
