@@ -48,7 +48,7 @@ function ajax_tags_create_front_end(){
 	<div id="filters" class="filters">
 		<div class="select">
 			<select id="filterSelect" class="dropdown field" autocomplete="off">
-				<option value="">Select sports</option>
+				<option value="">Filter sports</option>
 			<?php
 				foreach($acceptedFilters as $filter){
 					echo "<option value='" . $filter . "'>" . $filter . "</option>";
