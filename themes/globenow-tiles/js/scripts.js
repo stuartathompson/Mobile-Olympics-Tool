@@ -39,7 +39,7 @@ $(function() {
 	var lastSeenPostId = parseInt($.cookie('globeolympics-lastseenpost'));
 	var newLastSeenPostId = 0;
 	// If no lastseenpost, set to the most recent
-	if(isNaN(lastSeenPostId) || lastSeenPostId == '' || typeof lastSeenPostId == 'undefined') lastSeenPostId = $('#loop article').eq(0).attr('id').split('-')[1];
+	if(typeof $('#loop article').eq(0).attr('id') != 'undefined' && isNaN(lastSeenPostId) || lastSeenPostId == '' || typeof lastSeenPostId == 'undefined') lastSeenPostId = $('#loop article').eq(0).attr('id').split('-')[1];
 	// Get latest post if exists
 	if($('#loop article').length > 1){
 		$('#loop article').each(function(){
@@ -199,4 +199,5 @@ $(function() {
 			$('.share-link').remove();
 		}
 	})
+
 });

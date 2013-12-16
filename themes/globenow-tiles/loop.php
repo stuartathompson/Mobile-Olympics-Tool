@@ -21,18 +21,17 @@
 			<?php
 				$posttags = get_the_tags();
 				if($posttype=='breaking'){
-					echo '<a href="' . get_permalink() . '" title="' . get_the_title() . '"><span class="glyphicon glyphicon-exclamation-sign"></span> <span>Breaking</span></a>';
+					echo '<a href="' . get_bloginfo('url') . '/tag/breaking" title="Filter by tag: Breaking"><span class="glyphicon glyphicon-exclamation-sign"></span> <span>Breaking</span></a>';
 				} else {
 					if($posttype == 'fullwidth'){
 						$glyphicon = 'glyphicon-camera';
 					} else {
 						$glyphicon = 'glyphicon-pencil';
 					}
-					echo '<a href="' . get_permalink() . '" title="' . get_the_title() . '">' . '<span class="glyphicon ' . $glyphicon . '"></span></a>';
 					if($posttags){
 						$i = 0;
 						foreach($posttags as $posttag){
-							if($i == 0)	echo '<span>' . '<a href="' . get_permalink() . '" title="' . get_the_title() . '">' . $posttag->name . '</a></span>';	
+							if($i == 0)	echo '<a href="' . get_bloginfo('url') . '/tag/' . str_replace(' ','-',$posttag->name) . '" title="Filter by tag: ' . $posttag->name . '">' . '<span class="glyphicon ' . $glyphicon . '"></span>' . '<span>' . $posttag->name . '</a></span>';	
 							$i++;
 						}
 					}
