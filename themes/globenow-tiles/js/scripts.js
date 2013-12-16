@@ -189,5 +189,14 @@ $(function() {
 	$('body,html').on('click','.gig-button-container .email a',function(){
 		
 	});
-
+	$('body').on('click','.gig-button-container .lk a',function(){
+		$(this).parent().append('<div class="share-link"><input readonly type="text" value="' + $(this).data('url') + '" /></div>');
+		$(this).parent().find('input').focus();
+		return false;
+	});
+	$('body').click(function(e){
+		if(!$(e.target).is('input')){
+			$('.share-link').remove();
+		}
+	})
 });
