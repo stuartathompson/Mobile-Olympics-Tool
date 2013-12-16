@@ -182,8 +182,10 @@ jQuery('document').ready(function($){
 	$('#ajaxtags-clear-tags').click(function(){
 		curFilters = [];
 		$('#filters-error').slideUp();
+		$filtersCont.slideUp();
 		$filtersCont.find('span').fadeOut(150);
 		$filterSel.find('option').prop('disabled',false);
+		$.cookie('globe-ajaxtags_cookie','');
 		refreshHeader();
 		initFilters();
 		return false;

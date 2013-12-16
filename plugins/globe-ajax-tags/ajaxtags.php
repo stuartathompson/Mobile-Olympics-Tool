@@ -43,8 +43,8 @@ function ajax_tags_create_front_end(){
 ?>
 	<div id="filters-bar">
 	<?php 
- 	// Only get header for homepage
-	if(is_home()){ ?> <h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">Live Updates</a></h3> <?php } else { ?> <h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">Globe Olympics</a></h3><?php } ?>
+ 	// Show "Live Updates" on home
+	if(is_home()){ ?> <h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">Live Updates</a></h3> <?php } else { ?> <h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">2014 Winter Olympics</a></h3><?php } ?>
 	<div id="filters" class="filters">
 		<div class="select">
 			<select id="filterSelect" class="dropdown field" autocomplete="off">
@@ -61,7 +61,7 @@ function ajax_tags_create_front_end(){
 	</div>
 	<?php 
 		$showing = '';
-		if(is_home() && ((isset($tags) && $tags != '') || $_COOKIE['globe-ajaxtags_cookie']) || is_tag() && ((isset($tags) && $tags != '') || $_COOKIE['globe-ajaxtags_cookie'])) $showing = ' showing';
+		if(is_home() && ((isset($tags) && $tags != '') || $_COOKIE['globe-ajaxtags_cookie']) || is_tag() ) $showing = ' showing';
 	?>
 	<div id="topics" class="topics<?php echo $showing; ?>">
 		<?php
