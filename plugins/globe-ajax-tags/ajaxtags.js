@@ -88,6 +88,7 @@ jQuery('document').ready(function($){
 				if(response){
 					$('#filters-error').slideUp();
 					$('#loop-wrapper').empty();
+					$('#loop article').remove();
 					$('#loop-wrapper').append(response);
 					// Re-add tooltip
 					if($('body').hasClass('desktop')){
@@ -209,8 +210,7 @@ jQuery('document').ready(function($){
 		$head.parents('div .sticky-wrapper').css( "height", headHeight );
 	//	$.waypoints('refresh');			
 	}
-	
-	
+		
 	/* - Mobile menu - */
 	// Mobile menu
 	$('#mobile-header-menu').click(function(){

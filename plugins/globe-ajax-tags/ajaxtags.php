@@ -14,7 +14,7 @@ add_action("wp_ajax_nopriv_ajax_tags_loop", "ajax_tags_loop");
 add_action("wp_ajax_ajax_tags_loop", "ajax_tags_loop");
 
 function ajax_tags_scripts(){
-	wp_enqueue_script('globe_ajax_tags',plugin_dir_url( __FILE__ ) . 'ajaxtags.js',array( 'jquery','modernizr' ));
+	wp_enqueue_script('globe_ajax_tags',plugin_dir_url( __FILE__ ) . 'ajaxtags.js',array( 'jquery','modernizr'));
 	wp_enqueue_style('globe_ajax_tags',plugin_dir_url( __FILE__ ) . 'ajaxtags.css');
 	wp_localize_script( 'globe_ajax_tags', 'ajaxurl', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );	
 }
@@ -44,7 +44,7 @@ function ajax_tags_create_front_end(){
 	<div id="filters-bar">
 	<?php 
  	// Show "Live Updates" on home
-	if(is_home()){ ?> <h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">Live Updates</a></h3> <?php } else { ?> <h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">2014 Winter Olympics</a></h3><?php } ?>
+	if(is_home() || is_paged()){ ?> <h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">Live Updates</a></h3> <?php } else { ?> <h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">2014 Winter Olympics</a></h3><?php } ?>
 	<div id="filters" class="filters">
 		<div class="select">
 			<select id="filterSelect" class="dropdown field" autocomplete="off">
@@ -61,11 +61,12 @@ function ajax_tags_create_front_end(){
 	</div>
 	<?php 
 		$showing = '';
-		if(is_home() && ((isset($tags) && $tags != '') || $_COOKIE['globe-ajaxtags_cookie']) || is_tag() ) $showing = ' showing';
+		if((is_paged() || is_home()) && ((isset($tags) && $tags != '') || $_COOKIE['globe-ajaxtags_cookie']) || is_tag() ) $showing = ' showing';
 	?>
 	<div id="topics" class="topics<?php echo $showing; ?>">
 		<?php
-			// Show tag if tag page
+
+		// Show tag if tag page
 			if(is_tag()){
 				echo '<span class="item noselect" data-filter="';
 				$needle = array(',','\'');
@@ -75,7 +76,7 @@ function ajax_tags_create_front_end(){
 					single_tag_title();
 				echo '</span>';
 			}
-			// Show tags if _GET tags has results
+				// Show tags if _GET tags has results
 			if(isset($tags) && $tags != ''){
 				$tagArr = explode(',',$tags);
 				foreach($tagArr as $tag){
@@ -86,7 +87,7 @@ function ajax_tags_create_front_end(){
 				}
 			}
 			// Show tags for cookied tags
-			if(is_home() && $_COOKIE['globe-ajaxtags_cookie']){
+			if((is_home() || is_paged()) && $_COOKIE['globe-ajaxtags_cookie']){
 				$tagArr = explode(',',$_COOKIE['globe-ajaxtags_cookie']);
 				foreach($tagArr as $tag){
 					echo '<span class="item noselect" data-filter="';
@@ -95,6 +96,7 @@ function ajax_tags_create_front_end(){
 					echo '</span>';
 				}
 			}
+
 		?>
 		</div>
 	<div id="filters-error">
@@ -141,9 +143,15 @@ function ajax_tags_loop() {
 	
 	$query = $_POST['query'];
  	
+ 	wp_reset_postdata();
+ 	
+ 	// Adjust for pagination
+ 	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
  	$args = array(
- 		'posts_per_page'=>5,
-		'tag'=>$query 		
+ 		'posts_per_page'=>10,
+		'tag'=>$query,
+		'paged'=>$paged
  	);
  	
  	$queryposts = new WP_Query( $args );
@@ -153,8 +161,20 @@ function ajax_tags_loop() {
 	if ($queryposts->have_posts()): while ($queryposts->have_posts()) : $queryposts->the_post();
 	
 		include(locate_template('loop.php'));
-		
+
 		endwhile;
+
+	
+		if($queryposts->max_num_pages > 1 && $paged < $queryposts->max_num_pages){
+		?>
+			<div class="pagination">
+				<div class="nav-previous alignleft"><a href="<?php bloginfo('url'); ?>/page/<?php echo $paged+1; ?>">Older posts</a></div>
+				<div class="nav-next alignright"></div>
+			</div>
+		<?php
+		}
+		//next_posts_link('&laquo; Older Entries', $new_query->max_num_pages);
+		//previous_posts_link('Newer Entries &raquo;');
 		
 	endif;
  	
