@@ -1,6 +1,6 @@
 			<!-- footer -->
 			<footer class="footer" role="contentinfo">
-			© Copyright 2013 The Globe and Mail Inc. All Rights Reserved.<br />
+			© Copyright 2014 The Globe and Mail Inc. All Rights Reserved.<br />
 444 Front St. W., Toronto,  ON  Canada  M5V 2S9 <br />
 Phillip Crawley, Publisher
 			</footer>
