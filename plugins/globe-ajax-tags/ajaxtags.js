@@ -17,10 +17,12 @@ jQuery('document').ready(function($){
         touch = true;
     }
     
-    // Set any default tags
+    // Set any tags loaded from last time
     $filtersItem.each(function(i,d){
 		curFilters.push($(d).attr('data-filter'));
     });
+    // Add big moments to filter array if selected
+    if($('#home-highlights a').hasClass('selected')) curFilters.push('big-moments');
     
 	// SVG fallback
 	// toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script#update
@@ -70,12 +72,14 @@ jQuery('document').ready(function($){
 			scrollTop:$('#filters-bar').offset().top-60
 		});
 		var query = '',
-			querySplit = ',';
-		if(jQuery.inArray('big-moments',curFilters) > -1) querySplit = '+';
+			action = 'ajax_tags_loop';
+		// If checking big-moments with at least one other tag, use the highlights query in ajaxtags.php
+		if(jQuery.inArray('big-moments',curFilters) > -1 && curFilters.length > 1) action = 'ajax_tags_loop_highlights';
 		$.each(curFilters,function(i,d){
 			query += d.trim();
-			if(i!=curFilters.length-1) query += querySplit;
+			if(i!=curFilters.length-1) query += ',';
 		});
+		console.log(action,curFilters);
 		if(curFilters.length == 0) query = '';
 		$.ajax({
 			url:ajaxurl.ajaxurl,
@@ -83,7 +87,7 @@ jQuery('document').ready(function($){
 			dataType:'html',
 			cache: false,
 			data:{
-				'action':'ajax_tags_loop',
+				'action':action,
 				'query':query
 			},
 			success: function(response){
@@ -178,8 +182,9 @@ jQuery('document').ready(function($){
 			}
 		}
 */
-		// Hide topics if none
-		if(curFilters.length < 1) $('#topics').slideUp();
+		// Hide topics if none or if only remaining is big-moments
+		console.log(curFilters.length,jQuery.inArray('big-moments',curFilters),curFilters);
+		if(curFilters.length < 1 || (curFilters.length == 1 && jQuery.inArray('big-moments',curFilters)>-1)) $('#topics').slideUp();
 	}
 	
 	$('#ajaxtags-clear-tags').click(function(){

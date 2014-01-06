@@ -13,6 +13,11 @@ add_action( 'wp_enqueue_scripts', 'ajax_tags_scripts' );
 add_action("wp_ajax_nopriv_ajax_tags_loop", "ajax_tags_loop");
 add_action("wp_ajax_ajax_tags_loop", "ajax_tags_loop");
 
+add_action("wp_ajax_nopriv_ajax_tags_loop_highlights", "ajax_tags_loop_highlights");
+add_action("wp_ajax_ajax_tags_loop_highlights", "ajax_tags_loop_highlights");
+
+
+
 function ajax_tags_scripts(){
 	wp_enqueue_script('globe_ajax_tags',plugin_dir_url( __FILE__ ) . 'ajaxtags.js',array( 'jquery','modernizr'));
 	wp_enqueue_style('globe_ajax_tags',plugin_dir_url( __FILE__ ) . 'ajaxtags.css');
@@ -76,13 +81,25 @@ function ajax_tags_create_front_end(){
 	</div>
 	</div>
 	<?php 
+	$notBigMoments = false;
+		// If only one tag, ensure it's not big-moments before continuing
+
+		$tagArr = explode(',',$_COOKIE['globe-ajaxtags_cookie']);
+		if(count($tagArr) == 1){
+			$notBigMoments = true;
+			foreach($tagArr as $tag){
+				if($tag == 'big-moments') { $notBigMoments = false; }
+			}
+		}
+	?>
+	<?php
+		// Determine whether tag container should show
 		$showing = '';
-		if((is_paged() || is_home()) && ((isset($tags) && $tags != '') || $_COOKIE['globe-ajaxtags_cookie']) || is_tag() ) $showing = ' showing';
+		if((is_paged() || is_home()) && ((isset($tags) && $tags != '') || ($_COOKIE['globe-ajaxtags_cookie'] && $notBigMoments) || is_tag() )) $showing = ' showing';
 	?>
 	<div id="topics" class="topics<?php echo $showing; ?>">
 		<?php
-
-		// Show tag if tag page
+			// Show tag if tag page
 			if(is_tag()){
 				echo '<span class="item noselect" data-filter="';
 				$needle = array(',','\'');
@@ -106,10 +123,13 @@ function ajax_tags_create_front_end(){
 			if((is_home() || is_paged()) && $_COOKIE['globe-ajaxtags_cookie']){
 				$tagArr = explode(',',$_COOKIE['globe-ajaxtags_cookie']);
 				foreach($tagArr as $tag){
-					echo '<span class="item noselect" data-filter="';
-					echo $tag;
-					echo '">' . str_replace("-"," ",$tag);
-					echo '</span>';
+					// Prevent Big Moments tag
+					if($tag != "big-moments"){
+						echo '<span class="item noselect" data-filter="';
+						echo $tag;
+						echo '">' . str_replace("-"," ",$tag);
+						echo '</span>';
+					}
 				}
 			}
 
@@ -163,12 +183,13 @@ function ajax_tags_loop() {
  	// Adjust for pagination
  	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
+
  	$args = array(
  		'posts_per_page'=>10,
 		'tag'=>$query,
 		'paged'=>$paged
  	);
- 	
+
  	$queryposts = new WP_Query( $args );
 	
 	$postCount = 0;
@@ -202,15 +223,32 @@ function ajax_tags_loop_highlights() {
 	// get the submitted parameters
 	
 	$query = $_POST['query'];
- 	
- 	wp_reset_postdata();
+
+	wp_reset_postdata();
  	
  	// Adjust for pagination
  	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-
+	
+	$array = array();
+	foreach(explode(',',$query) as $q){
+		if($q!='big-moments') array_push($array,$q);
+	}
  	$args = array(
  		'posts_per_page'=>10,
 		'tag'=>$query,
+		'tax_query' => array(
+			'relation' => 'AND',
+			array(
+				'taxonomy' => 'post_tag',
+				'field' => 'slug',
+				'terms' => array( 'big-moments')
+			),
+			array(
+				'taxonomy' => 'post_tag',
+				'field' => 'slug',
+				'terms' => $array
+			)
+		),
 		'paged'=>$paged
  	);
  	
@@ -238,6 +276,7 @@ function ajax_tags_loop_highlights() {
 		
 	endif;
  	
+
  	// IMPORTANT: don't forget to "exit"
 	exit;
 
