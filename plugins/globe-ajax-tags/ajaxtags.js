@@ -69,10 +69,12 @@ jQuery('document').ready(function($){
 		$('body,html').animate({
 			scrollTop:$('#filters-bar').offset().top-60
 		});
-		var query = '';
+		var query = '',
+			querySplit = ',';
+		if(jQuery.inArray('big-moments',curFilters) > -1) querySplit = '+';
 		$.each(curFilters,function(i,d){
 			query += d.trim();
-			if(i!=curFilters.length-1) query += ',';
+			if(i!=curFilters.length-1) query += querySplit;
 		});
 		if(curFilters.length == 0) query = '';
 		$.ajax({
@@ -122,7 +124,7 @@ jQuery('document').ready(function($){
 			  	//add this filter to current filters array
 			  	curFilters.push(tag);
 				//add filter item element
-				$filtersCont.append('<span class="item noselect" data-filter="'+tag+'">'+label+'</span>');
+				if(label!='big moments') $filtersCont.append('<span class="item noselect" data-filter="'+tag+'">'+label+'</span>');
 				//refresh waypoints and set header height (in case adding filters changes height of header)
 				refreshHeader();
 				//add class to mobile tag
@@ -139,7 +141,7 @@ jQuery('document').ready(function($){
 	    	} else {
 	    		//alert('This filter tag is already in use.');
 	    	}
-	    	$('#topics').slideDown();
+	    	if($('#topics span').length > 0) $('#topics').slideDown();
         	//track filter usage
         	//interactiveTracking("Interactive - 20130914 - Financial Crash - Filter - "+tag+"");	    	
 		}
@@ -182,11 +184,12 @@ jQuery('document').ready(function($){
 	
 	$('#ajaxtags-clear-tags').click(function(){
 		curFilters = [];
+		if($('#home-highlights a').hasClass('selected')) curFilters = ['big-moments'];
 		$('#filters-error').slideUp();
 		$filtersCont.slideUp();
-		$filtersCont.find('span').fadeOut(150);
+		$filtersCont.find('span').fadeOut(150).remove();
 		$filterSel.find('option').prop('disabled',false);
-		$.cookie('globe-ajaxtags_cookie','');
+		$.cookie('globe-ajaxtags_cookie',curFilters.toString());
 		refreshHeader();
 		initFilters();
 		return false;
@@ -286,5 +289,19 @@ $.each(filterCookie.split(','),function(i,cookie){
     	})
 */
     }
+    
+    // Toggle menu selection
+    var highlightsTag = 'big-moments';
+    $('#filters-bar h3 a').click(function(){
+    	if($('#home-highlights a').hasClass('selected')){
+    		removeFilter(highlightsTag,highlightsTag);
+			$filtersCont.find('span[data-filter="'+ highlightsTag +'"]').fadeOut().remove();
+    	} else {
+    		var filter = $(this).text();
+			addFilters(filter.replace(/ /g,'-') ,filter);
+    	}
+    	$('#filters-bar h3 a').toggleClass('selected');
+    	return false;
+    });
 
 });

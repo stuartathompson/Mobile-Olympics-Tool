@@ -44,7 +44,23 @@ function ajax_tags_create_front_end(){
 	<div id="filters-bar">
 	<?php 
  	// Show "Live Updates" on home
-	if(is_home() || is_paged()){ ?> <h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">Live Updates</a></h3> <?php } else { ?> <h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">2014 Winter Olympics</a></h3><?php } ?>
+	if(is_home() || is_paged()){
+		$selectedLive = ' class="selected"';
+		$selectedBig = '';
+		$tagArr = explode(',',$_COOKIE['globe-ajaxtags_cookie']);
+		foreach($tagArr as $tag){
+			if($tag == 'big-moments' || $tag == 'big moments'){
+				$selectedLive = '';
+				$selectedBig = ' class="selected"';
+			}
+		}
+	?>
+		<h3 id="home-nav"><a href="<?php bloginfo('url'); ?>" <?php echo $selectedLive; ?>>Live Updates</a></h3>
+		<div id="filter-splitter"></div>
+		<h3 id="home-highlights"><a href="<?php bloginfo('url'); ?>/tag/big-moments" <?php echo $selectedBig; ?>>big moments</a></h3> 
+	<?php } else { ?>
+		<h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">2014 Winter Olympics</a></h3>
+	<?php } ?>
 	<div id="filters" class="filters">
 		<div class="select">
 			<select id="filterSelect" class="dropdown field" autocomplete="off">
@@ -92,7 +108,7 @@ function ajax_tags_create_front_end(){
 				foreach($tagArr as $tag){
 					echo '<span class="item noselect" data-filter="';
 					echo $tag;
-					echo '">' . $tag;
+					echo '">' . str_replace("-"," ",$tag);
 					echo '</span>';
 				}
 			}
@@ -101,7 +117,6 @@ function ajax_tags_create_front_end(){
 		</div>
 	<div id="filters-error">
 		Sorry, no articles were found using those tags. <a id="ajaxtags-clear-tags" href="#clear">Clear tags?</a>
-	
 	</div>
 	<div class="clearfloat"></div>
 <?php
@@ -182,3 +197,49 @@ function ajax_tags_loop() {
 	exit;
 
 }
+
+function ajax_tags_loop_highlights() {
+	// get the submitted parameters
+	
+	$query = $_POST['query'];
+ 	
+ 	wp_reset_postdata();
+ 	
+ 	// Adjust for pagination
+ 	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+ 	$args = array(
+ 		'posts_per_page'=>10,
+		'tag'=>$query,
+		'paged'=>$paged
+ 	);
+ 	
+ 	$queryposts = new WP_Query( $args );
+	
+	$postCount = 0;
+	
+	if ($queryposts->have_posts()): while ($queryposts->have_posts()) : $queryposts->the_post();
+	
+		include(locate_template('loop.php'));
+
+		endwhile;
+
+	
+		if($queryposts->max_num_pages > 1 && $paged < $queryposts->max_num_pages){
+		?>
+			<div class="pagination">
+				<div class="nav-previous alignleft"><a href="<?php bloginfo('url'); ?>/page/<?php echo $paged+1; ?>">Older posts</a></div>
+				<div class="nav-next alignright"></div>
+			</div>
+		<?php
+		}
+		//next_posts_link('&laquo; Older Entries', $new_query->max_num_pages);
+		//previous_posts_link('Newer Entries &raquo;');
+		
+	endif;
+ 	
+ 	// IMPORTANT: don't forget to "exit"
+	exit;
+
+}
+
