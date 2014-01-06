@@ -16,14 +16,20 @@ jQuery('document').ready(function($){
     if ($("html").hasClass('touch') || $("body").hasClass('touch')) {
         touch = true;
     }
-    
+    // Load any tags in cookies
+    $.each(filterCookie.split(','),function(i,cookie){
+    	curFilters.push(cookie);
+    });
+    console.log(curFilters);
     // Set any tags loaded from last time
-    $filtersItem.each(function(i,d){
+    /*
+$filtersItem.each(function(i,d){
 		curFilters.push($(d).attr('data-filter'));
     });
     // Add big moments to filter array if selected
     if($('#home-highlights a').hasClass('selected')) curFilters.push('big-moments');
     
+*/
 	// SVG fallback
 	// toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script#update
 	if (!Modernizr.svg) {
@@ -88,7 +94,8 @@ jQuery('document').ready(function($){
 			cache: false,
 			data:{
 				'action':action,
-				'query':query
+				'query':query,
+				'ajaxTagNonce':ajaxurl.ajaxTagNonce
 			},
 			success: function(response){
 				if(response){
@@ -298,15 +305,17 @@ $.each(filterCookie.split(','),function(i,cookie){
     // Toggle menu selection
     var highlightsTag = 'big-moments';
     $('#filters-bar h3 a').click(function(){
-    	if($('#home-highlights a').hasClass('selected')){
-    		removeFilter(highlightsTag,highlightsTag);
-			$filtersCont.find('span[data-filter="'+ highlightsTag +'"]').fadeOut().remove();
-    	} else {
-    		var filter = $(this).text();
-			addFilters(filter.replace(/ /g,'-') ,filter);
-    	}
-    	$('#filters-bar h3 a').toggleClass('selected');
+    	if($(this).text().toLowerCase() != '2014 winter olympics'){
+	  	  	if($('#home-highlights a').hasClass('selected')){
+    			removeFilter(highlightsTag,highlightsTag);
+				$filtersCont.find('span[data-filter="'+ highlightsTag +'"]').fadeOut().remove();
+	    	} else {
+    			var filter = $(this).text();
+				addFilters(filter.replace(/ /g,'-') ,filter);
+	    	}
+    		$('#filters-bar h3 a').toggleClass('selected');
     	return false;
+    	}
     });
 
 });

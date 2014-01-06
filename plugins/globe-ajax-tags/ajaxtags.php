@@ -21,7 +21,10 @@ add_action("wp_ajax_ajax_tags_loop_highlights", "ajax_tags_loop_highlights");
 function ajax_tags_scripts(){
 	wp_enqueue_script('globe_ajax_tags',plugin_dir_url( __FILE__ ) . 'ajaxtags.js',array( 'jquery','modernizr'));
 	wp_enqueue_style('globe_ajax_tags',plugin_dir_url( __FILE__ ) . 'ajaxtags.css');
-	wp_localize_script( 'globe_ajax_tags', 'ajaxurl', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );	
+	wp_localize_script( 'globe_ajax_tags', 'ajaxurl', array( 
+		'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		'ajaxTagNonce' => wp_create_nonce( 'globe_ajax_tags_nonce')
+	));	
 }
 
 function ajax_tags_create_front_end(){
@@ -71,8 +74,13 @@ function ajax_tags_create_front_end(){
 			<select id="filterSelect" class="dropdown field" autocomplete="off">
 				<option value="">Filter sports</option>
 			<?php
+				$tagArr = explode(',',$_COOKIE['globe-ajaxtags_cookie']);
 				foreach($acceptedFilters as $filter){
-					echo "<option value='" . $filter . "'>" . $filter . "</option>";
+					// Check if tag already selected
+					$disabled = '';
+					if(in_array($filter,$tagArr)) $disabled = ' disabled';
+					// Show option in dropdown
+					echo "<option value='" . $filter . "' " . $disabled . ">" . $filter . "</option>";
 				}
 			?>
 			</select>
@@ -81,9 +89,8 @@ function ajax_tags_create_front_end(){
 	</div>
 	</div>
 	<?php 
-	$notBigMoments = false;
 		// If only one tag, ensure it's not big-moments before continuing
-
+		$notBigMoments = true;
 		$tagArr = explode(',',$_COOKIE['globe-ajaxtags_cookie']);
 		if(count($tagArr) == 1){
 			$notBigMoments = true;
@@ -120,11 +127,11 @@ function ajax_tags_create_front_end(){
 				}
 			}
 			// Show tags for cookied tags
-			if((is_home() || is_paged()) && $_COOKIE['globe-ajaxtags_cookie']){
+			if($_COOKIE['globe-ajaxtags_cookie']){
 				$tagArr = explode(',',$_COOKIE['globe-ajaxtags_cookie']);
 				foreach($tagArr as $tag){
 					// Prevent Big Moments tag
-					if($tag != "big-moments"){
+					if($tag != "big-moments" && $tag != ''){
 						echo '<span class="item noselect" data-filter="';
 						echo $tag;
 						echo '">' . str_replace("-"," ",$tag);
@@ -177,7 +184,11 @@ function ajax_tags_loop() {
 	// get the submitted parameters
 	
 	$query = $_POST['query'];
- 	
+ 	$nonce = $_POST['ajaxTagNonce'];
+ 		
+ 	if(!wp_verify_nonce($nonce,'globe_ajax_tags_nonce'))
+ 		die('Not a valid request');
+
  	wp_reset_postdata();
  	
  	// Adjust for pagination
