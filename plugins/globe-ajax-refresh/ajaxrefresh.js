@@ -9,12 +9,13 @@ jQuery(document).ready(function($) {
 	$('#refresh').click(function(){
 		$(this).addClass('refreshing');
 		$.ajax({
-			url:ajaxurl.ajaxurl,
+			url:ajaxRefreshUrl.ajaxurl,
 			type:'POST',
 			dataType:'html',
 			cache: false,
 			data:{
-				'action':'ajax_refresh_loop'
+				'action':'ajax_refresh_loop',
+				'nonce':ajaxRefreshUrl.ajaxTagNonce
 			},
 			success: function(response){
 				if(response){
@@ -38,13 +39,14 @@ jQuery(document).ready(function($) {
 		if(parseInt($(this).attr('id').split('-')[1]) > postId) postId = $(this).attr('id').split('-')[1];	
 	});
 	$.ajax({
-		url:ajaxurl.ajaxurl,
+		url:ajaxRefreshUrl.ajaxurl,
 		type:'POST',
 		dataType:'html',
 		cache: false,
 		data:{
 			'action':'ajax_check_new_posts',
-			'postId':postId
+			'postId':postId,
+			'nonce':ajaxRefreshUrl.ajaxTagNonce
 		},
 		success: function(response){
 			if(response != ''){

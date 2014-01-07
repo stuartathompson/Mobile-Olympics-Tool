@@ -20,7 +20,12 @@ add_action("wp_ajax_ajax_check_new_posts", "ajax_check_new_posts");
 
 function ajax_refresh_scripts(){
 	wp_enqueue_script('globe_ajax_refresh',plugin_dir_url( __FILE__ ) . 'ajaxrefresh.js',array( 'jquery' ));
-	wp_localize_script( 'globe_ajax_refresh', 'ajaxurl', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );	
+	wp_localize_script( 'globe_ajax_refresh', 'ajaxRefreshUrl', array( 
+		'ajaxurl' => admin_url( 'admin-ajax.php' ),
+		'ajaxRefreshNonce' => wp_create_nonce( 'globe_ajax_refresh_nonce')
+	));	
+	
+	
 	wp_enqueue_style('globe_ajax_refresh',plugin_dir_url( __FILE__ ) . 'ajaxrefresh.css');
 }
 
@@ -32,6 +37,10 @@ function ajax_refresh_front_end(){
 function ajax_refresh_loop($query) {
 		
 	$postIds = $_POST['postIds'];
+	$nonce = $_POST['ajaxRefreshNonce'];
+ 		
+ 	if(!wp_verify_nonce($nonce,'globe_ajax_refresh_nonce'))
+ 		die('Not a valid request ' . $nonce);
 
 	// get the submitted parameters
 	$args = array(
