@@ -17,10 +17,11 @@ jQuery('document').ready(function($){
         touch = true;
     }
     // Load any tags in cookies
-    $.each(filterCookie.split(','),function(i,cookie){
-    	curFilters.push(cookie);
-    });
-    console.log(curFilters);
+    if(typeof filterCookie != 'undefined'){
+	    $.each(filterCookie.split(','),function(i,cookie){
+    		curFilters.push(cookie);
+	    });
+	}
     // Set any tags loaded from last time
     /*
 $filtersItem.each(function(i,d){
@@ -85,17 +86,18 @@ $filtersItem.each(function(i,d){
 			query += d.trim();
 			if(i!=curFilters.length-1) query += ',';
 		});
-		console.log(action,curFilters);
+		console.log(ajaxTagUrl,ajaxTagUrl.ajaxTagNonce);
+		
 		if(curFilters.length == 0) query = '';
 		$.ajax({
-			url:ajaxurl.ajaxurl,
+			url:ajaxTagUrl.ajaxurl,
 			type:'POST',
 			dataType:'html',
 			cache: false,
 			data:{
 				'action':action,
 				'query':query,
-				'ajaxTagNonce':ajaxurl.ajaxTagNonce
+				'ajaxTagNonce':ajaxTagUrl.ajaxTagNonce
 			},
 			success: function(response){
 				if(response){
@@ -147,7 +149,7 @@ $filtersItem.each(function(i,d){
 				//init choose filters
 				initFilters();		
 				// Save cookie
-				$.cookie('globe-ajaxtags_cookie',curFilters.toString());
+				$.cookie('globe-ajaxtags_cookie',curFilters.toString().replace(/^,/,''));
 								
 	    	} else {
 	    		//alert('This filter tag is already in use.');
@@ -190,7 +192,6 @@ $filtersItem.each(function(i,d){
 		}
 */
 		// Hide topics if none or if only remaining is big-moments
-		console.log(curFilters.length,jQuery.inArray('big-moments',curFilters),curFilters);
 		if(curFilters.length < 1 || (curFilters.length == 1 && jQuery.inArray('big-moments',curFilters)>-1)) $('#topics').slideUp();
 	}
 	

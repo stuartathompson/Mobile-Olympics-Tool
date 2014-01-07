@@ -21,7 +21,7 @@ add_action("wp_ajax_ajax_tags_loop_highlights", "ajax_tags_loop_highlights");
 function ajax_tags_scripts(){
 	wp_enqueue_script('globe_ajax_tags',plugin_dir_url( __FILE__ ) . 'ajaxtags.js',array( 'jquery','modernizr'));
 	wp_enqueue_style('globe_ajax_tags',plugin_dir_url( __FILE__ ) . 'ajaxtags.css');
-	wp_localize_script( 'globe_ajax_tags', 'ajaxurl', array( 
+	wp_localize_script( 'globe_ajax_tags', 'ajaxTagUrl', array( 
 		'ajaxurl' => admin_url( 'admin-ajax.php' ),
 		'ajaxTagNonce' => wp_create_nonce( 'globe_ajax_tags_nonce')
 	));	
@@ -187,7 +187,7 @@ function ajax_tags_loop() {
  	$nonce = $_POST['ajaxTagNonce'];
  		
  	if(!wp_verify_nonce($nonce,'globe_ajax_tags_nonce'))
- 		die('Not a valid request');
+ 		die('Not a valid request ' . $nonce);
 
  	wp_reset_postdata();
  	
