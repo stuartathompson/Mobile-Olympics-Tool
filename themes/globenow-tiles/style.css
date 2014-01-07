@@ -237,7 +237,7 @@ article h2 a:hover{
 .single h3.moreposts,.search h3.searchresults{
 	font-size: 13px;
 	text-transform: uppercase;
-	margin:90px 0 -11px !important;
+	margin:20px 0 -11px !important;
 	border:1px solid #DBDBDB;
 	padding:10px 0;
 	background-color:#F8F8F8;
@@ -386,17 +386,6 @@ background: url("http://beta.images.theglobeandmail.com/static/ROB/interactives/
 #page-title a:hover{
 	color:red;
 	text-decoration: none;
-}
-/* Filters and updating bar */
-#home-nav{
-	font-size:17px;
-	text-transform: uppercase;
-	float:left;
-	margin: 7px 0 0;
-}
-#home-nav a{
-	font-family:"PrattHeavy";
-	color:#333;
 }
 /* mobile header */
 #mobile-header{
@@ -635,7 +624,7 @@ margin: 0 auto;
 
 }
 /* Smartphones */
-@media only screen and (max-width:480px) {
+@media only screen and (max-width:499px) {
 	body{
 		font:14px/1.4 "OpenSans",Helvetica,Arial,sans-serif;
 	}
@@ -678,6 +667,7 @@ margin: 0 auto;
 	}
 	.topics{
 		margin-top:10px;
+		border-top:1px solid #d1d1d1;
 	}
 	.mobile{
 		display:inline;
@@ -689,14 +679,7 @@ margin: 0 auto;
 	
 */}
 	#search-box{
-	/*
-	position: relative;
-		margin-top: -10px;
-		top:-10px;
-		padding: 10px;
-		display: block;
-		border-bottom:1px solid #DADADA;
-*/
+		padding:0 10px 10px 10px;
 	}
 	#search-box input{
 		border-radius:0px;
@@ -825,7 +808,7 @@ margin: 0 auto;
 
 
 /* iPad */
-@media only screen and (max-width:840px) and (min-width: 480px){
+@media only screen and (max-width:840px) and (min-width: 499px){
 	#loop,#filters-bar,.sidebar,#new-alert-container,#mobile-header-wrapper,.topics{
 		width:100%;
 	}
