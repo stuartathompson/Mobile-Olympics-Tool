@@ -86,8 +86,6 @@ $filtersItem.each(function(i,d){
 			query += d.trim();
 			if(i!=curFilters.length-1) query += ',';
 		});
-		console.log(ajaxTagUrl,ajaxTagUrl.ajaxTagNonce);
-		
 		if(curFilters.length == 0) query = '';
 		$.ajax({
 			url:ajaxTagUrl.ajaxurl,
