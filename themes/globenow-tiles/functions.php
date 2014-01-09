@@ -237,12 +237,12 @@ function globe_social_share(){
 			if($i==0) {
 				$imgSrc = '';
 				$imgSrc = wp_get_attachment_image_src( $img->ID, 'thumbnail' );
-				if($imgSrc) $imgSrc = wp_get_attachment_image_src( $img->ID, 'thumbnail' );
+				if($imgSrc) $imgSrc = $imgSrc[0];
 				$image = urlencode($imgSrc);
 			}
 			$i++;
 		}
-	$title=urlencode(get_the_title());
+	$title=get_the_title();
 	$url=urlencode(get_permalink());
 	$summary= urlencode(get_the_excerpt());
 	$summary = str_replace("/<[^>]*>/","",(string)$sumnary);
