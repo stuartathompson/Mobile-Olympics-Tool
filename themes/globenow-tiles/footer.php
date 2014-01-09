@@ -1,5 +1,6 @@
 			<!-- footer -->
 			<footer class="footer" role="contentinfo">
+			<p><img src="<?php bloginfo('template_url'); ?>/img/olympics-globe-partnership.png" width="161px"/></p>
 			© Copyright 2014 The Globe and Mail Inc. All Rights Reserved.<br />
 444 Front St. W., Toronto,  ON  Canada  M5V 2S9 <br />
 Phillip Crawley, Publisher
