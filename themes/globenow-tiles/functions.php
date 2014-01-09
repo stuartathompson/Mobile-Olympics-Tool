@@ -20,9 +20,17 @@ if (function_exists('add_theme_support'))
     add_image_size('large', 620, 350, true); // Large Thumbnail
     add_image_size('medium', 220, 124, true); // Medium Thumbnail
     add_image_size('small', 140, 79, true); // Small Thumbnail
-    add_image_size('custom-size', 700, 200, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
-    add_image_size('native', 620, '', true);
+    add_image_size('native', 620, 9999); // Original height
 
+	// Add native size to media window
+	function globe_show_image_sizes($sizes){
+		return array_merge($sizes, array(
+			"native" => "No crop"
+		) );
+	}
+	add_filter('image_size_names_choose','globe_show_image_sizes');
+	
+	
     // Enables post and comment RSS feed links to head
     add_theme_support('automatic-feed-links');
 
@@ -192,6 +200,21 @@ add_filter('show_admin_bar', 'remove_admin_bar'); // Remove Admin bar
 add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
 add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
 
+// Clean admin area
+function globe_remove_meta_boxes(){
+	global $wp_meta_boxes;
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
+	unset($wp_meta_boxes['dashboard']['normal']['high']['dashboard_browser_nag']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
+	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_activity']);
+	unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments'] );
+	unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+	unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins'] );
+	unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts'] );
+	unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary'] );
+}
+add_action('wp_dashboard_setup', 'globe_remove_meta_boxes' );
+
 // Globe share bar
 function globe_social_share(){
 ?>
@@ -211,7 +234,12 @@ function globe_social_share(){
 	
 		$i = 0;
 		foreach($images as $img){
-			if($i==0) $image = urlencode(wp_get_attachment_image_src( $img->ID, 'thumbnail' )[0]);
+			if($i==0) {
+				$imgSrc = '';
+				$imgSrc = wp_get_attachment_image_src( $img->ID, 'thumbnail' );
+				if($imgSrc) $imgSrc = wp_get_attachment_image_src( $img->ID, 'thumbnail' );
+				$image = urlencode($imgSrc);
+			}
 			$i++;
 		}
 	$title=urlencode(get_the_title());
