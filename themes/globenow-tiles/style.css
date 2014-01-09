@@ -364,8 +364,9 @@ background: url("http://beta.images.theglobeandmail.com/static/ROB/interactives/
  	border-bottom:1px solid #ececec;
  	text-align: center;
  	padding:10px;
- 	margin-top:0;
  	min-height:10px;
+ 	width:320px;
+ 	margin:0 auto;
 }
 /* header */
 .header {
@@ -422,7 +423,7 @@ margin-left: 15px;
 }
 #mobile-header #mobile-header-menu{
 	position: absolute;
-	padding: 18px 18px;
+	padding: 16px;
 	margin-top: -9px;
 }
 #mobile-header #mobile-search-button{
@@ -440,7 +441,7 @@ margin-left: 15px;
 	display:block;
 	float:right;
 	width:12px;
-	margin:8px 15px 0 0;
+	margin:8px 15px 5px 0;
 }
 #search-box{
 	margin-top:-50px;
