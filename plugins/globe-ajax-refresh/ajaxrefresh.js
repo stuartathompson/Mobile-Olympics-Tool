@@ -49,18 +49,23 @@ jQuery(document).ready(function($) {
 			'nonce':ajaxRefreshUrl.ajaxTagNonce
 		},
 		success: function(response){
+			// If a response exists
 			if(response != ''){
-				responseHtml = response;
-				$('#loop-wrapper').prepend('<div class="ajaxposts-new">' + responseHtml + '</div>');
+				// If there is at least one "article" div in response
 				var responseCount = $('.ajaxposts-new').eq(0).find('article').length;
-				$('#new-alert-number').text((+parseInt(($('#new-alert-number').text()))+(+parseInt(responseCount))));
-				document.title = '(' + $('#new-alert-number').text() + ') ' + document.title.replace(/^\([0-9]*\)/,'');
-				if(parseInt(responseCount) > 1){
-					$('#new-alert-text').text("new updates");
-				} else {
-					$('#new-alert-text').text("new update");
+				if(responseCount > 0){
+					responseHtml = response;
+					$('#loop-wrapper').prepend('<div class="ajaxposts-new">' + responseHtml + '</div>');
+					var responseCount = $('.ajaxposts-new').eq(0).find('article').length;
+					$('#new-alert-number').text((+parseInt(($('#new-alert-number').text()))+(+parseInt(responseCount))));
+					document.title = '(' + $('#new-alert-number').text() + ') ' + document.title.replace(/^\([0-9]*\)/,'');
+					if(parseInt(responseCount) > 1){
+						$('#new-alert-text').text("new updates");
+					} else {
+						$('#new-alert-text').text("new update");
+					}
+					$('#new-alert-container').slideDown();
 				}
-				$('#new-alert-container').slideDown();
 			}
 		}
 	});
