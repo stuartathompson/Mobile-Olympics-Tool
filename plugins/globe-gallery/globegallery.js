@@ -7,12 +7,12 @@ $('.gi-gallery-label').click(function(){
 // Iterate through gallery
 if($('body').hasClass('desktop')){
 	// If desktop, show each new photo as clicked
-$('.gi-gallery-image,.gi-gallery-image a,.gi-gallery-nav a').click(function(){
+$('body').on('click','.gi-gallery-image,.gi-gallery-image a,.gi-gallery-nav a',function(){
 	// Navigate
 	var $parent = $(this).parents('.gi-gallery');
 	
 	// Fix gallery height to avoid flicker
-	$parent.height($(this).parents('.gi-gallery').find('.gi-gallery-image.showing img').height()+$('.gi-gallery-nav').height());
+	$parent.css('min-height',$(this).parents('.gi-gallery').find('.gi-gallery-image.showing img').height());
 	
 	show = $parent.find('.gi-gallery-image.showing').index();
 	

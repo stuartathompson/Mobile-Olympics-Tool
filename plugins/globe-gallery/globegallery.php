@@ -12,11 +12,14 @@
 
 remove_shortcode('gallery');
 add_shortcode('gallery','globe_gallery_regular');
+add_action( 'wp_enqueue_scripts', 'globe_gallery_script' );
 
-function globe_gallery($atts){
+function globe_gallery_script(){
 	wp_enqueue_style('globe_gallery',plugin_dir_url( __FILE__ ) . 'globegallery.css');
 	wp_enqueue_script('globe_gallery',plugin_dir_url( __FILE__ ) . 'globegallery.js',array( 'jquery' ));
-
+}
+function globe_gallery($atts){
+	
 	$args = array(
 		'post_type' => 'attachment',
 		'post_status' => 'inherit',
@@ -44,10 +47,14 @@ function globe_gallery($atts){
 	foreach($images as $image){
 		if($i==0){
 		// Show image
-		echo "<div class='wp-caption gi-gallery-image gallery-icon showing'>" . '<a href="' . wp_get_attachment_image_src( $image->ID, 'large' )[0] . '">' . wp_get_attachment_image($image->ID,'large') . "</a><p class='wp-caption-text'>" . $image->post_excerpt . "</a></p></div>";
+		$imageSrc = wp_get_attachment_image_src( $image->ID, 'large' );
+		echo "<div class='wp-caption gi-gallery-image gallery-icon showing'>" . '<a href="' . $imageSrc[0] . '">' . wp_get_attachment_image($image->ID,'large') . "</a><p class='wp-caption-text'>" . $image->post_excerpt . "</a></p></div>";
 		} else  {
 		// Leave source blank
-		echo "<div class='wp-caption gi-gallery-image gallery-icon'>" . '<a href="' . wp_get_attachment_image_src( $image->ID, 'large' )[0] . '"><img src="" data-image-src="' . wp_get_attachment_image_src($image->ID,'large')[0] . "\" alt=\"\" /></a><p class='wp-caption-text'>" . $image->post_excerpt . "</a></p></div>";
+		// Get image source (necessary step for PHP 5.3 or newer)
+		$imageSrc = wp_get_attachment_image_src( $image->ID, 'large' );
+		// Echo image and container but leave source blank. Load source via JS.
+		echo "<div class='wp-caption gi-gallery-image gallery-icon'>" . '<a href="' . $imageSrc[0] . '"><img src="" data-image-src="' . $imageSrc[0] . "\" alt=\"\" /></a><p class='wp-caption-text'>" . $image->post_excerpt . "</a></p></div>";
 		}
 		$i++; 
 	}	
@@ -59,8 +66,6 @@ function globe_gallery($atts){
 }
 
 function globe_gallery_regular($atts){
-	wp_enqueue_style('globe_gallery',plugin_dir_url( __FILE__ ) . 'globegallery.css');
-	wp_enqueue_script('globe_gallery',plugin_dir_url( __FILE__ ) . 'globegallery.js',array( 'jquery' ));
 
 	$args = array(
 		'post_type' => 'attachment',
@@ -91,13 +96,15 @@ function globe_gallery_regular($atts){
 	foreach($images as $image){
 		if($i==0){
 		// Show image
-		echo "<div class='wp-caption gi-gallery-image gallery-icon showing'>" . '<a href="' . wp_get_attachment_image_src( $image->ID, 'large' )[0] . '">' . wp_get_attachment_image($image->ID,'large') . "</a>";
-		if(strlen($image->post_excerpt) > 0) echo "<p class='wp-caption-text'>" . $image->post_excerpt . "</a></p>";
+		$imageSrc = wp_get_attachment_image_src( $image->ID, 'large' );
+		echo "<div class='wp-caption gi-gallery-image gallery-icon showing'><div class='gi-gallery-image-container'>" . '<a href="' . $imageSrc[0] . '">' . wp_get_attachment_image($image->ID,'large') . "</a></div>";
+		if(strlen($image->post_excerpt) > 0) echo "<p class='wp-caption-text'>" . $image->post_excerpt . "</p>";
 		echo "</div>";
 		} else  {
 		// Leave source blank
-		echo "<div class='wp-caption gi-gallery-image gallery-icon'>" . '<a href="' . wp_get_attachment_image_src( $image->ID, 'large' )[0] . '"><img src="" data-image-src="' . wp_get_attachment_image_src($image->ID,'large')[0] . "\" alt=\"\" /></a>";
-		if(strlen($image->post_excerpt) > 0) echo "<p class='wp-caption-text'>" . $image->post_excerpt . "</a></p>";
+		$imageSrc = wp_get_attachment_image_src( $image->ID, 'large' );
+		echo "<div class='wp-caption gi-gallery-image gallery-icon'><div class='gi-gallery-image-container'>" . '<a href="' . $imageSrc[0] . '"><img src="" data-image-src="' . $imageSrc[0] . "\" alt=\"\" /></a></div>";
+		if(strlen($image->post_excerpt) > 0) echo "<p class='wp-caption-text'>" . $image->post_excerpt . "</p>";
 		echo "</div>";
 		}
 		$i++; 
