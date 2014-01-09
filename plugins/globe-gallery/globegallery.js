@@ -12,7 +12,7 @@ $('body').on('click','.gi-gallery-image,.gi-gallery-image a,.gi-gallery-nav a',f
 	var $parent = $(this).parents('.gi-gallery');
 	
 	// Fix gallery height to avoid flicker
-	$parent.css('min-height',$(this).parents('.gi-gallery').find('.gi-gallery-image.showing img').height());
+	$parent.find('.gi-gallery-image img').css('height',$(this).parents('.gi-gallery').find('.gi-gallery-image.showing img').height());
 	
 	show = $parent.find('.gi-gallery-image.showing').index();
 	
