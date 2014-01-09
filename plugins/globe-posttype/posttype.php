@@ -42,16 +42,20 @@ function posttype_inner_custom_box( $post ) {
    */
   $value = get_post_meta( $post->ID, 'posttype', true );
 
-  echo '<label for="posttype_newfield">';
-       _e( "Post type", 'posttype_textdomain' );
-  echo '</label> ';
 ?>
-  <select id="posttype_newfield" name="posttype_newfield" value="<?php esc_attr($value); ?>">
-  
-  	<option value="newsarticle" <?php if(esc_attr($value) == 'newsarticle') echo 'selected'; ?>>News article</option>
-  	<option value="fullwidth" <?php if(esc_attr($value) == 'fullwidth') echo 'selected'; ?>>Media</option>
-  	<option value="breaking" <?php if(esc_attr($value) == 'breaking') echo 'selected'; ?>>Breaking</option>  	
-  </select>
+  <?php
+  	$posttypes = array('newsarticle','fullwidth','breaking');
+  	$posttypeNames = array('News','Media (hides the headline)','Breaking (adds "breaking" label)');
+  	$i = 0;
+  	foreach($posttypes as $posttype){
+  		$selected = '';
+  		if($posttype == esc_attr($value)) $selected = 'checked';
+  		if($posttype == 'newsarticle' && esc_attr($value) == '') $selected = 'checked';
+  		echo '<p><input type="radio" name="posttype_newfield" id="posttype_newfield_' . $posttype . '" value="' . $posttype . '" ' . $selected . '> <label for="posttype_newfield_' . $posttype . '">' . $posttypeNames[$i] . '</label></p>';
+  		$i++;
+  	}
+  ?>
+
 <?php
 
 }
@@ -113,7 +117,7 @@ function posttype_admin_menu(){
 	// Create top-level menu
 	add_menu_page('Post type settings','Post type settings', 'administrator', __FILE__, 'posttype_settings_page');
 	
-	add_action('admin_init','register_posttype_settings');
+	//add_action('admin_init','register_posttype_settings');
 }
 
 function register_mysettings() {
