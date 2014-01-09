@@ -80,6 +80,8 @@ $filtersItem.each(function(i,d){
 		});
 		var query = '',
 			action = 'ajax_tags_loop';
+		// Clean filter of empty values
+		curFilters = $.grep(curFilters,function(n){ return(n) });
 		// If checking big-moments with at least one other tag, use the highlights query in ajaxtags.php
 		if(jQuery.inArray('big-moments',curFilters) > -1 && curFilters.length > 1) action = 'ajax_tags_loop_highlights';
 		$.each(curFilters,function(i,d){
@@ -125,7 +127,7 @@ $filtersItem.each(function(i,d){
 			query+=d.trim();
 			if(i!=curFilters.length-1) query+= ',';
 		});
-		window.location.href = 'http://www.stuartathompson.com/globeolympics?tags=' + query;	
+		window.location.href = 'http://www.stuartathompson.com/globeolympics?tags=' + query;
 	}
 	//set current filters and apply filters
 	function addFilters(tag,label) {
