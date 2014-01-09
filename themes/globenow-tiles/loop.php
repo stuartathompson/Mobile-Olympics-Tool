@@ -7,6 +7,7 @@
 		$oddEven = '';
 		if($postCount%2) $oddEven = 'odd';
 		$posttype = str_replace(' ', '', get_post_meta(get_the_ID(),'posttype',true));
+		if($posttype=='breaking' && current_time('timestamp')-get_the_time('U') > 1200) $posttype = 'newsarticle';
 		$classes = array(
 			$oddEven,
 			$posttype
@@ -20,7 +21,7 @@
 			<div class="datedate">
 			<?php
 				$posttags = get_the_tags();
-				if($posttype=='breaking'){
+				if($posttype=='breaking' && current_time('timestamp')-get_the_time('U') < 1200){
 					echo '<a href="' . get_bloginfo('url') . '/tag/breaking" title="Filter by tag: Breaking"><span class="glyphicon glyphicon-exclamation-sign"></span> <span>Breaking</span></a>';
 				} else {
 					if($posttype == 'fullwidth'){
@@ -41,7 +42,6 @@
 			<div class="datetime">
 			<?php 
 				$deskdiff = human_time_diff( get_the_time('U'), current_time('timestamp') );
-				$mobidiff = human_time_diff( get_the_time('U'), current_time('timestamp') );
 				$replace = array(
 		        	'mins' => 'minutes'
     			);
