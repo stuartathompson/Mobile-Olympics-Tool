@@ -8,11 +8,11 @@
    Author URI: http://www.theglobeandmail.com
    License: GPL2
    */
-
-
+if(is_home()){
 remove_shortcode('gallery');
 add_shortcode('gallery','globe_gallery_regular');
 add_action( 'wp_enqueue_scripts', 'globe_gallery_script' );
+}
 
 function globe_gallery_script(){
 	wp_enqueue_style('globe_gallery',plugin_dir_url( __FILE__ ) . 'globegallery.css');
@@ -66,7 +66,7 @@ function globe_gallery($atts){
 }
 
 function globe_gallery_regular($atts){
-
+if(is_home() || is_single()){
 	$args = array(
 		'post_type' => 'attachment',
 		'post_status' => 'inherit',
@@ -113,4 +113,5 @@ function globe_gallery_regular($atts){
 		</div>
 	</div>
 <?php
+}
 }

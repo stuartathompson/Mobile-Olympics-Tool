@@ -51,21 +51,23 @@ $(function() {
 		});
 	}
 
-	// If new posts, apply new cookie
-	if(newLastSeenPostId != 0) $.cookie('globeolympics-lastseenpost',newLastSeenPostId);
-	// Waypoint trigger back to normal
-	var initWaypoint = true;
-	$(window).scroll(function(){
-		if(initWaypoint && $(window).scrollTop() > 0){
-			$('#loop article.unseen').waypoint(function(){
-				$(this).removeClass('unseen');
-			},{'offset':'60%'});
-			initWaypoint = false;
-		}
-	})
-	$('#loop article.unseen').hover(function(){
-		$(this).removeClass('unseen');
-	});
+	/* If new posts, apply new cookie - only on homepage */
+	if($('body').hasClass('home')){
+		if(newLastSeenPostId != 0) $.cookie('globeolympics-lastseenpost',newLastSeenPostId);
+		// Waypoint trigger back to normal
+		var initWaypoint = true;
+		$(window).scroll(function(){
+			if(initWaypoint && $(window).scrollTop() > 0){
+				$('#loop article.unseen').waypoint(function(){
+					$(this).removeClass('unseen');
+				},{'offset':'60%'});
+				initWaypoint = false;
+			}
+		})	
+		$('#loop article.unseen').hover(function(){
+			$(this).removeClass('unseen');
+		});
+	}
 	
 	/* Keyboard/arrow navigation */
 	var trackSpot = 0;

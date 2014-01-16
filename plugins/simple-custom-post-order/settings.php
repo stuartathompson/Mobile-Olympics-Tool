@@ -7,18 +7,7 @@ $objects = $scporder_options['objects'];
 
 	<?php screen_icon( 'plugins' ); ?>
 
-	<h2><?php _e( 'Simple Custom Post Order Settings', 'scporder' ); ?></h2>
-	<?php
-	if ( $_POST['msg'] == 'true' ) {
-		taxonomy_order_update();
-		?>
-	<br>
-		<div id="message" class="updated below-h2">
-			<p><?php _e( 'Settings saved.', 'scporder' ); ?></p>
-		</div>
-		<?php
-	}
-	?>
+	<h2><?php _e( 'Simple Custom Post Order Settings', 'scporder' ); ?></h2> 
 	<?php if ( isset( $_GET['msg'] ) ) : ?>
 		<br>
 		<div id="message" class="updated below-h2">
@@ -34,7 +23,6 @@ $objects = $scporder_options['objects'];
 					<th scope="row"><label for="blogname"><?php _e( 'Sortable Objects', 'scporder' ) ?></label></th>
 					<td>
 						<input type="hidden" name="msg" value="true" /> 
-						<label><input type="checkbox" name="taxonomy_order" id="display_sidebar" <?php echo get_option( 'order_taxonomy' ); ?> /> Enable Taxonomy Order <br></label>
 						<?php if ( function_exists( 'wp_nonce_field' ) ) wp_nonce_field( 'nonce_scporder' ); ?>
 
 

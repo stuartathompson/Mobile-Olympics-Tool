@@ -44,13 +44,23 @@
 	})();
 </script>
 <script type="text/javascript">
+var adId1 = 'div-gpt-ad-311805903592310440-1',
+	adId2 = 'div-gpt-ad-311805903592310440-2';
 		//Adslot 1 declaration
-		gptadslots[1]= googletag.defineSlot('/58/theglobeandmail.com/sports/olympics', [[728,90],[960,90]],'div-gpt-ad-311805903592310440-1').setTargeting('ptf',['gpt']).setTargeting('mode',['wp']).setTargeting('adpg',['olympics']).setTargeting('arena',['olympics','sports']).setTargeting('pos',['ldbd']).setTargeting('loc',['n']).addService(googletag.pubads());
+		gptadslots[1]= googletag.defineSlot('/58/theglobeandmail.com/sports/olympics', [[728,90],[960,90]],adId1).setTargeting('ptf',['gpt']).setTargeting('mode',['wp']).setTargeting('adpg',['olympics']).setTargeting('arena',['olympics','sports']).setTargeting('pos',['ldbd']).setTargeting('loc',['n']).addService(googletag.pubads());
 		//Adslot 2 declaration
-		gptadslots[2]= googletag.defineSlot('/58/theglobeandmail.com/sports/olympics', [[300,250]],'div-gpt-ad-311805903592310440-2').setTargeting('ptf',['gpt']).setTargeting('mode',['wp']).setTargeting('adpg',['olympics']).setTargeting('arena',['olympics','sports']).setTargeting('pos',['boxr']).setTargeting('loc',['n']).addService(googletag.pubads());
-		googletag.pubads().enableSingleRequest();
-		googletag.pubads().enableSyncRendering();
-		googletag.enableServices();
+		gptadslots[2]= googletag.defineSlot('/58/theglobeandmail.com/sports/olympics', [[300,250]],adId2).setTargeting('ptf',['gpt']).setTargeting('mode',['wp']).setTargeting('adpg',['olympics']).setTargeting('arena',['olympics','sports']).setTargeting('pos',['boxr']).setTargeting('loc',['n']).addService(googletag.pubads());
+
+function displayAds( call ) {
+	googletag.pubads().enableSingleRequest();
+	googletag.pubads().enableSyncRendering();
+	googletag.enableServices();
+	if ( call ) {
+		$('#' + adId2).append('<scrip' + 't>googletag.display(adId2)</scrip' + 't>');
+	}
+};
+
+displayAds(false);
 
 </script>
 <!-- End: GPT -->
@@ -62,17 +72,9 @@
 		<!-- wrapper -->
 		<div class="hide-overflow">
 		<div class="wrapper">
-			<?php if(is_mobile()){
-?>
-			<?php
-			} else {
-				if(function_exists('globe_header')) globe_header();
-				/* Eventually remove this */
-			}			
-			?>
 			<div id="mobile-header">
 				<div id="mobile-header-wrapper">
-				<?php if(function_exists('ajax_tags_create_front_end') && is_mobile() ) { ?><a href="#menu" id="mobile-header-menu"><img src="<?php bloginfo('template_url'); ?>/img/menu-icon-retina.png"></a><?php } ?>
+				<?php if(function_exists('ajax_tags_create_front_end') && is_mobile()  ) { ?><a href="#menu" id="mobile-header-menu"><img src="<?php bloginfo('template_url'); ?>/img/menu-icon-retina.png"></a><?php } ?>
 				<a href="http://www.theglobeandmail.com"><img id="mobile-header-logo" src="<?php bloginfo('template_url'); ?>/img/globelogo.png"></a> <a id="header-olympics-home" href="<?php bloginfo('url'); ?>"> 2014 Winter Olympics</a>
 				<a id="menu-search-button" href="#search"><img id="mobile-header-search" src="<?php bloginfo('template_url'); ?>/img/search-icon-retina.png"></a>
 				</div>
@@ -80,6 +82,7 @@
 			<div id="search-box">
 				<?php get_search_form(); ?>
 			</div>
+		
 			
 		<div class="strip small"></div>
 
@@ -88,6 +91,9 @@
 				<span id="new-alert-number">0</span> <span id="new-alert-text">new update</span>
 			</a>
 		</div>
+
+		<?php if(function_exists('medals_widget_create_front_end')) medals_widget_create_front_end(); ?>
+
 
 		<?php 
 			// Get filter bar for all but single, searrch pages

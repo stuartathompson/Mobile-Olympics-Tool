@@ -8,7 +8,7 @@
 	Plugin URI: http://scott.ee/journal/mobble/
 	Description: Conditional functions for detecting a variety of mobile devices and tablets. For example is_android(), is_ios(), is_iphone().
 	Author: Scott Evans
-	Version: 1.2.1
+	Version: 1.3
 	Author URI: http://scott.ee
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -97,7 +97,7 @@ function is_blackberry() {
 
 /***************************************************************
 * Function is_opera_mobile
-* Detect both Opera Mini and hopfully Opera Mobile as well
+* Detect both Opera Mini and hopefully Opera Mobile as well
 ***************************************************************/
 
 function is_opera_mobile() {
@@ -295,8 +295,8 @@ function is_tablet() {
 }
 
 /***************************************************************
-* Function mobble_defualts
-* Setup defualt settings on theme activation
+* Function mobble_defaults
+* Setup default settings on theme activation
 ***************************************************************/
 
 register_activation_hook(__FILE__, 'mobble_defaults');
@@ -352,7 +352,7 @@ function mobble_settings() {
 
 <style type="text/css">
 	.FlattrButton { position: relative; top: 3px !important; }
-	.scottsweb-credit { padding: 10px 10px 10px 10px; background: #f1f1f1; border-bottom: 1px solid #e3e3e3; overflow: hidden; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
+	.scottsweb-credit { padding: 10px 10px 10px 10px; background: #fff; border-bottom: 1px solid #e3e3e3; overflow: hidden; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px; }
 	.scottsweb-credit img { float: left;  padding: 10px 11px 10px 5px; margin: 5px 5px 0 0; border-right: 1px solid #aaaaaa; }
 	.scottsweb-credit p { float: left; padding: 5px 0; margin: 0 0 0 8px;}
 </style>
@@ -373,7 +373,7 @@ function mobble_settings() {
 	    <table class="form-table">
 	        <tr valign="top">
 	        <th scope="row">Mobify body class?</th>
-	        <td><label for="users_can_register"><input name="mobble_body_class" type="checkbox" id="mobble_body_class" value="1" <?php echo checked( 1, get_option('mobble_body_class'), false ); ?> /> &nbsp;Add mobile information to your theme body class? e.g. &lt;body class="handheld andorid tablet"&gt;</label> </td>
+	        <td><label for="users_can_register"><input name="mobble_body_class" type="checkbox" id="mobble_body_class" value="1" <?php echo checked( 1, get_option('mobble_body_class'), false ); ?> /> &nbsp;Add mobile information to your theme body class? e.g. &lt;body class="handheld android tablet"&gt;</label> </td>
 	        </tr>
 	    </table>
 	    
@@ -397,7 +397,7 @@ function mobble_register_settings() {
 
 /***************************************************************
 * Function mobble_body_class
-* Add mobilie info to the body class if activated in settings
+* Add mobble info to the body class if activated in settings
 ***************************************************************/
 
 if (!is_admin() && get_option('mobble_body_class')) {	

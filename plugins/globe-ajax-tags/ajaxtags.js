@@ -105,6 +105,8 @@ $filtersItem.each(function(i,d){
 					$('#loop-wrapper').empty();
 					$('#loop article').remove();
 					$('#loop-wrapper').append(response);
+					console.log( 'hellloo ', window.displayAds )
+					window.displayAds( true );
 					// Re-add tooltip
 					if($('body').hasClass('desktop')){
 						$('.tags .tag').tooltip({

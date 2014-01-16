@@ -3,9 +3,10 @@
 Plugin Name: BJ Lazy Load
 Plugin URI: http://wordpress.org/extend/plugins/bj-lazy-load/
 Description: Lazy image loading makes your site load faster and saves bandwidth.
-Version: 0.6.10
+Version: 0.7.0
 Author: Bjørn Johansen
 Author URI: http://twitter.com/bjornjohansen
+Text Domain: bj-lazy-load
 License: GPL2
 
     Copyright 2011–2013  Bjørn Johansen  (email : post@bjornjohansen.no)
@@ -26,11 +27,13 @@ License: GPL2
 */
 
 require_once( dirname(__FILE__) . '/scb/load.php' );
+require_once( dirname(__FILE__) . '/inc/lang.php' );
+require_once( dirname(__FILE__) . '/inc/class-bjll-skip-post.php' );
 
 if ( ! class_exists( 'BJLL' ) ) {
 	class BJLL {
 
-		const version = '0.6.10';
+		const version = '0.7.0';
 		protected $_placeholder_url;
 		protected $_skip_classes;
 		
@@ -59,6 +62,7 @@ if ( ! class_exists( 'BJLL' ) ) {
 			}
 
 			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
+			add_filter( 'bj_lazy_load_html', array( __CLASS__, 'filter' ), 10, 1 );
 			
 			$skip_classes = $options->get( 'skip_classes' );
 			if ( strlen( trim( $skip_classes ) ) ) {
@@ -67,7 +71,8 @@ if ( ! class_exists( 'BJLL' ) ) {
 
 			$this->_placeholder_url = $options->get( 'placeholder_url' );
 			if ( ! strlen( $this->_placeholder_url ) ) {
-				$this->_placeholder_url = plugins_url( '/img/placeholder.gif', __FILE__ );
+				//$this->_placeholder_url = plugins_url( '/img/placeholder.gif', __FILE__ );
+				$this->_placeholder_url = 'data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=';
 			}
 			
 			if ( $options->get( 'filter_content' ) == 'yes' ) {
@@ -138,6 +143,13 @@ if ( ! class_exists( 'BJLL' ) ) {
 		}
 		
 		static function filter( $content ) {
+
+			$run_filter = true;
+			$run_filter = apply_filters( 'bj_lazy_load_run_filter', $content );
+
+			if ( ! $run_filter ) {
+				return $content;
+			}
 		
 			$BJLL = BJLL::singleton();
 			

@@ -137,7 +137,7 @@ div.ps-toolbar-close div.ps-toolbar-content
 
 div.ps-toolbar-previous div.ps-toolbar-content
 {
-	background-position: -50px 0;
+	background-position: -44px 0;
 }
 
 div.ps-toolbar-previous-disabled div.ps-toolbar-content
@@ -147,17 +147,17 @@ div.ps-toolbar-previous-disabled div.ps-toolbar-content
 
 div.ps-toolbar-next div.ps-toolbar-content
 {
-	background-position: -88px 0;
+	background-position: -132px 0;
 }
 
 div.ps-toolbar-next-disabled div.ps-toolbar-content
 {
-	background-position: -88px -44px;
+	background-position: -132px -44px;
 }
 
 div.ps-toolbar-play div.ps-toolbar-content
 {
-	background-position: -132px 0px;
+	background-position: -88px 0;
 }
 
 /* Hi-res display */
