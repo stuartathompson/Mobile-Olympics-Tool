@@ -307,7 +307,9 @@ if($args = 'development'){
 ?>
 <!-- Begin SiteCatalyst code -->
 <script type="text/javascript">
-var s_account="<?php echo $s_account; ?>";
+var s_account = 'bellgmpgpsdev';
+// Change if production
+if(window.location.href.search("http://olympics.") > -1) s_account = 'bellgmpnewprod';
 </script>
 <script type="text/javascript" src="http://beta.images.theglobeandmail.com/media/www/js/plugins/s_code.js"></script>
 <!-- prod is: http://beta.images.theglobeandmail.com/media/www/js/plugins/s_code.js -->
