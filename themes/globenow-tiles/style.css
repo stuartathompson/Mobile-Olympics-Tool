@@ -84,7 +84,7 @@ input:focus {
 .clearfloat{
 	clear:both;
 }
-.mobile{
+.mobile-hide{
 	display:none;
 }
 /*------------------------------------*\
@@ -629,6 +629,15 @@ margin: 0 auto;
 @media only screen and (min-width:320px) {
 
 }
+/* iPhone 5 */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px) 
+and (orientation : landscape) { 
+	#mobile-header #mobile-header-logo{
+		margin-left: 50px !important;
+	}
+}
 /* Smartphones */
 @media only screen and (max-width:501px) {
 	body{
@@ -675,7 +684,7 @@ margin: 0 auto;
 		margin-top:10px;
 		border-top:1px solid #d1d1d1;
 	}
-	.mobile{
+	.mobile-hide{
 		display:inline;
 	}
 	#filters-bar{
