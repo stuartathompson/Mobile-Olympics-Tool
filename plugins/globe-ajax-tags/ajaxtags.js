@@ -22,15 +22,14 @@ jQuery('document').ready(function($){
     		curFilters.push(cookie);
 	    });
 	}
-    // Set any tags loaded from last time
-    /*
-$filtersItem.each(function(i,d){
-		curFilters.push($(d).attr('data-filter'));
+    // Set any tags loaded on start — if not already in curFilters (important for tag pages)
+    $filtersItem.each(function(i,d){
+		if(jQuery.inArray($(d).attr('data-filter'),curFilters)==-1) curFilters.push($(d).attr('data-filter'));
     });
-    // Add big moments to filter array if selected
-    if($('#home-highlights a').hasClass('selected')) curFilters.push('big-moments');
     
-*/
+    // Add big moments to filter array if selected
+    if($('#home-highlights a').hasClass('selected') && jQuery.inArray('big-moments',curFilters) == -1) curFilters.push('big-moments');
+    
 	// SVG fallback
 	// toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script#update
 	if (!Modernizr.svg) {
@@ -49,8 +48,8 @@ $filtersItem.each(function(i,d){
 		addFilters(filter,filter);
 	});
 
-	//bind tag item btn
-
+	//bind tag item btn, except on single article pages
+	if(!$('body').hasClass('single') && !$('body').hasClass('search')){
 	$('body').on("click", ".tags .tag", function(event){
 		if (!touch) {
 //			$(this).tooltip('hide');
@@ -60,6 +59,7 @@ $filtersItem.each(function(i,d){
 		addFilters(filter,filterLabel);
 		return false;
 	});
+	}
 
 	if (!touch) {
 /*
@@ -128,7 +128,7 @@ $filtersItem.each(function(i,d){
 			query+=d.trim();
 			if(i!=curFilters.length-1) query+= ',';
 		});
-		window.location.href = 'http://www.stuartathompson.com/globeolympics?tags=' + query;
+		window.location.href = window.location.href + '?tags=' + query;
 	}
 	//set current filters and apply filters
 	function addFilters(tag,label) {

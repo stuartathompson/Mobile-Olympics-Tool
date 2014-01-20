@@ -70,6 +70,7 @@ function ajax_tags_create_front_end(){
 		<h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">2014 Winter Olympics</a></h3>
 	<?php } ?>
 	<div id="filters" class="filters">
+		<?php if(!is_single() && !is_search()){ ?>
 		<div class="select">
 			<select id="filterSelect" class="dropdown field" autocomplete="off">
 				<option value="">Filter sports</option>
@@ -85,6 +86,7 @@ function ajax_tags_create_front_end(){
 			?>
 			</select>
 		</div>
+		<?php } ?>
 		<div id="ajaxtags-loader"><img src="http://beta.images.theglobeandmail.com/static/templates/images/loader.gif" /></div>
 	</div>
 	</div>
@@ -102,11 +104,11 @@ function ajax_tags_create_front_end(){
 	<?php
 		// Determine whether tag container should show
 		$showing = '';
-		if((is_paged() || is_home()) && ((isset($tags) && $tags != '') || ($_COOKIE['globe-ajaxtags_cookie'] && $notBigMoments) || is_tag() )) $showing = ' showing';
+		if((is_paged() || is_home()) && ((isset($tags) && $tags != '') || ($_COOKIE['globe-ajaxtags_cookie'] && $notBigMoments)) || is_tag() ) $showing = ' showing';
 	?>
 	<div id="topics" class="topics<?php echo $showing; ?>">
 		<?php
-			// Show tag if tag page
+			// Show tag if tag page, and nothing else
 			if(is_tag()){
 				echo '<span class="item noselect" data-filter="';
 				$needle = array(',','\'');
@@ -115,31 +117,31 @@ function ajax_tags_create_front_end(){
 				echo '">';
 					single_tag_title();
 				echo '</span>';
-			}
-				// Show tags if _GET tags has results
-			if(isset($tags) && $tags != ''){
-				$tagArr = explode(',',$tags);
-				foreach($tagArr as $tag){
-					echo '<span class="item noselect" data-filter="';
-					echo $tag;
-					echo '">' . $tag;
-					echo '</span>';
-				}
-			}
-			// Show tags for cookied tags
-			if($_COOKIE['globe-ajaxtags_cookie']){
-				$tagArr = explode(',',$_COOKIE['globe-ajaxtags_cookie']);
-				foreach($tagArr as $tag){
-					// Prevent Big Moments tag
-					if($tag != "big-moments" && $tag != ''){
+			} else {
+					// Show tags if _GET tags has results
+				if(isset($tags) && $tags != ''){
+					$tagArr = explode(',',$tags);
+					foreach($tagArr as $tag){
 						echo '<span class="item noselect" data-filter="';
 						echo $tag;
-						echo '">' . str_replace("-"," ",$tag);
+						echo '">' . $tag;
 						echo '</span>';
 					}
 				}
+				// Show tags for cookied tags
+				if($_COOKIE['globe-ajaxtags_cookie']){
+					$tagArr = explode(',',$_COOKIE['globe-ajaxtags_cookie']);
+					foreach($tagArr as $tag){
+						// Prevent Big Moments tag
+						if($tag != "big-moments" && $tag != ''){
+							echo '<span class="item noselect" data-filter="';
+							echo $tag;
+							echo '">' . str_replace("-"," ",$tag);
+							echo '</span>';
+						}
+					}
+				}
 			}
-
 		?>
 		</div>
 	<div id="filters-error">
