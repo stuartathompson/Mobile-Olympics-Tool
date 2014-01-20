@@ -53,6 +53,10 @@ img {
 	height:auto;
 	vertical-align:bottom;
 }
+iframe{
+	max-width:100%;
+	border:0;
+}
 a {
 	color:red;
 	text-decoration:none !important;
@@ -360,7 +364,8 @@ background: url("http://beta.images.theglobeandmail.com/static/ROB/interactives/
 	text-align: center;
 	margin:10px 0 25px 0;
 }
-.ad-unit-square{
+.ad-unit-square,.ad-unit-loop{
+	display:none;
  	border-bottom:1px solid #ececec;
  	text-align: center;
  	padding:10px;
@@ -423,7 +428,7 @@ margin-left: 15px;
 }
 #mobile-header #mobile-header-menu{
 	position: absolute;
-	padding: 16px;
+	padding: 17px;
 	margin-top: -9px;
 }
 #mobile-header #mobile-search-button{
@@ -625,7 +630,7 @@ margin: 0 auto;
 
 }
 /* Smartphones */
-@media only screen and (max-width:499px) {
+@media only screen and (max-width:501px) {
 	body{
 		font:14px/1.4 "OpenSans",Helvetica,Arial,sans-serif;
 	}
@@ -673,12 +678,9 @@ margin: 0 auto;
 	.mobile{
 		display:inline;
 	}
-	.header{
-	/*
-	margin:0 0 20px -20px;
-		padding:0 20px 0 20px;
-	
-*/}
+	#filters-bar{
+		padding-bottom: 0;
+	}
 	#search-box{
 		padding:0 10px 10px 10px;
 	}
@@ -809,7 +811,7 @@ margin: 0 auto;
 
 
 /* iPad */
-@media only screen and (max-width:840px) and (min-width: 499px){
+@media only screen and (max-width:840px) and (min-width: 501px){
 	#loop,#filters-bar,.sidebar,#new-alert-container,#mobile-header-wrapper,.topics{
 		width:100%;
 	}
