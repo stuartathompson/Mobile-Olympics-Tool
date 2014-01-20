@@ -105,6 +105,10 @@ jQuery('document').ready(function($){
 					$('#loop-wrapper').empty();
 					$('#loop article').remove();
 					$('#loop-wrapper').append(response);
+<<<<<<< HEAD
+=======
+					console.log( 'hellloo ', window.displayAds )
+>>>>>>> d1e5573c7467ac8770e4a49e60dda5a6c9370ca0
 					window.displayAds( true );
 					// Re-add tooltip
 					if($('body').hasClass('desktop')){

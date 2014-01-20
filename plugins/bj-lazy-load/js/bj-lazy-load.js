@@ -109,10 +109,10 @@ var BJLL = BJLL || {};
 		return dec;
 	}
 	
-	$( document ).bind( 'ready', bj_lazy_load_init ); // using .on is more efficient, but requires jQuery 1.7
-	if ( BJLL.infinite_scroll == 'yes' ) {
-		$( window ).bind( 'scroll', bj_lazy_load_init ); // using .on is more efficient, but requires jQuery 1.7
+	$( document ).on( 'ready', bj_lazy_load_init );
+	if ( 'yes' == BJLL.infinite_scroll ) {
+		$( window ).on( 'scroll', bj_lazy_load_init );
 	}
-	$(window).on("resize", function() { $(document).trigger("scroll"); });
+	$( window ).on( 'resize', function() { $( document ).trigger( 'scroll' ); } );
 	
 })(jQuery);

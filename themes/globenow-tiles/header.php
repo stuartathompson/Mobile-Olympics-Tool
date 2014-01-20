@@ -74,7 +74,11 @@ displayAds(false);
 		<div class="wrapper">
 			<div id="mobile-header">
 				<div id="mobile-header-wrapper">
+<<<<<<< HEAD
 				<?php if(function_exists('ajax_tags_create_front_end') && (function_exists('is_moboile') && is_mobile()) ) { ?><a href="#menu" id="mobile-header-menu"><img src="<?php bloginfo('template_url'); ?>/img/menu-icon-retina.png"></a><?php } ?>
+=======
+				<?php if(function_exists('ajax_tags_create_front_end') && is_mobile()  ) { ?><a href="#menu" id="mobile-header-menu"><img src="<?php bloginfo('template_url'); ?>/img/menu-icon-retina.png"></a><?php } ?>
+>>>>>>> d1e5573c7467ac8770e4a49e60dda5a6c9370ca0
 				<a href="http://www.theglobeandmail.com"><img id="mobile-header-logo" src="<?php bloginfo('template_url'); ?>/img/globelogo.png"></a> <a id="header-olympics-home" href="<?php bloginfo('url'); ?>"> 2014 Winter Olympics</a>
 				<a id="menu-search-button" href="#search"><img id="mobile-header-search" src="<?php bloginfo('template_url'); ?>/img/search-icon-retina.png"></a>
 				</div>
