@@ -54,19 +54,21 @@ jQuery(document).ready(function($) {
 				responseHtml = response;
 				$('#loop-wrapper').prepend('<div class="ajaxposts-new">' + responseHtml + '</div>');
 				var responseCount = $('.ajaxposts-new').eq(0).find('article').length;
-				// If there is at least one "article" div in response
+				// If there is at least one "article" in response
 				if(responseCount > 0){
-					$('#new-alert-number').text((+parseInt(($('#new-alert-number').text()))+(+parseInt(responseCount))));
+					// Add number of new articles to the current post count
+					$('#new-alert-number').text((parseInt(($('#new-alert-number').text()))+(+parseInt(responseCount))));
 						document.title = '(' + $('#new-alert-number').text() + ') ' + document.title.replace(/^\([0-9]*\)/,'');
-						var totalResponses = $('.ajaxposts-new').length;
-						if(parseInt(totalResponses) > 1){
+						var totalResponses = $('.ajaxposts-new article').length;
+						if(totalResponses > 1){
 							$('#new-alert-text').text("new updates");
+							$('#new-alert-container').slideDown();
 						} else {
 							$('#new-alert-text').text("new update");
 						}
 						$('#new-alert-container').slideDown();
-				
 				} else {
+					// Remove only latest container, which would be empty
 					$('.ajaxposts-new').eq(0).remove();
 				}
 			}
@@ -77,6 +79,7 @@ jQuery(document).ready(function($) {
 	// Regularly trigger check for new posts on home
 	if($('body').hasClass('home')){
 		var ajaxRefreshT = setInterval(function(){
+			console.log('checking');
 			ajaxCheckNewPosts();
 		},checkTime);
 	}
