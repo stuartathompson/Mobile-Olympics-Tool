@@ -76,7 +76,7 @@ $filtersItem.each(function(i,d){
 	function initFilters(){
 		$('#ajaxtags-loader').show();
 		$('body,html').animate({
-			scrollTop:$('#filters-bar').offset().top-60
+			scrollTop:0
 		});
 		var query = '',
 			action = 'ajax_tags_loop';
@@ -105,6 +105,7 @@ $filtersItem.each(function(i,d){
 					$('#loop-wrapper').empty();
 					$('#loop article').remove();
 					$('#loop-wrapper').append(response);
+					window.displayAds( true );
 					// Re-add tooltip
 					if($('body').hasClass('desktop')){
 						$('.tags .tag').tooltip({
@@ -235,7 +236,6 @@ $filtersItem.each(function(i,d){
 			$('#mobile-menu').show();
 			// Fix body width
 			$('.hide-overflow').css({
-				'width':window.innerWidth,
 				'height':window.innerHeight
 			}).addClass('active')
 			$('.ajaxtags-container').css({
@@ -270,15 +270,18 @@ $filtersItem.each(function(i,d){
 	// Mobile menu orientation change
 	$(window).on('orientationchange',function(){
 		if($('.hide-overflow').hasClass('active')){
+			// Fix body width
+			$('.ajaxtags-container').css({
+				'height':window.innerHeight-parseInt($('.ajaxtags-container h3').css('height'))
+			})
 			// Animate header and body
 			$('.wrapper').animate({
-				marginLeft:'80%'
+				margin:'0 0 0 80%'
 			},250);
 			$('#mobile-header').animate({
 				left:'80%'
 			},250);
 			$('.hide-overflow').css({
-				'width':$('body').width(),
 				'height':window.innerHeight
 			});
 		}
