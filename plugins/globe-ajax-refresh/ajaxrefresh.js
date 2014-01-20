@@ -5,32 +5,6 @@ jQuery(document).ready(function($) {
 		responseHtml = '',
 		checkTime = 5000;
 
-	// Manually refresh using button
-	$('#refresh').click(function(){
-		$(this).addClass('refreshing');
-		$.ajax({
-			url:ajaxRefreshUrl.ajaxurl,
-			type:'POST',
-			dataType:'html',
-			cache: false,
-			data:{
-				'action':'ajax_refresh_loop',
-				'nonce':ajaxRefreshUrl.ajaxTagNonce
-			},
-			success: function(response){
-				if(response){
-					$('#loop-wrapper').empty();
-					$('#loop-wrapper').append(response);
-				} else {
-				}
-				$('.refreshing').removeClass('refreshing');
-				$('body,html').animate({
-					'scrollTop':0
-				});
-			}
-		});
-	})
-
 	// Check for new posts
 	function ajaxCheckNewPosts(){
 	// Determine the latest post ID, ignoring stickies
