@@ -12,7 +12,6 @@
 				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 				//if($ajaxTagsCookie){
 					$args = array(
-						'posts_per_page'=>5,
 						'tag'=>$ajaxTagsCookie,
 						'paged'=>$paged,
 						'posts_per_page'=>10
