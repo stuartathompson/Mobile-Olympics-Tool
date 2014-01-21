@@ -32,7 +32,7 @@
 					if($posttags){
 						$i = 0;
 						foreach($posttags as $posttag){
-							if($i == 0)	echo '<a href="' . get_bloginfo('url') . '/tag/' . str_replace(' ','-',$posttag->name) . '" title="Filter by tag: ' . $posttag->name . '">' . '<span class="glyphicon ' . $glyphicon . '"></span>' . '<span>' . $posttag->name . '</a></span>';	
+							if($i == 0)	echo '<a href="' . get_bloginfo('url') . '?tags=' . str_replace(' ','-',$posttag->name) . '" title="Filter by tag: ' . $posttag->name . '">' . '<span class="glyphicon ' . $glyphicon . '"></span>' . '<span>' . $posttag->name . '</a></span>';	
 							$i++;
 						}
 					}
