@@ -148,7 +148,7 @@ function ajax_tags_create_front_end(){
 		?>
 		</div>
 	<div id="filters-error">
-		Sorry, no articles were found using those tags. <a id="ajaxtags-clear-tags" href="#clear">Clear tags?</a>
+		Sorry, no articles were found using those tags. <a class="ajaxtags-clear-tags" href="#clear">Clear tags?</a>
 	</div>
 	<div class="clearfloat"></div>
 <?php
