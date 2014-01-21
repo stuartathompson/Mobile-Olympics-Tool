@@ -87,6 +87,9 @@ input:focus {
 .mobile-hide{
 	display:none;
 }
+#mobile-header-menu{
+	display:none;
+}
 /*------------------------------------*\
     STRUCTURE
 \*------------------------------------*/
@@ -638,6 +641,9 @@ and (orientation : landscape) {
 	#mobile-header #mobile-header-logo{
 		margin-left: 50px !important;
 	}
+	#mobile-header-menu{
+		display:block;
+	}
 }
 /* Smartphones */
 @media only screen and (max-width:501px) {
@@ -674,6 +680,9 @@ and (orientation : landscape) {
 		left:49%;
 		position: absolute;
 		margin:5px 0 0 -28% !important;
+	}
+	#mobile-header-menu{
+		display:block;
 	}
 	#mobile-header #header-olympics-home{
 		display:none;
