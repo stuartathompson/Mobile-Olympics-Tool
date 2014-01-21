@@ -36,6 +36,7 @@ $(function() {
 	});
 	
 	/* - Last Seen Post - Cookie: Storing the latest post and changing colours - */
+	if($('body').hasClass('home')){
 	var lastSeenPostId = parseInt($.cookie('globeolympics-lastseenpost'));
 	var newLastSeenPostId = 0;
 	// If no lastseenpost, set to the most recent
@@ -49,6 +50,7 @@ $(function() {
 				$(this).addClass('unseen');
 			}
 		});
+	}
 	}
 
 	/* If new posts, apply new cookie - only on homepage */
