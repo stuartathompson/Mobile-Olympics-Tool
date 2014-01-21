@@ -116,14 +116,16 @@ $(function() {
 	/* - Search button - */
 	$('#menu-search-button').click(function(){
 		if(!$(this).hasClass('selected')){
-			$('#search-box').animate({
+			$('#search-box').css('visibility','visible').animate({
 				'marginTop':0
 			},250);
 			$('.search-input').focus();
 		} else {
 			$('#search-box').animate({
 				'marginTop':-50
-			},250);
+			},250,function(){
+				$('#search-box').css('visibility','hidden');
+			});
 		}
 		$(this).toggleClass('selected');
 		return false;
@@ -132,7 +134,9 @@ $(function() {
 		$('#menu-search-button').removeClass('selected');
 		$('#search-box').animate({
 			'marginTop':-50
-		},250);
+		},250,function(){
+			$('#search-box').css('visibility','hidden');
+		});
 		return false;
 	});
 	$('form.search').keyup(function(e){
