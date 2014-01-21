@@ -182,6 +182,7 @@ article h2 a:hover{
 }
 .post-content{
 	margin:0 40px;
+	overflow:hidden;
 }
 /* Post types */
 .breaking h2{
