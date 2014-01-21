@@ -203,6 +203,7 @@ function ajax_tags_loop() {
  	$args = array(
  		'posts_per_page'=>10,
 		'tag'=>$query,
+ 		'post_status'=>'publish',
 		'paged'=>$paged
  	);
 
@@ -252,6 +253,7 @@ function ajax_tags_loop_highlights() {
  	$args = array(
  		'posts_per_page'=>10,
 		'tag'=>$query,
+ 		'post_status'=>'publish',
 		'tax_query' => array(
 			'relation' => 'AND',
 			array(

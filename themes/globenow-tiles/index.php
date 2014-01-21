@@ -28,6 +28,7 @@
 				if($bigMomentsQuery && count($array) > 0){
 					$args = array(
 				 		'posts_per_page'=>10,
+				 		'post_status'=>'publish',
 						'tag'=>$query,
 						'tax_query' => array(
 							'relation' => 'AND',
@@ -48,6 +49,7 @@
 					$args = array(
 						'tag'=>$ajaxTagsCookie,
 						'paged'=>$paged,
+				 		'post_status'=>'publish',
 						'posts_per_page'=>10
 					);
 				}
