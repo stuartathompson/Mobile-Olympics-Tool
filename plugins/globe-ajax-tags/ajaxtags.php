@@ -57,7 +57,7 @@ function ajax_tags_create_front_end(){
 		$selectedBig = '';
 		$tagArr = explode(',',$_COOKIE['globe-ajaxtags_cookie']);
 		foreach($tagArr as $tag){
-			if($tag == 'big-moments' || $tag == 'big moments'){
+			if($tag == 'big-moments' || $tag == 'big moments' || $_GET['tags'] == 'big-moments'){
 				$selectedLive = '';
 				$selectedBig = ' class="selected"';
 			}
@@ -118,16 +118,6 @@ function ajax_tags_create_front_end(){
 					single_tag_title();
 				echo '</span>';
 			} else {
-					// Show tags if _GET tags has results
-				if(isset($tags) && $tags != ''){
-					$tagArr = explode(',',$tags);
-					foreach($tagArr as $tag){
-						echo '<span class="item noselect" data-filter="';
-						echo $tag;
-						echo '">' . $tag;
-						echo '</span>';
-					}
-				}
 				// Show tags for cookied tags
 				if($_COOKIE['globe-ajaxtags_cookie']){
 					$tagArr = explode(',',$_COOKIE['globe-ajaxtags_cookie']);
@@ -137,6 +127,19 @@ function ajax_tags_create_front_end(){
 							echo '<span class="item noselect" data-filter="';
 							echo $tag;
 							echo '">' . str_replace("-"," ",$tag);
+							echo '</span>';
+						}
+					}
+				}
+				// Show tags if _GET tags has results
+				if(isset($tags) && $tags != ''){
+					$tagArr = explode(',',$tags);
+					$cookieArr = explode(',',$_COOKIE['globe-ajaxtags_cookie']);
+					foreach($tagArr as $tag){
+						if(!in_array($tag,$cookieArr) && $tag != 'big-moments'){
+							echo '<span class="item noselect" data-filter="';
+							echo $tag;
+							echo '">' . $tag;
 							echo '</span>';
 						}
 					}

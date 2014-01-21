@@ -30,6 +30,9 @@ jQuery('document').ready(function($){
     // Add big moments to filter array if selected
     if($('#home-highlights a').hasClass('selected') && jQuery.inArray('big-moments',curFilters) == -1) curFilters.push('big-moments');
     
+    // Re-save cookie with completed array
+    $.cookie('globe-ajaxtags_cookie',curFilters.toString().replace(/^,/,''));
+    
 	// SVG fallback
 	// toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script#update
 	if (!Modernizr.svg) {
@@ -105,10 +108,6 @@ jQuery('document').ready(function($){
 					$('#loop-wrapper').empty();
 					$('#loop article').remove();
 					$('#loop-wrapper').append(response);
-<<<<<<< HEAD
-=======
-					console.log( 'hellloo ', window.displayAds )
->>>>>>> d1e5573c7467ac8770e4a49e60dda5a6c9370ca0
 					window.displayAds( true );
 					// Re-add tooltip
 					if($('body').hasClass('desktop')){
@@ -200,7 +199,7 @@ jQuery('document').ready(function($){
 		if(curFilters.length < 1 || (curFilters.length == 1 && jQuery.inArray('big-moments',curFilters)>-1)) $('#topics').slideUp();
 	}
 	
-	$('#ajaxtags-clear-tags').click(function(){
+	$('.ajaxtags-clear-tags').click(function(){
 		curFilters = [];
 		if($('#home-highlights a').hasClass('selected')) curFilters = ['big-moments'];
 		$('#filters-error').slideUp();
