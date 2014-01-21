@@ -277,7 +277,7 @@ function globe_tags(){
 	$posttags = get_the_tags();
 	if ($posttags) {
 	  foreach($posttags as $tag) {
-	    echo '<span rel="tooltip" data-filter="' . $tag->slug . '" class="tag noselect' . $ajaxTrigger . '" data-original-title="" title=""><a href="' . get_bloginfo('url') .'/tag/' . $tag->slug . '">'. $tag->name . '</a></span>';
+	    echo '<span rel="tooltip" data-filter="' . $tag->slug . '" class="tag noselect' . $ajaxTrigger . '" data-original-title="" title=""><a href="' . get_bloginfo('url') .'?tags=' . $tag->slug . '">'. $tag->name . '</a></span>';
 	  }
 	}
 	echo '</span>';
