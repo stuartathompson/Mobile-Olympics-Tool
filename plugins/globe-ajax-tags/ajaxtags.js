@@ -16,6 +16,7 @@ jQuery('document').ready(function($){
     if ($("html").hasClass('touch') || $("body").hasClass('touch')) {
         touch = true;
     }
+
     // Load any tags in cookies
     if(typeof filterCookie != 'undefined'){
 	    $.each(filterCookie.split(','),function(i,cookie){
@@ -206,6 +207,7 @@ jQuery('document').ready(function($){
 		$filtersCont.slideUp();
 		$filtersCont.find('span').fadeOut(150).remove();
 		$filterSel.find('option').prop('disabled',false);
+		$('.ajaxtags-on').removeClass('ajaxtags-on');
 		$.cookie('globe-ajaxtags_cookie',curFilters.toString());
 		refreshHeader();
 		initFilters();
