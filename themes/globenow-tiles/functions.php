@@ -201,7 +201,7 @@ add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove 
 add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
 
 // Clean admin area
-function globe_remove_meta_boxes(){
+function globe_remove_admin_boxes(){
 	global $wp_meta_boxes;
 	unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
 	unset($wp_meta_boxes['dashboard']['normal']['high']['dashboard_browser_nag']);
@@ -213,7 +213,14 @@ function globe_remove_meta_boxes(){
 	unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts'] );
 	unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary'] );
 }
-add_action('wp_dashboard_setup', 'globe_remove_meta_boxes' );
+add_action('wp_dashboard_setup', 'globe_remove_admin_boxes' );
+
+function globe_remove_meta_boxes(){
+	remove_meta_box('tagsdiv-post_tag','post','normal');
+	remove_meta_box('categorydiv','post','normal');
+	remove_meta_box('postimagediv','post','normal');
+}
+add_action('admin_menu','globe_remove_meta_boxes');
 
 // Globe share bar
 function globe_social_share(){
