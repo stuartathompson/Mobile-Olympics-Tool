@@ -75,7 +75,7 @@
 		bottom:10px;
 		right:10px;		
 	}
-	.wp-caption-text{
+	.gi-gallery .wp-caption-text{
 		display:none;
 	}
 }
