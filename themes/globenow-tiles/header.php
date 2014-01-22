@@ -93,10 +93,10 @@ displayAds(false);
 			</a>
 		</div>
 
-		<?php if(function_exists('medals_widget_create_front_end')) medals_widget_create_front_end(); ?>
+		<?php if(function_exists('medals_widget_create_front_end') && !is_page('about')) medals_widget_create_front_end(); ?>
 
 
 		<?php 
 			// Get filter bar for all but single, searrch pages
-			if(function_exists('ajax_tags_create_front_end')) ajax_tags_create_front_end(); 
+			if(function_exists('ajax_tags_create_front_end') && !is_page('about')) ajax_tags_create_front_end(); 
 		?>
