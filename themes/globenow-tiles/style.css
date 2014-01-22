@@ -369,7 +369,6 @@ background: url("http://beta.images.theglobeandmail.com/static/ROB/interactives/
 	margin:10px 0 25px 0;
 }
 .ad-unit-square,.ad-unit-loop{
-	display:none;
  	border-bottom:1px solid #ececec;
  	text-align: center;
  	padding:10px;
@@ -417,6 +416,15 @@ background: url("http://beta.images.theglobeandmail.com/static/ROB/interactives/
 	margin:5px 0 0;
 	float:left;
 }
+#menu-search-button{
+	float:right;
+}
+#menu-about-button{
+	color:white;
+	margin-top: 1px;
+	margin-right: 20px;
+	float:right;
+}
 #mobile-header #header-olympics-home{
 color: white;
 font-family: "PrattHeavy",Georgia,sans-serif;
@@ -446,7 +454,7 @@ margin-left: 15px;
 	width: 10px;
 	display: block;
 }
-#mobile-header #mobile-header-search{
+#mobile-header #mobile-header-search, #mobile-header #mobile-about-button{
 	display:block;
 	float:right;
 	width:12px;
@@ -609,6 +617,83 @@ margin: 10px 0;
 }
 .suggestions {
 margin: 0 auto;
+}
+
+/* About page */
+.globeabout{
+	font-family:"OpenSans",sans-serif;
+	font-size:14px;
+}
+.globeabout-lede h1{
+	font-family:"PrattHeavy",Arial,sans-serif;
+	font-weight:normal;
+	font-size:46px;
+	text-align: center;
+}
+.globeabout-lede{
+	text-align: center;
+}
+#globeabout-bigmoments{
+	height:425px;
+}
+#globeabout-tags{
+	height:420px;
+}
+#globeabout-tags .globeabout-right, #globeabout-alert .globeabout-right{
+	width: 45%;
+	margin-top: 50px;
+	margin-right: 30px;
+}
+#globeabout-bigmoments .globeabout-left{
+	width: 45%;
+	margin-top: 50px;
+	margin-left: 30px;
+}
+.globeabout-item h2{
+	font-family:"PrattHeavy",sans-serif;
+	font-size:31px;
+	font-weight: normal;
+	line-height:1.2;
+	margin:0 0 10px;
+}
+.globeabout-item p{
+	margin:20px 0;
+}
+.globeabout-item{
+	float:left;
+	position: relative;
+}
+.globeabout-left{
+	float:left;
+	width:50%;
+}
+.globeabout-right{
+	float:right;
+	width:50%;
+}
+.globeabout-big{
+	position: absolute;
+}
+.globeabout-big.globeabout-right{
+	right: 0px;
+	bottom: -4px;
+	float: right;
+	width: auto;
+}
+.globeabout-big.globeabout-left{
+	left: 0px;
+	bottom: -4px;
+	float: left;
+	width: auto;
+}
+.globeabout-full{
+	width:100%;
+}
+.globeabout-full h2, .globeabout-full p{
+	text-align: center;
+}
+.globeabout-bigimage{
+	margin:0 -40px -40px 0;
 }
 
 /*------------------------------------*\
@@ -826,6 +911,44 @@ and (orientation : landscape) {
 	/* Footer */
 	.footer{
 		font-size: 11px;
+	}
+	/* About page */
+	.globeabout{
+		margin:10px 0;
+	}
+	.globeabout-lede{
+		text-align: left;
+	}
+	#globeabout-bigmoments,#globeabout-tags{
+		height:auto;
+	}
+	.globeabout-item h2,.globeabout h1{
+		margin:15px 0;
+	}
+	.globeabout-item{
+		float:none !important;
+		margin:20px auto;
+	}
+	.globeabout-left,.globeabout-right{
+		float:none !important;
+		margin:0px auto !important;
+		width:100% !important;
+	}
+	#globeabout-alert .globeabout-left{
+		text-align: center;
+	}
+	article{
+		padding:10px;
+	}
+	.globeabout-big{
+		position: relative;
+		bottom:-10px;
+	}
+	.globeabout-left{
+		left:-10px;
+	}
+	.globeabout-right{
+		right:-10px;
 	}
 }
 

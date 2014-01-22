@@ -77,6 +77,7 @@ displayAds(false);
 				<?php if(function_exists('ajax_tags_create_front_end')) { ?><a href="#menu" id="mobile-header-menu"><img src="<?php bloginfo('template_url'); ?>/img/menu-icon-retina.png"></a><?php } ?>
 				<a href="http://www.theglobeandmail.com"><img id="mobile-header-logo" src="<?php bloginfo('template_url'); ?>/img/globelogo.png"></a> <a id="header-olympics-home" href="<?php bloginfo('url'); ?>"> 2014 Winter Olympics</a>
 				<a id="menu-search-button" href="#search"><img id="mobile-header-search" src="<?php bloginfo('template_url'); ?>/img/search-icon-retina.png"></a>
+				<a id="menu-about-button" href="<?php bloginfo('template_url'); ?>/about"><img src="<?php bloginfo('template_url'); ?>/img/globeabout-icon.png" width="14px" height="13px" /></a>
 				</div>
 			</div>
 			<div id="search-box">
