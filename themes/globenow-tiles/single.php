@@ -33,7 +33,7 @@
 				// Get other posts
 				$exclude = get_the_ID();
 				$extra_classes = '';
-				$queryposts = new WP_Query('posts_per_page=5');
+				$queryposts = new WP_Query('posts_per_page=5,post_status=published');
 				
 				if ($queryposts->have_posts()): while ($queryposts->have_posts()) : $queryposts->the_post();
 	
