@@ -10,6 +10,7 @@ if (!isset($content_width))
     $content_width = 900;
 }
 
+
 if (function_exists('add_theme_support'))
 {
     // Add Menu Support
@@ -28,8 +29,17 @@ if (function_exists('add_theme_support'))
 			"native" => "No crop"
 		) );
 	}
-	add_filter('image_size_names_choose','globe_show_image_sizes');
 	
+add_filter('image_size_names_choose','globe_show_image_sizes');
+	
+
+
+
+function my_set_default_image_size () {
+    return 'large';
+}
+add_filter( 'pre_option_image_default_size', 'my_set_default_image_size' );
+
 	
     // Enables post and comment RSS feed links to head
     add_theme_support('automatic-feed-links');
@@ -162,11 +172,15 @@ function html5_style_remove($tag)
 }
 
 // Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail
+
+/*
 function remove_thumbnail_dimensions( $html )
 {
     $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
     return $html;
 }
+*/
+
 
 /*------------------------------------*\
 	Actions + Filters + ShortCodes
@@ -197,8 +211,10 @@ remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 
 // Add Filters
 add_filter('show_admin_bar', 'remove_admin_bar'); // Remove Admin bar
+/*
 add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
 add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
+*/
 
 // Clean admin area
 function globe_remove_admin_boxes(){
@@ -216,12 +232,18 @@ function globe_remove_admin_boxes(){
 add_action('wp_dashboard_setup', 'globe_remove_admin_boxes' );
 
 function globe_remove_meta_boxes(){
+	remove_meta_box('postimagediv','post','normal');
+	remove_meta_box('postimagediv','post','advanced');
+	remove_meta_box('postimagediv','post','side');
 	remove_meta_box('tagsdiv-post_tag','post','normal');
 	remove_meta_box('categorydiv','post','normal');
-	remove_meta_box('postimagediv','post','normal');
 }
 add_action('admin_menu','globe_remove_meta_boxes');
 
+function globe_remove_postimagediv(){
+	print_r('<script>jQuery(document).ready(function(){jQuery("#postimagediv").hide();});</script>');
+}
+add_action('admin_head','globe_remove_postimagediv');
 // Globe share bar
 function globe_social_share(){
 ?>
