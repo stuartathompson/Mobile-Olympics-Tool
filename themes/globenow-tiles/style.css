@@ -697,7 +697,29 @@ margin: 0 auto;
 .globeabout-bigimage{
 	margin:0 -40px -40px 0;
 }
-
+.about-author {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 400px;
+}
+.about-author img {
+	float:left;
+	margin:0 5px 10px 0;
+	max-width:140px;
+}
+.about-author p,h3{
+	margin: 0;
+}
+.about-author {
+	margin-bottom: 25px;
+}
+.about-author_bio p {
+	text-align: left;
+}
+@media only screen and (max-width:501px) {
+	.globeabout-item .about-author img{
+		display: none;
+	}
 /*------------------------------------*\
     BROWSERS
 \*------------------------------------*/

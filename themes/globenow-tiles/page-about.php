@@ -50,6 +50,116 @@
 	<article class="globeabout-item">
 		<div class="globeabout-full">
 			<h2>Our team in Sochi</h2>
+		<div id="about-authors">
+			<div class="about-author clearfix">
+			<img src="http://beta.images.theglobeandmail.com/97e/sports/hockey/article4244058.ece/ALTERNATES/w140/macgregor09sp10.JPG" width="140"
+height="78"/>
+			<div class="about-author_bio">
+			<h3>Roy MacGregor</h3>
+			<div class="email">
+			<a href="mailto:rmacgregor@globeandmail.com">E-mail this writer</a>
+			</div>
+			<p>Hockey columnist</p>
+			<p>Follow Roy on Twitter
+			<a href="http://twitter.com/#!/RoyMacG"
+			target="_blank">@RoyMacG</a></p>
+			</div>
+			</div>
+			<div class="about-author clearfix">
+			<img src="http://beta.images.theglobeandmail.com/ede/migration_catalog/article4042494.ece/ALTERNATES/w140/MM_lehmannBIOpic" width="140"
+			height="78"/>
+			<div class="about-author_bio">
+			<h3>John Lehmann</h3>
+			<div class="email">
+			<a href="mailto:JLehmann@globenandmail.com">E-mail this writer</a>
+			</div>
+			<p>Photographer</p>
+			<p>Follow John on Twitter
+			<a href="http://twitter.com/#!/johnlehmann"
+			target="_blank">@johnlehmann</a></p>
+			</div>
+			</div>
+			<div class="about-author clearfix">
+			<img src="http://beta.images.theglobeandmail.com/606/incoming/article849839.ece/ALTERNATES/w140/mackinnon-edit_253397a" width="140"
+			height="78"/>
+			<div class="about-author_bio">
+			<h3>Mark MacKinnon</h3>
+			<div class="email">
+			<a href="mailto:mmackinnon@globeandmail.com">E-mail this writer</a>
+			</div>
+			<p>International affairs correspondent</p>
+			<p>Follow Mark on Twitter
+			<a href="http://twitter.com/#!/markmackinnon"
+			target="_blank">@markmackinnon</a></p>
+			</div>
+			</div>
+			<div class="about-author clearfix">
+			<img src="http://beta.images.theglobeandmail.com/1b0/incoming/article4255855.ece/ALTERNATES/w140/duha.jpg" width="140"
+			height="78"/>
+			<div class="about-author_bio">
+			<h3>Eric Duhatschek</h3>
+			<div class="email">
+			<a href="mailto:eduhatschek@globeandmail.com">E-mail this writer</a>
+			</div>
+			<p>Hockey columnist</p>
+			<p>Follow Eric on Twitter
+			<a href="http://twitter.com/#!/eduhatschek"
+			target="_blank">@eduhatschek</a></p>
+			</div>
+			</div>
+			<div class="about-author clearfix">
+			<img src="http://beta.images.theglobeandmail.com/b24/incoming/article4503698.ece/ALTERNATES/w140/reguly.jpg" width="140"
+			height="78"/>
+			<div class="about-author_bio">
+			<h3>Eric Reguly</h3>
+			<div class="email">
+			<a href="mailto:ereguly@globeandmail.com">E-mail this writer</a>
+			</div>
+			<p>European correspondent</p>
+			<p>Follow Eric on Twitter
+			<a href="http://twitter.com/#!/ereguly"
+			target="_blank">@ereguly</a></p>
+			</div>
+			</div>
+			<div class="about-author clearfix">
+			<img src="http://beta.images.theglobeandmail.com/2fe/incoming/article849430.ece/ALTERNATES/w140/James+Mirtie" width="140"
+			height="78"/>
+			<div class="about-author_bio">
+			<h3>James Mirtle</h3>
+			<div class="email">
+			<a href="mailto:jmirtle@globeandmail.com">E-mail this writer</a>
+			</div>
+			<p>Hockey writer</p>
+			<p>Follow James on Twitter
+			<a href="http://twitter.com/#!/mirtle"
+			target="_blank">@mirtle</a></p>
+			</div>
+			</div>
+			<div class="about-author clearfix">
+			<img src="http://beta.images.theglobeandmail.com/7bc/incoming/article4217272.ece/ALTERNATES/w140/Paul_Waldie_876889cl-3.jpg" width="140"
+			height="78"/>
+			<div class="about-author_bio">
+			<h3>Paul Waldie</h3>
+			<div class="email">
+			<a href="mailto:pwaldie@globeandmail.com">E-mail this writer</a>
+			</div>
+			<p>London correspondent</p>
+			<p>Follow Paul on Twitter
+			<a href="http://twitter.com/#!/PwaldieGLOBE"
+			target="_blank">@PwaldieGLOBE</a></p>
+			</div>
+			</div>
+			<div class="about-author clearfix">
+			<img src="http://beta.images.theglobeandmail.com/318/incoming/article4216853.ece/ALTERNATES/w140/Grant_Robertson_876940cl-3.jpg" width="140"
+			height="78"/>
+			<div class="about-author_bio">
+			<h3>Grant Robertson</h3>
+			<div class="email">
+			<a href="mailto:grobertson@globeandmail.com">E-mail this writer</a>
+			</div>
+			</div>
+</div>
+			<hr>
 			<p>Have any feedback or questions? Don't hesitate to get in touch via email: <a href="mailto:mobile@globeandmail.com">mobile@globeandmail.com</a> or on Twitter <a href="http://www.twitter.com/globeolympics">@globeolympics</a></p>
 		</div>
 		<div class="globeabout-full">
