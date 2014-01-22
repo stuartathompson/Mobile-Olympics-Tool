@@ -70,7 +70,7 @@ function ajax_tags_create_front_end(){
 		<h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">2014 Winter Olympics</a></h3>
 	<?php } ?>
 	<div id="filters" class="filters">
-		<?php if(!is_single() && !is_search()){ ?>
+		<?php if(!is_single() && !is_search() && !is_page('about')){ ?>
 		<div class="select">
 			<select id="filterSelect" class="dropdown field" autocomplete="off">
 				<option value="">Filter sports</option>

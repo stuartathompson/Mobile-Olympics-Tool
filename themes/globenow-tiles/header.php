@@ -98,5 +98,5 @@ displayAds(false);
 
 		<?php 
 			// Get filter bar for all but single, searrch pages
-			if(function_exists('ajax_tags_create_front_end') && !is_page('about')) ajax_tags_create_front_end(); 
+			if(function_exists('ajax_tags_create_front_end')) ajax_tags_create_front_end(); 
 		?>

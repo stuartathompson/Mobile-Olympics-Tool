@@ -925,12 +925,18 @@ and (orientation : landscape) {
 	.globeabout img{
 		width:80%;
 	}
+	.globeabout-lede h1 img{
+		width:50%;
+	}
 	.globeabout-lede{
 		text-align: left;
 	}
 	.globeabout-big{
 		text-align: center;
 		width:100%;
+	}
+	.globeabout-item img{
+		max-width:50%;
 	}
 	#globeabout-bigmoments,#globeabout-tags{
 		height:auto;

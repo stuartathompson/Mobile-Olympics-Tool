@@ -37,13 +37,13 @@
 	</article>
 	
 	<article id="globeabout-alert" class="globeabout-item">
-		<div class="globeabout-left" style="margin-left:50px;width:40%">
-			<img src="<?php bloginfo('template_url'); ?>/img/globeabout-assets/phone3.png?1" />
-		</div>
 		<div class="globeabout-right">
 			<h2>Never miss a medal</h2>
 			<p>Download our Globe News app for your iPhone or iPad to get alerts every time Canada wins a medal.</p>
 			<p><a href="https://itunes.apple.com/us/app/the-globe-and-mail-news/id429228415?mt=8&uo=4" target="itunes_store"style="display:inline-block;overflow:hidden;background:url(https://linkmaker.itunes.apple.com/htmlResources/assets/en_us//images/web/linkmaker/badge_appstore-lrg.png) no-repeat;width:135px;height:40px;@media only screen{background-image:url(https://linkmaker.itunes.apple.com/htmlResources/assets/en_us//images/web/linkmaker/badge_appstore-lrg.svg);}"></a></p>
+		</div>
+				<div class="globeabout-left" style="margin-left:50px;width:40%">
+			<img src="<?php bloginfo('template_url'); ?>/img/globeabout-assets/phone3.png?1" />
 		</div>
 	</article>
 
