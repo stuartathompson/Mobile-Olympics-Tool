@@ -34,7 +34,7 @@ if ( ! class_exists( 'BJLL_Skip_Post' ) ) {
 			$post_types = get_post_types( array( 'public' => true ), 'names' ); 
 
 			foreach ( $post_types as $post_type ) {
-				add_meta_box( 'bj_lazy_load_skip_post', __( 'Lazy Loading', 'bj-lazy-load' ), array( $this, 'bj_lazy_load_skip_post_meta_box' ), $post_type, 'side', 'low' );
+				//add_meta_box( 'bj_lazy_load_skip_post', __( 'Lazy Loading', 'bj-lazy-load' ), array( $this, 'bj_lazy_load_skip_post_meta_box' ), $post_type, 'side', 'low' );
 			}
 		}
 
