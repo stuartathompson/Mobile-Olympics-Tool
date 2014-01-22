@@ -31,10 +31,15 @@ $(function() {
 	})
 	
 	// Tag tooltips
-	$('.tags .tag').tooltip({
-		title:'Add tag to filters'
-	});
-	
+	if(!$('body').hasClass('mobile')){
+		$('.tags .tag').tooltip({
+			title:'Add tag to filters'
+		});
+		$('#menu-about-button').tooltip({
+			title:'About this site',
+			placement:'left'
+		})
+	}
 	/* - Last Seen Post - Cookie: Storing the latest post and changing colours - */
 	if($('body').hasClass('home')){
 	var lastSeenPostId = parseInt($.cookie('globeolympics-lastseenpost'));
