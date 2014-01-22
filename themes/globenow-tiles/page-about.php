@@ -8,7 +8,7 @@
 	
 		<!-- article -->
 		<article class="globeabout-lede">
-		<h1>Sochi 2014</h1>
+		<h1><img src="<?php bloginfo('template_url'); ?>/img/sochilogo.png" /></h1>
 		<p>The Globe's mobile Olympic site delivers the news you need to know throughout the Sochi Games in a way that's easy to digest on the go.
 		<p>Expect breaking news and medal results, snap analysis and features from our team of reporters in Russia, great video and photography, and highlights every morning.
 		<p>Here are a few tips on how to get you started.</p>
@@ -20,11 +20,7 @@
 			<p>Just looking for news about hockey and sliding sports? No problem. Tap the section icon at the top of the screen and select the sports you're most interested in.<p>You can also filter the feed at any time by tapping on a tag within a post.</p>
 		</div>
 		<div class="globeabout-left globeabout-big">
-			<video width="257px" height="400px" autoplay loop>
-				<source src="<?php bloginfo('template_url'); ?>/img/globeabout-assets/phone1.mp4" type="video/mp4" />
-				<source src="<?php bloginfo('template_url'); ?>/img/globeabout-assets/phone1.ogv" type="video/ogg" />
-			<img src="<?php bloginfo('template_url'); ?>/img/globeabout-assets/phone1.png?1" />
-			</video>
+			<img width="290px" src="<?php bloginfo('template_url'); ?>/img/globeabout-assets/phone1.png" />
 		</div>
 
 	</article>
@@ -36,11 +32,7 @@
 			<p>You combine this with your favourite sports to see the biggest moments from your favourite events.</p>
 		</div>
 		<div class="globeabout-right globeabout-big">
-			<video width="257px" height="400px" autoplay loop>
-				<source src="<?php bloginfo('template_url'); ?>/img/globeabout-assets/phone2.mp4" type="video/mp4" />
-				<source src="<?php bloginfo('template_url'); ?>/img/globeabout-assets/phone2.ogv" type="video/ogg" />
-			<img src="<?php bloginfo('template_url'); ?>/img/globeabout-assets/phone2.png?1" />
-			</video>
+			<img width="290px" src="<?php bloginfo('template_url'); ?>/img/globeabout-assets/phone2.png" />
 		</div>
 	</article>
 	
@@ -58,7 +50,7 @@
 	<article class="globeabout-item">
 		<div class="globeabout-full">
 			<h2>Our team in Sochi</h2>
-			<p>Have any feedback or questions? Don't hesitate to get in touch via email: mobile@globeandmail.com or on Twitter @globeolympics</p>
+			<p>Have any feedback or questions? Don't hesitate to get in touch via email: <a href="mailto:mobile@globeandmail.com">mobile@globeandmail.com</a> or on Twitter <a href="http://www.twitter.com/globeolympics">@globeolympics</a></p>
 		</div>
 		<div class="globeabout-full">
 		</div>

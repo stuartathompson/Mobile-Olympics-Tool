@@ -440,7 +440,7 @@ margin-left: 15px;
 }
 #mobile-header #mobile-header-menu{
 	position: absolute;
-	padding: 17px;
+	padding: 16.5px;
 	margin-top: -9px;
 }
 #mobile-header #mobile-search-button{
@@ -628,16 +628,17 @@ margin: 0 auto;
 	font-family:"PrattHeavy",Arial,sans-serif;
 	font-weight:normal;
 	font-size:46px;
+	margin:0px 0 15px;
 	text-align: center;
 }
 .globeabout-lede{
 	text-align: center;
 }
 #globeabout-bigmoments{
-	height:425px;
+	height:477px;
 }
 #globeabout-tags{
-	height:420px;
+	height:472px;
 }
 #globeabout-tags .globeabout-right, #globeabout-alert .globeabout-right{
 	width: 45%;
@@ -675,16 +676,17 @@ margin: 0 auto;
 	position: absolute;
 }
 .globeabout-big.globeabout-right{
-	right: 0px;
-	bottom: -4px;
+	right: 20px;
 	float: right;
 	width: auto;
 }
 .globeabout-big.globeabout-left{
-	left: 0px;
-	bottom: -4px;
+	left: 20px;
 	float: left;
 	width: auto;
+}
+#globeabout-bibgmoments .globeabout-big{
+	margin-top:-2px;
 }
 .globeabout-full{
 	width:100%;
@@ -772,6 +774,10 @@ and (orientation : landscape) {
 	}
 	#mobile-header #header-olympics-home{
 		display:none;
+	}
+	#menu-about-button{
+		margin-top: -1px;
+		margin-right:10px;
 	}
 	#page-title{
 		display:none;
@@ -916,14 +922,24 @@ and (orientation : landscape) {
 	.globeabout{
 		margin:10px 0;
 	}
+	.globeabout img{
+		width:80%;
+	}
 	.globeabout-lede{
 		text-align: left;
+	}
+	.globeabout-big{
+		text-align: center;
+		width:100%;
 	}
 	#globeabout-bigmoments,#globeabout-tags{
 		height:auto;
 	}
 	.globeabout-item h2,.globeabout h1{
 		margin:15px 0;
+	}
+	.globeabout h1{
+		font-size:37px;
 	}
 	.globeabout-item{
 		float:none !important;
@@ -969,6 +985,9 @@ and (orientation : landscape) {
 	}
 	#mobile-header-logo{
 		margin:5px 0 0 20px !important;
+	}
+	#mobile-about-button{
+		margin-right:10px;
 	}
 }
 @media only screen and (min-width:1024px) {
