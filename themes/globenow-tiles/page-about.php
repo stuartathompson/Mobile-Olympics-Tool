@@ -29,7 +29,7 @@
 		<div class="globeabout-left">
 			<h2>Catch up on the biggest moments</h2>
 			<p>Need to get up to speed of the big events and surprises of the past day or two? Tap on "big moments" at the top of the screen to get just the top news and daily recaps.</p>
-			<p>You combine this with your favourite sports to see the biggest moments from your favourite events.</p>
+			<p>You can combine this with your favourite sports to see just the biggest moments from the events you care about most.</p>
 		</div>
 		<div class="globeabout-right globeabout-big">
 			<img width="290px" src="<?php bloginfo('template_url'); ?>/img/globeabout-assets/phone2.png" />
