@@ -347,7 +347,7 @@ if(window.location.href.search("http://olympics.") > -1) s_account = 'bellgmpnew
 /* standard channel vars */
 s.pageName = "sports:olympics:blog:<?php if(is_single()){ echo 'article'; } else { echo 'section'; } ?>" // +PAGENAME?; // Page
 s.channel = "sports"; // Site section
-s.prop12 = "<?php if(is_single()) the_title(); ?>"; // Content Title (headline)
+s.prop12 = "<?php if(is_single() || is_page()) the_title();?>"; // Content Title (headline)
 s.prop16 = "<?php if(is_single()) the_ID(); ?>"; // Content ID (article ID)
 s.prop42 = ""; // Content Type (active article tab)
 s.prop37 = ""; // article type or blog section
