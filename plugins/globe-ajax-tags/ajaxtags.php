@@ -67,7 +67,7 @@ function ajax_tags_create_front_end(){
 		<div id="filter-splitter"></div>
 		<h3 id="home-highlights"><a href="<?php bloginfo('url'); ?>/tag/big-moments" <?php echo $selectedBig; ?>>big moments</a></h3> 
 	<?php } else { ?>
-		<h3 id="home-nav"><a href="<?php bloginfo('url'); ?>">2014 Winter Olympics</a></h3>
+		<h3 id="home-nav" class="filter-standalone-title"><a href="<?php bloginfo('url'); ?>">2014 Winter Olympics</a></h3>
 	<?php } ?>
 	<div id="filters" class="filters">
 		<?php if(!is_single() && !is_search() && !is_page('about')){ ?>
