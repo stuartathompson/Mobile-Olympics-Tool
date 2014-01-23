@@ -119,6 +119,9 @@ user-select: none;
 	float:left;
 	margin: 7px 0 0;
 }
+#filters-bar h3.filter-standalone-title{
+	margin: 0 !important;
+}
 #filters-bar  h3 a{
 	font-family:"OpenSans",sans-serif;
 	font-weight:bold;
