@@ -122,20 +122,6 @@ height="78"/>
 			</div>
 			</div>
 			<div class="about-author clearfix">
-			<img src="http://beta.images.theglobeandmail.com/2fe/incoming/article849430.ece/ALTERNATES/w140/James+Mirtie" width="140"
-			height="78"/>
-			<div class="about-author_bio">
-			<h3>James Mirtle</h3>
-			<div class="email">
-			<a href="mailto:jmirtle@globeandmail.com">E-mail this writer</a>
-			</div>
-			<p>Hockey writer</p>
-			<p>Follow James on Twitter
-			<a href="http://twitter.com/#!/mirtle"
-			target="_blank">@mirtle</a></p>
-			</div>
-			</div>
-			<div class="about-author clearfix">
 			<img src="http://beta.images.theglobeandmail.com/7bc/incoming/article4217272.ece/ALTERNATES/w140/Paul_Waldie_876889cl-3.jpg" width="140"
 			height="78"/>
 			<div class="about-author_bio">
