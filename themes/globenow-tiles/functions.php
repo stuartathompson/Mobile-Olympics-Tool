@@ -338,7 +338,18 @@ if($args = 'development'){
 <script type="text/javascript">
 var s_account = 'bellgmpgpsdev';
 // Change if production
-if(window.location.href.search("http://olympics.") > -1) s_account = 'bellgmpnewprod';
+<?php 
+$isMobile = false;
+if(function_exists(is_mobile())) $isMobile=is_mobile();
+if($isMobile){
+?>
+	if(window.location.href.search("http://olympics.") > -1){ s_acount = 'bellgmpmobileprod'; } else { s_acount = 'bellgmpmobiledev'; }
+<?php
+} else {
+	?>if(window.location.href.search("http://olympics.") > -1) s_account = 'bellgmpnewprod';
+	<?php
+}
+?>
 </script>
 <script type="text/javascript" src="http://beta.images.theglobeandmail.com/media/www/js/plugins/s_code.js"></script>
 <!-- prod is: http://beta.images.theglobeandmail.com/media/www/js/plugins/s_code.js -->

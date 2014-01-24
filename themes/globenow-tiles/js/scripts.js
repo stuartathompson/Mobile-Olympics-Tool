@@ -212,6 +212,20 @@ $(function() {
 			$('.share-link').remove();
 		}
 	})
+
+	// Omniture page depth tracking
+	function interactiveTracking(description) {
+	    s.linkTrackVars = "";   // we don't want to send any vars or props
+	    s.linkTrackEvents = ""; // we don't want to trigger any events
+	    s.tl(true, 'o', description);
+	}
+
+	$('article').waypoint(function(){
+		if(!$(this).hasClass('omnitureSeenThisPost')){
+			interactiveTracking("Olympic Blog - Depth - " + ($(this).index('article')+1));
+ 		}
+		$(this).addClass('omnitureSeenThisPost');
+	},{'offset':'50%'});
 	
 
 });

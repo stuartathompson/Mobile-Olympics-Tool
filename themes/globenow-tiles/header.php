@@ -32,38 +32,49 @@
 		<link href="http://fonts.googleapis.com/css?family=Oswald:400,300" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="http://beta.images.theglobeandmail.com/media/www/css/global.fonts.css">
 				
-		
-<!-- Ad units -->
-<!-- Start: GPT Sync -->
-<script type='text/javascript'>
-	var gptadslots=[];
-	(function(){
-		var useSSL = 'https:' == document.location.protocol;
-		var src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
-		document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
-	})();
+		<script type="text/javascript">
+var adv_AC="";
+var adv_ai=1;
+var adv_DblD="http://ad.doubleclick.net";
+adv_site="theglobeandmail.com";
+var adv_aSize="";
+adv_aTl="";
+var nc="";
+
+function fnTktWP(aU,aW,aH,aTl,aTp,aId,id){
+  if(aId==null){aId=""};
+    adv_aSize=aW+"x"+aH;
+    adv_aTl=adv_ai;adv_ai=adv_ai+1;
+
+  if(aH==50){
+    adv_site="mob.tgam.mobi";
+    /* test multi size flex may not be possible with AJAX || adv_aSize=adv_aSize+="300x250,3x3"; */
+  }
+
+  /* custom olympics wordpress string */
+  adv_ACtbV=adv_DblD+'/adi/'+adv_site+'/sports/olympics/article;;ekw=canada;ekw=sochi2014;ekw=2014olympics;ekw=olympics;ptf=j;pv8=ud;pv7=ud;pv6=n;pv5=n;pv4=n;pv3=n;pv2=sochilive;pv1=n;pv0=n;mode=wp;loc=art;pgsb=n;adpg=olympics;pp2=article;pp1=olympics;pp0=sports;arena=sprt;arena=sports;arena=olympics;arena=homepage;arena=hockey;rgwl=n;rgpc=n;rgpz=n;rgdv=n;rgcg=0;rbx=0;cp0=olympics;ops=n;nc=;kw=n;pos=flex'+adv_aTl+';sz='+adv_aSize+';tile='+adv_aTl+';';
+
+  var adv_ajax_abc=Math.random()+"";adv_ajax_ord=adv_ajax_abc.substring(2,adv_ajax_abc.length);adv_AC=adv_ACtbV+';ord='+adv_ajax_ord+'?';
+  /*alert(adv_AC);*/
+
+  adv_AC_ajax_iframe='<iframe src="'+adv_AC+'" width="'+aW+'" height="'+aH+'" scrolling="no" frameborder="0" marginheight="0" marginwidth="0"></iframe>';
+  /* alert(adv_AC_ajax_iframe); */
+
+  /* CHOOSE 1 return value  || string SRC only */
+  //return(adv_AC);
+
+  /* adv_AC_ajax_iframe = iframe tags PLUS src value || enable this and disable return(adv_AC) if needed */
+  return(adv_AC_ajax_iframe);
+
+  adv_AC='';
+  adv_AC_ajax_iframe='';
+  adv_AC_stop=false;
+  aPs='';
+  sD=adv_site;
+
+}
 </script>
-<script type="text/javascript">
-var adId1 = 'div-gpt-ad-311805903592310440-1',
-	adId2 = 'div-gpt-ad-311805903592310440-2';
-		//Adslot 1 declaration
-		gptadslots[1]= googletag.defineSlot('/58/theglobeandmail.com/sports/olympics', [[728,90],[960,90]],adId1).setTargeting('ptf',['gpt']).setTargeting('mode',['wp']).setTargeting('adpg',['olympics']).setTargeting('arena',['olympics','sports']).setTargeting('pos',['ldbd']).setTargeting('loc',['n']).addService(googletag.pubads());
-		//Adslot 2 declaration
-		gptadslots[2]= googletag.defineSlot('/58/theglobeandmail.com/sports/olympics', [[300,250]],adId2).setTargeting('ptf',['gpt']).setTargeting('mode',['wp']).setTargeting('adpg',['olympics']).setTargeting('arena',['olympics','sports']).setTargeting('pos',['boxr']).setTargeting('loc',['n']).addService(googletag.pubads());
 
-function displayAds( call ) {
-	googletag.pubads().enableSingleRequest();
-	googletag.pubads().enableSyncRendering();
-	googletag.enableServices();
-	if ( call ) {
-		$('#' + adId2).append('<scrip' + 't>googletag.display(adId2)</scrip' + 't>');
-	}
-};
-
-displayAds(false);
-
-</script>
-<!-- End: GPT -->
 
 
 	</head>

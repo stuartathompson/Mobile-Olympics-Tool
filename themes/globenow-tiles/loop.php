@@ -93,16 +93,31 @@
 
 	<?php 
 		// Mobile ad
-		if($postCount==1){	?>
-		<!-- Beginning Sync AdSlot 2 for Ad unit theglobeandmail.com/sports/olympics ### size: [[300,250]]  -->
-		
-		<div class="ad-unit-square" id='div-gpt-ad-311805903592310440-2'>
-			<script type='text/javascript'>
-				googletag.display('div-gpt-ad-311805903592310440-2');
-			</script>
-		</div>
+		if($postCount==1){	
 
-		<!-- End AdSlot 2 -->
+			$isMobile = false;
+			if(function_exists('is_mobile')) $isMobile = is_mobile();
+			if($isMobile){
+			?>
+<div class="ad-unit-square">
+<div id="ad-unit-flex1AC"></div>
+<script type="text/javascript">
+/* mobi web */
+flex1AC=fnTktWP('a'+'1',300,50,1,'ajax',nc);
+document.getElementById('ad-unit-flex1AC').innerHTML = flex1AC;
+</script>	
+</div>
+			<?php } else { ?>
+	<div class="ad-unit-square">
+
+<div id="ad-unit-flex1AC"></div>
+<script type="text/javascript">
+flex1AC=fnTktWP('a'+'1',300,250,1,'ajax',nc);
+document.getElementById('ad-unit-flex1AC').innerHTML = flex1AC;
+</script>
+</div>
+			<?php } ?>
+
 		<?php }	?>
 
 	<?php $postCount++; ?>
