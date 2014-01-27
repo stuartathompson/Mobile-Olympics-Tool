@@ -200,4 +200,7 @@ user-select: none;
 		width:100%;
 		height:100%;
 	}
+	#filters-bar h3.filter-standalone-title{
+		margin: 15px 0 10px !important;
+	}
 }
