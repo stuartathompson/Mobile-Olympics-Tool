@@ -731,6 +731,7 @@ margin: 0 auto;
 	.globeabout-item .about-author img{
 		display: none;
 	}
+}
 /*------------------------------------*\
     BROWSERS
 \*------------------------------------*/
@@ -739,8 +740,6 @@ margin: 0 auto;
 /*------------------------------------*\
     IMAGES
 \*------------------------------------*/
-
-
 
 /*------------------------------------*\
 	TYPOGRAPHY
@@ -1009,12 +1008,12 @@ and (orientation : landscape) {
 
 
 /* iPad */
-@media only screen and (max-width:840px) and (min-width: 501px){
+@media only screen and (max-width:680px) {
 	#loop,#filters-bar,.sidebar,#new-alert-container,#mobile-header-wrapper,.topics{
 		width:100%;
 	}
 	.wrapper{
-		width:95%;
+		width:95% !important;
 	}
 	#search-box input{
 		width:70%;
