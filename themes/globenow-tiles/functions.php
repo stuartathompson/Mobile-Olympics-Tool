@@ -337,10 +337,9 @@ if($args = 'development'){
 <!-- Begin SiteCatalyst code -->
 <script type="text/javascript">
 var s_account = 'bellgmpgpsdev';
-// Change if production
 <?php 
 $isMobile = false;
-if(function_exists(is_mobile())) $isMobile=is_mobile();
+if(function_exists('is_mobile')) $isMobile=is_mobile();
 if($isMobile){
 ?>
 	if(window.location.href.search("http://olympics.") > -1){ s_acount = 'bellgmpmobileprod'; } else { s_acount = 'bellgmpmobiledev'; }
