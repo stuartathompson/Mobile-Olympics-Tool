@@ -109,7 +109,6 @@ jQuery('document').ready(function($){
 					$('#loop-wrapper').empty();
 					$('#loop article').remove();
 					$('#loop-wrapper').append(response);
-					window.displayAds( true );
 					// Re-add tooltip
 					if($('body').hasClass('desktop')){
 						$('.tags .tag').tooltip({
