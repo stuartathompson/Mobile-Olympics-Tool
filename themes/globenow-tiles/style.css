@@ -1133,6 +1133,9 @@ a img.aligncenter {
 		border:1px solid #999;
 		page-break-inside:avoid;
 	}
+	blockquote p{
+		margin-top: 0;
+	}
 	thead {
 		display:table-header-group;
 	}
