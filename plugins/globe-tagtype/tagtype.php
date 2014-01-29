@@ -62,7 +62,6 @@ function tagtype_inner_custom_box( $post ) {
 		"Speed skating"
 	);
 
-	echo '<form id="posttype-newtag">';
     $tags = wp_get_post_tags( $post->ID );
 	$addedTags = array();
 	foreach($acceptedFilters as $tag){
@@ -85,21 +84,12 @@ function tagtype_inner_custom_box( $post ) {
 			echo '<div style="padding:5px 0;border-bottom:1px solid #ececec;"><label><input checked type="checkbox" id="' .  str_replace(' ','-',$t->name) . '" value="' . strtolower(str_replace(' ','-',$t->name)) .'" name="tagtype-tags[]" />' . ucwords($t->name) . '</label></div>';
 		}
 	}
-	echo '<div id="tagtype-addnew" style="padding:5px 0;border-bottom:1px solid #ececec;"><input type="input" id="tagtype-input" class="newtag form-input-tip" size="16" name="posttag-user-submitted"/> <input type="button" id="tagtype-button" class="button tagadd" value="Add"></div>';
+	echo '<div id="tagtype-addnew" style="padding:5px 0;border-bottom:1px solid #ececec;"><input type="input" id="tagtype-input" class="newtag form-input-tip" size="16" name="posttag-user-submitted"/> <input type="button" id="tagtype-button" class="button tagadd" value="Add" /></div>';
 	
-	echo '<div style="padding-top:15px;display:block;width:100%;"></div><input type="submit" value="Submit" name="tagtype-save" id="tagtype-save-post" value="Save" class="button">';
+	echo '<div style="padding-top:15px;display:block;width:100%;"></div><input type="submit" value="Submit" name="tagtype-save" id="tagtype-save-post" value="Save" class="button" />';
 
-	echo '</form>';
-  	/*
-$i = 0;
-  	foreach($tagtypes as $tagtype){
-  		$selected = '';
-  		if($tagtype == esc_attr($value)) $selected = 'checked';
-  		if($tagtype == 'newsarticle' && esc_attr($value) == '') $selected = 'checked';
-  		echo '<p><input type="radio" name="tagtype_newfield" id="tagtype_newfield_' . $tagtype . '" value="' . $tagtype . '" ' . $selected . '> <label for="tagtype_newfield_' . $tagtype . '">' . $tagtypeNames[$i] . '</label></p>';
-  		$i++;
-  	}
-*/
+	echo '<div style="float:left;clear:both;width:100%;height:2px"></div>';
+	
   ?>
 
 <?php
@@ -155,17 +145,7 @@ add_action( 'save_post', 'tagtype_save_postdata' );
 
 
 /* Options Page */
-
-add_action('admin_menu', 'tagtype_admin_menu');
 add_action( 'admin_enqueue_scripts', 'tagtype_admin_scripts' );
-
-function tagtype_admin_menu(){
-
-	// Create top-level menu
-	add_menu_page('Post tags','Post tags', 'administrator', __FILE__, 'tagtype_settings_page');
-	
-	//add_action('admin_init','register_tagtype_settings');
-}
 
 function register_tagtype_settings() {
 	//register our settings
