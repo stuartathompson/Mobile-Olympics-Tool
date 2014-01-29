@@ -8,20 +8,10 @@
    Author URI: http://www.theglobeandmail.com
    License: GPL2
    */
-<<<<<<< HEAD
-=======
-if(is_home()){
->>>>>>> d1e5573c7467ac8770e4a49e60dda5a6c9370ca0
 remove_shortcode('gallery');
-add_shortcode('gallery','globe_hijack_gallery');
+add_shortcode('gallery','globe_gallery_regular');
 add_action( 'wp_enqueue_scripts', 'globe_gallery_script' );
-}
 
-function globe_hijack_gallery($args){
-	if (strpos($_SERVER['REQUEST_URI'],'api/get_posts') == '') {
-		globe_gallery_regular($args);
-	}
-}
 function globe_gallery_script(){
 	wp_enqueue_style('globe_gallery',plugin_dir_url( __FILE__ ) . 'globegallery.css');
 	wp_enqueue_script('globe_gallery',plugin_dir_url( __FILE__ ) . 'globegallery.js',array( 'jquery' ));
@@ -73,11 +63,8 @@ function globe_gallery($atts){
 }
 
 function globe_gallery_regular($atts){
-<<<<<<< HEAD
+if (strpos($_SERVER['REQUEST_URI'],'api/get_posts') == '') {
 if(is_home() || is_single() || is_front_page()){
-=======
-if(is_home() || is_single()){
->>>>>>> d1e5573c7467ac8770e4a49e60dda5a6c9370ca0
 	$args = array(
 		'post_type' => 'attachment',
 		'post_status' => 'inherit',
@@ -93,36 +80,30 @@ if(is_home() || is_single()){
 	);
 	
 	$images = get_posts($args);
-?>
-	<div class="gi-gallery">
-		<div class="gi-gallery-sprite"></div>
-		<div class="gi-gallery-nav">
-			<div class="gi-gallery-num"><span>1</span> of <?php echo count($images); ?></div>
-			<a class="next" href="#next">Next</a>
-			<a class="prev" href="#Prev">Prev</a>
-		</div>
-		<div class="gi-gallery-images">
-<?php
+	$output = '';
+	$output .= '<div class="gi-gallery"><div class="gi-gallery-sprite"></div><div class="gi-gallery-nav"><div class="gi-gallery-num"><span>1</span> of ' . count($images) . '</div><a class="next" href="#next">Next</a><a class="prev" href="#Prev">Prev</a></div><div class="gi-gallery-images">';
+
 	$i=0;
 	foreach($images as $image){
 		if($i==0){
 		// Show image
 		$imageSrc = wp_get_attachment_image_src( $image->ID, 'large' );
-		echo "<div class='wp-caption gi-gallery-image gallery-icon showing'><div class='gi-gallery-image-container'>" . '<a href="' . $imageSrc[0] . '">' . wp_get_attachment_image($image->ID,'large') . "</a></div>";
-		if(strlen($image->post_excerpt) > 0) echo "<p class='wp-caption-text'>" . $image->post_excerpt . "</p>";
-		echo "</div>";
+		$output .= "<div class='wp-caption gi-gallery-image gallery-icon showing'><div class='gi-gallery-image-container'>" . '<a href="' . $imageSrc[0] . '">' . wp_get_attachment_image($image->ID,'large') . "</a></div>";
+		if(strlen($image->post_excerpt) > 0) $output .= "<p class='wp-caption-text'>" . $image->post_excerpt . "</p>";
+		$output .= "</div>";
 		} else  {
 		// Leave source blank
 		$imageSrc = wp_get_attachment_image_src( $image->ID, 'large' );
-		echo "<div class='wp-caption gi-gallery-image gallery-icon'><div class='gi-gallery-image-container'>" . '<a href="' . $imageSrc[0] . '"><img src="" data-image-src="' . $imageSrc[0] . "\" alt=\"\" /></a></div>";
-		if(strlen($image->post_excerpt) > 0) echo "<p class='wp-caption-text'>" . $image->post_excerpt . "</p>";
-		echo "</div>";
+		$output .= "<div class='wp-caption gi-gallery-image gallery-icon'><div class='gi-gallery-image-container'>" . '<a href="' . $imageSrc[0] . '"><img src="" data-image-src="' . $imageSrc[0] . "\" alt=\"\" /></a></div>";
+		if(strlen($image->post_excerpt) > 0) $output .= "<p class='wp-caption-text'>" . $image->post_excerpt . "</p>";
+		$output .= "</div>";
 		}
 		$i++; 
 	}	
-?>
-		</div>
-	</div>
-<?php
+	
+	$output .= '</div></div>';
+	
+	return $output;
 }
+	}
 }
