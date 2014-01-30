@@ -35,10 +35,6 @@ $(function() {
 		$('.tags .tag').tooltip({
 			title:'Add tag to filters'
 		});
-		$('#menu-about-button').tooltip({
-			title:'About this site',
-			placement:'left'
-		})
 	}
 	/* - Last Seen Post - Cookie: Storing the latest post and changing colours - */
 	if($('body').hasClass('home')){
