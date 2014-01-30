@@ -1,6 +1,6 @@
 jQuery('document').ready(function(){
 function showSmallerVersion(){
-	$('.reutersOlympicsWidget tr.medalRow').each(function(i,d){
+	$('.globe-medals-widget .reutersOlympicsWidget tr.medalRow').each(function(i,d){
 		if(i>2 && $(d).find('.label span').text() != 'CAN') $(d).hide();
 		if($(d).find('.label span').text() == 'CAN'){
 			var nums = $(d).find('.number');
@@ -12,22 +12,20 @@ function showSmallerVersion(){
 	$('.elongation').text('⊞ Show All');
 	$('.subview').addClass('constrainHeight');
 }
+if($('.reutersOlympicsWidget').parents('.globe-medals-widget')){
 var t = setInterval(function(){
-	if($('.reutersOlympicsWidget tr.medalRow').length > 0){
+	if($('.globe-medals-widget .reutersOlympicsWidget tr.medalRow').length > 0){
 		showSmallerVersion();
 		$('.globe-medals-table').show();
 		clearInterval(t);
 	}
 },100);
-$('body,html').on('click','.elongation',function(){
-	if($('.resultsSubview2').hasClass('constrainHeight')){
-		showSmallerVersion();
-	} else {
-		$('.reutersOlympicsWidget tr.medalRow').show();
-	}
+}
+$('body,html').on('click','.globe-medals-widget .elongation',function(){
+	window.location.href = window.location.href.split('?')[0].split('#')[0] + '/medals';
 	return false;
 })
-$('.globe-medals-nav').click(function(){
+$('.globe-medals-widget .globe-medals-nav').click(function(){
 	if($(this).hasClass('selected')){
 		$('.globe-medals-plusminus').text('+ Show top medal counts');
 		$('.reutersOlympicsWidget,.medalCountWidget').slideUp(function(){

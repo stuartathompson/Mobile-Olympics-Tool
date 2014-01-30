@@ -52,3 +52,32 @@ function medals_widget_create_front_end(){
 	
 <?php 
 }
+
+function medals_widget_create_front_end_full(){
+?>
+	<!-- place these with the rest of your CSS & JS -->
+	<script>
+		window.REUTERS_OLYMPICS_DISCIPLINE_URL = "https://olyadmin.reuters.com/sports/:discipline";
+		window.REUTERS_OLYMPICS_EVENT_URL = "https://olyadmin.reuters.com/event/:event";
+		window.REUTERS_OLYMPICS_ATHLETE_URL = "https://olyadmin.reuters.com/athlete/:athlete";
+		window.REUTERS_OLYMPICS_COUNTRY_URL = "https://olyadmin.reuters.com/team/:country";
+		window.REUTERS_OLYMPICS_HOCKEY_EVENT_URL = "";
+	</script>
+	<script src="http://oly2014-prod.s3.amazonaws.com/compiled/js/reutersOlympics.min.js"></script>
+	<script src="http://oly2014-prod.s3.amazonaws.com/dict/en-gb_globeandmail.com.js"></script>
+	<link href="http://oly2014-prod.s3.amazonaws.com/compiled/css/app.min.css" rel="stylesheet"/>
+
+<!-- place this in your page where you want the module to appear -->
+	<div id="tr_results_connection_076a560ba4f3"></div>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var tr_results_connection_076a560ba4f3 = new Reuters.Olympics.View.ResultsConnection({
+			"highlight": "CAN",
+			"el": "#tr_results_connection_076a560ba4f3",
+			"sort": "total"
+		});
+	});
+	</script>
+	
+<?php 
+}

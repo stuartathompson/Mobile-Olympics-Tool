@@ -1,12 +1,13 @@
-.globe-medals-table{
+/* Small Nav version */
+.globe-medals-widget .globe-medals-table{
 	display:none;
 }
-.globe-medals-widget{
+.globe-medals-widget .globe-medals-widget{
 	float:left;
 	width:100%;
 	overflow: hidden;
 }
-.globe-medals-nav{
+.globe-medals-widget .globe-medals-nav{
 	font-family:"OpenSans",Arial,sans-serif;
 	font-size:10px;
 	color:#d7d7d7;
@@ -18,10 +19,10 @@
 	clear:both;
 	cursor: pointer;
 }
-.globe-medals-nav:hover,.globe-medals-nav.selected{
+.globe-medals-widget .globe-medals-nav:hover,.globe-medals-widget .globe-medals-nav.selected{
 	color:white;
 }
-.globe-medals-nav td{
+.globe-medals-widget .globe-medals-nav td{
 	vertical-align: middle;
 	padding-right:4px;
 }
@@ -33,40 +34,43 @@
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 }
-.globe-medals-gold span, .globe-medals-silver span, .globe-medals-bronze span{
+.globe-medals-widget .globe-medals-gold span, .globe-medals-widget .globe-medals-silver span, .globe-medals-widget .globe-medals-bronze span{
 	float:left;
 	margin:2px 2px;
 	font-weight: normal;
 }
-.globe-medals-gold .globe-medals-medal{
+.globe-medals-widget .globe-medals-gold .globe-medals-medal{
 	background-color:#f3d100;
 	margin-top:4px;
 }
-.globe-medals-silver .globe-medals-medal{
+.globe-medals-widget .globe-medals-silver .globe-medals-medal{
 	background-color:#9aa4ac;
 	margin-top:4px;
 }
-.globe-medals-bronze .globe-medals-medal{
+.globe-medals-widget .globe-medals-bronze .globe-medals-medal{
 	background-color:#9d5e1a;
 	margin-top:4px;
 }
-.globe-medals-count{
+.globe-medals-widget .globe-medals-count{
 	float:left;
 	margin-top: 2px;
 }
-.globe-medals-plusminus{
+.globe-medals-widget .globe-medals-plusminus{
 	float:right;
 	margin: 5px;
 	text-transform: uppercase;
 }
-.reutersOlympicsWidget{
+.globe-medals-widget .reutersOlympicsWidget{
 	display:none;
 	border-right: 1px solid #b0b0b0;
 	border-left: 1px solid #b0b0b0;
 	margin-top: -1px !important;
-	background-color: white;
-	font-size: 16px !important;
 	float:left;
+}
+.reutersOlympicsWidget{
+	background-color: white;
+	font-size: 12px !important;
+	color:#333 !important;
 	width:100%;
 	margin-bottom:0 !important;
 }
@@ -76,7 +80,7 @@
 .reutersOlympicsWidget .label{
 	font-size:11px !important;
 }
-.reutersOlympicsWidget .tabs{
+.globe-medals-widget .reutersOlympicsWidget .tabs{
 	display:none;
 }
 html body section.reutersOlympicsWidget article, html body section.reutersOlympicsWidget aside, html body section.reutersOlympicsWidget details, html body section.reutersOlympicsWidget figcaption, html body section.reutersOlympicsWidget figure, html body section.reutersOlympicsWidget footer, html body section.reutersOlympicsWidget header, html body section.reutersOlympicsWidget hgroup, html body section.reutersOlympicsWidget menu, html body section.reutersOlympicsWidget nav, html body section.reutersOlympicsWidget section {
@@ -86,10 +90,10 @@ html body section.reutersOlympicsWidget article, html body section.reutersOlympi
 .reutersOlympicsWidget .totalHeader{
 	font-size: 12px !important;
 }
-.reutersOlympicsWidget .resultsSubview{
+.globe-medals-widget .reutersOlympicsWidget .resultsSubview{
 	display:none;
 }
-.reutersOlympicsWidget .resultsSubview2{
+.globe-medals-widget .reutersOlympicsWidget .resultsSubview2{
 	display:block !important;
 }
 .reutersOlympicsWidget .widgetShowMore{
@@ -107,18 +111,35 @@ html body section.reutersOlympicsWidget.medalCountWidget section.widgetBody tabl
 	-moz-border-radius:50%;
 	-webkit-border-radius:50%;
 }
-.retuersOlympicsWidget .emptyMessage{
+.emptyMessage{
 	margin-top:10px;
 }
-.reutersOlympicsWidget .totalHeader{
+.totalHeader{
 	padding-right: 10px !important;
 	border-top:0 !important;
 }
 html body section.reutersOlympicsWidget.medalCountWidget section.widgetBody table.medalCount tr.headerRow td.number.totalHeader span {
 	font-size: 12px !important;
 }
-*/
-
+html body #page-medals section.reutersOlympicsWidget section {
+	float: none !important;
+}
+#page-medals .rcWidgetShowMore{
+	display:none;	
+}
+#page-medals .tabs{
+	display:none;
+}
+#page-medals .resultsSubview{
+	display:none;
+}
+#page-medals resultsSubview2, html body #page-medals section.reutersOlympicsWidget.scheduleWidget .inactive {
+	display:block !important;
+}
+html body #page-medals section.reutersOlympicsWidget.scheduleWidget .constrainHeight {
+	max-height:9999px;
+	height:auto;
+}
 /* Smartphones -------------------------------*/
 @media screen and (max-width: 480px) {
 	.globe-medals-widget{
