@@ -89,7 +89,7 @@ jQuery('document').ready(function($){
 		// If checking big-moments with at least one other tag, use the highlights query in ajaxtags.php
 		if(jQuery.inArray('big-moments',curFilters) > -1 && curFilters.length > 1) action = 'ajax_tags_loop_highlights';
 		$.each(curFilters,function(i,d){
-			query += d.trim();
+			query += $.trim(d);
 			if(i!=curFilters.length-1) query += ',';
 		});
 		if(curFilters.length == 0) query = '';
