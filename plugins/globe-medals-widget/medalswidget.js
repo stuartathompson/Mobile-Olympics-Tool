@@ -29,13 +29,13 @@ $('body,html').on('click','.elongation',function(){
 })
 $('.globe-medals-nav').click(function(){
 	if($(this).hasClass('selected')){
-		$('.globe-medals-plusminus').text('+ Show full medal count');
+		$('.globe-medals-plusminus').text('+ Show top medal counts');
 		$('.reutersOlympicsWidget,.medalCountWidget').slideUp(function(){
 			showSmallerVersion();
 		});
 	} else {
 		$('.reutersOlympicsWidget,.medalCountWidget').slideDown();
-		$('.globe-medals-plusminus').text('- Show full medal count');
+		$('.globe-medals-plusminus').text('- Hide top medal counts');
 	}
 	$(this).toggleClass('selected');
 })

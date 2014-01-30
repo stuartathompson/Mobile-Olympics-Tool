@@ -1,6 +1,11 @@
 .globe-medals-table{
 	display:none;
 }
+.globe-medals-widget{
+	float:left;
+	width:100%;
+	overflow: hidden;
+}
 .globe-medals-nav{
 	font-family:"OpenSans",Arial,sans-serif;
 	font-size:10px;
@@ -61,6 +66,8 @@
 	margin-top: -1px !important;
 	background-color: white;
 	font-size: 16px !important;
+	float:left;
+	width:100%;
 	margin-bottom:0 !important;
 }
 .reutersOlympicsWidget .number{
@@ -71,6 +78,10 @@
 }
 .reutersOlympicsWidget .tabs{
 	display:none;
+}
+html body section.reutersOlympicsWidget article, html body section.reutersOlympicsWidget aside, html body section.reutersOlympicsWidget details, html body section.reutersOlympicsWidget figcaption, html body section.reutersOlympicsWidget figure, html body section.reutersOlympicsWidget footer, html body section.reutersOlympicsWidget header, html body section.reutersOlympicsWidget hgroup, html body section.reutersOlympicsWidget menu, html body section.reutersOlympicsWidget nav, html body section.reutersOlympicsWidget section {
+	float:left !important;
+	width:100% !important;
 }
 .reutersOlympicsWidget .totalHeader{
 	font-size: 12px !important;
@@ -87,6 +98,26 @@
 .reutersOlympicsWidget span.medal {
 	padding:0 !important;
 }
+html body section.reutersOlympicsWidget.scheduleWidget section.rcWidgetShowMore button.elongation {
+	font-size: 12px !important;
+}
+html body section.reutersOlympicsWidget.medalCountWidget section.widgetBody table.medalCount tr.headerRow td span.medal.gold,html body section.reutersOlympicsWidget.medalCountWidget section.widgetBody table.medalCount tr.headerRow td span.medal.silver,html body section.reutersOlympicsWidget.medalCountWidget section.widgetBody table.medalCount tr.headerRow td span.medal.bronze {
+	width:13px !important;
+	height:13px !important;
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%;
+}
+.retuersOlympicsWidget .emptyMessage{
+	margin-top:10px;
+}
+.reutersOlympicsWidget .totalHeader{
+	padding-right: 10px !important;
+	border-top:0 !important;
+}
+html body section.reutersOlympicsWidget.medalCountWidget section.widgetBody table.medalCount tr.headerRow td.number.totalHeader span {
+	font-size: 12px !important;
+}
+*/
 
 /* Smartphones -------------------------------*/
 @media screen and (max-width: 480px) {
