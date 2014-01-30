@@ -322,6 +322,7 @@ background: url("http://beta.images.theglobeandmail.com/static/ROB/interactives/
 	right: 6px;
 	bottom: -25px;
 	background-color: white;
+	z-index: 9999;
 }
 .share-link input{
 	border: 1px solid #E2E2E2;
