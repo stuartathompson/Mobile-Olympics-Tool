@@ -26,6 +26,8 @@ Phillip Crawley, Publisher
 			g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 			s.parentNode.insertBefore(g,s)})(document,'script');
 		</script>
-	
+		<!-- VR -->
+		<script>var _vrq=_vrq||[];_vrq.push(['id',65]);_vrq.push(['automate',true]);_vrq.push(['track',function(){}]);(function(d,a){var s=d.createElement(a),x=d.getElementsByTagName(a)[0];s.async=true;s.src='http://a.visualrevenue.com/vrs.js';x.parentNode.insertBefore(s,x);})(document,'script');</script>
+
 	</body>
 </html>
