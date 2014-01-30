@@ -117,7 +117,6 @@ $(function() {
 	// Kick off one resize to fix all videos on page load
 	}).resize();
 	
-	
 	/* - Search button - */
 	$('#menu-search-button').click(function(){
 		if(!$(this).hasClass('selected')){
