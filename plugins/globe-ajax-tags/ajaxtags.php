@@ -70,7 +70,7 @@ function ajax_tags_create_front_end(){
 		<h3 id="home-nav" class="filter-standalone-title"><a href="<?php bloginfo('url'); ?>"><span style="color:#d60000">Home</span> » Sochi Live</a></h3>
 	<?php } ?>
 	<div id="filters" class="filters">
-		<?php if(!is_single() && !is_search() && !is_page('about')){ ?>
+		<?php if(!is_single() && !is_search() && !is_page()){ ?>
 		<div class="select">
 			<select id="filterSelect" class="dropdown field" autocomplete="off">
 				<option value="">Filter sports</option>

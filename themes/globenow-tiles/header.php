@@ -104,7 +104,7 @@ function fnTktWP(aU,aW,aH,aTl,aTp,aId,id){
 			</a>
 		</div>
 
-		<?php if(function_exists('medals_widget_create_front_end') && !is_page('about')) medals_widget_create_front_end(); ?>
+		<?php if(function_exists('medals_widget_create_front_end') && !is_page()) medals_widget_create_front_end(); ?>
 
 
 		<?php 
