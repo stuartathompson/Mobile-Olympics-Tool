@@ -19,7 +19,7 @@
 		<link rel="apple-touch-icon" sizes="76x76" href="http://beta.images.theglobeandmail.com/static/mobile/sports/sochi-live-icons/touch-icon-ipad.png">
 		<link rel="apple-touch-icon" sizes="120x120" href="http://beta.images.theglobeandmail.com/static/mobile/sports/sochi-live-icons/touch-icon-iphone-retina.png">
 		<link rel="apple-touch-icon" sizes="152x152" href="http://beta.images.theglobeandmail.com/static/mobile/sports/sochi-live-icons/touch-icon-ipad-retina.png">
-			
+		<meta name="apple-mobile-web-app-title" content="Sochi Live"/>	
 		<!-- css + javascript -->
 		<?php wp_head(); ?>
 		<script>
