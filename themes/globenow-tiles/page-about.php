@@ -35,6 +35,8 @@
 			<img width="290px" src="<?php bloginfo('template_url'); ?>/img/globeabout-assets/phone2.png" />
 		</div>
 	</article>
+
+
 	
 	<article id="globeabout-alert" class="globeabout-item">
 		<div class="globeabout-right">
@@ -44,6 +46,16 @@
 		</div>
 				<div class="globeabout-left" style="margin-left:50px;width:40%">
 			<img src="<?php bloginfo('template_url'); ?>/img/globeabout-assets/phone3.png?1" />
+		</div>
+	</article>
+
+			<article id="globeabout-alert" class="globeabout-item">
+		<div class="globeabout-left" style="margin-top:30px;margin-left:30px">
+			<h2>Add us to your home screen</h2>
+			<p>Keep our site a tap away by using the "add to Home Screen" option on your smartphone.</p>
+		</div>
+				<div class="globeabout-right" style="margin:30px 10px 0px 10px;width:40%">
+			<img src="http://beta.images.theglobeandmail.com/static/mobile/sports/sochi-live-icons/sochi-bookmark.gif" />
 		</div>
 	</article>
 
