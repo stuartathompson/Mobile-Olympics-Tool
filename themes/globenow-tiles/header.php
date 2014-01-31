@@ -15,10 +15,10 @@
 		
 		<!-- icons -->
 		<link rel="shortcut icon" type="image/x-icon" href="http://beta.images.theglobeandmail.com/media/www/images/flag/favicon.ico">
-		<link rel="apple-touch-icon-precomposed" media="screen and (resolution: 163dpi)" href="http://beta.images.theglobeandmail.com/media/mobile/images/iphone.icon.png">
-		<link rel="apple-touch-icon-precomposed" media="screen and (resolution: 132dpi)" href="http://beta.images.theglobeandmail.com/media/mobile/images/ipad.icon.png">
-		<link rel="apple-touch-icon-precomposed" media="screen and (resolution: 326dpi)" href="http://beta.images.theglobeandmail.com/media/mobile/images/iphone.icon.highres.png">
-		<!-- <link rel="stylesheet" type="text/css" media="screen" href="http://beta.images.theglobeandmail.com/bundle-css/gzip_1716237129/www-css-core-composite-section.css" /> -->
+		<link rel="apple-touch-icon" href="http://beta.images.theglobeandmail.com/static/mobile/sports/sochi-live-icons/touch-icon-iphone.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="http://beta.images.theglobeandmail.com/static/mobile/sports/sochi-live-icons/touch-icon-ipad.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="http://beta.images.theglobeandmail.com/static/mobile/sports/sochi-live-icons/touch-icon-iphone-retina.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="http://beta.images.theglobeandmail.com/static/mobile/sports/sochi-live-icons/touch-icon-ipad-retina.png">
 			
 		<!-- css + javascript -->
 		<?php wp_head(); ?>
