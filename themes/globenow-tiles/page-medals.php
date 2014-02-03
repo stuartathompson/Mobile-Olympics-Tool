@@ -7,8 +7,9 @@
 	<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 	
 	<article class="globeabout-lede">
-		<h1><img src="<?php bloginfo('template_url'); ?>/img/sochilogo.png" /></h1>
-		<p>Keep track of medal counts for Canada and other countries throughout the games using this chart. It will be updated live every time a medal is awarded.</p>
+<!-- 		<h1><img src="<?php bloginfo('template_url'); ?>/img/sochilogo.png" /></h1> -->
+		<p>Keep track of Canada's place in the medal rankings throughout the Games.</p>
+		<p>This table will be updated live every time a medal is awarded.</p>
 	</article>
 	
 	<article id="page-medals">
