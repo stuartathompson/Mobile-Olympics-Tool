@@ -45,9 +45,9 @@ function tagtype_inner_custom_box( $post ) {
   <?php
   	// Sports for use in filters
 	$acceptedFilters = array(
-		"Alpine skiing",
 		//"Biathlon",
 		"Bobsleigh",
+		"Alpine skiing",
 		//"Cross-country skiing",
 		"Curling",
 		"Figure skating",
@@ -61,27 +61,59 @@ function tagtype_inner_custom_box( $post ) {
 		"Snowboarding",
 		"Speed skating"
 	);
+	
+	echo '<div style="color: #b0b0b0;font-size:11px;text-transform:uppercase;text-align:right;">Use as post label?</div>';
 
     $tags = wp_get_post_tags( $post->ID );
+    $showfirst = get_post_meta($post->ID, 'tagtype-showfirst', true);
+    $showfirst = $showfirst[0];
 	$addedTags = array();
+	// Show accepted filter tags
 	foreach($acceptedFilters as $tag){
 		$selected = '';
+		$showfirstSelected = '';
 		foreach($tags as $t){
 			if(str_replace(' ','-',$t->name) == strtolower(str_replace(' ','-',$tag))) {
 				$selected = 'checked';
 				array_push($addedTags,$tag);
 			}
+
+			if(strtolower(str_replace(' ','-',$tag)) == $showfirst) {
+				$showfirstSelected = 'checked="checked"';
+			}
+
 		}
-		echo '<div style="padding:5px 0;border-bottom:1px solid #ececec;"><label><input ' . $selected . ' type="checkbox" id="' .  str_replace(' ','-',$tag) . '" value="' . strtolower(str_replace(' ','-',$tag)) .'" name="tagtype-tags[]" />' . ucwords($tag) . '</label></div>';
+		echo '<div style="padding:5px 0;border-bottom:1px solid #ececec;"><label><input ' . $selected . ' type="checkbox" id="' .  str_replace(' ','-',$tag) . '" value="' . strtolower(str_replace(' ','-',$tag)) .'" name="tagtype-tags[]" />' . ucwords($tag) . '<input type="radio" value="' . strtolower(str_replace(' ','-',$tag)) . '" name="tagtype-showfirst[]" style="float:right;margin-top: 3px;" ' . $showfirstSelected . '/></label></div>';
 	}
-	echo '<strong style="padding-top:15px;display:block;">Other</strong><div style="padding:5px 0;border-bottom:1px solid #ececec;"><label><input type="checkbox" id="big-moments" value="big-moments" name="tagtype-tags[]" />Big Moments</label></div>';
+	
+	// Look for and show big moments tag
+	$selected = '';
+	$showfirstSelected = '';
+	foreach($tags as $t){
+			if(ucwords($t->name) == 'Big Moments') {
+				$selected = 'checked';
+				array_push($addedTags,$tag);
+			}
+
+			if(strtolower(str_replace(' ','-',$tag)) == $showfirst) {
+				$showfirstSelected = 'checked="checked"';
+			}
+		}
+	echo '<strong style="padding-top:15px;display:block;">Other</strong><div style="padding:5px 0;border-bottom:1px solid #ececec;"><label><input ' . $selected . '  type="checkbox" id="big-moments" value="big-moments" name="tagtype-tags[]" />Big Moments<input type="radio" value="' . strtolower(str_replace(' ','-',$tag)) . '" name="tagtype-showfirst[]" style="float:right;margin-top: 3px;" ' . $showfirstSelected . '/></label></div>';
+
+	// Show all remaining tags
 	foreach($tags as $t){
 		$found = true;
+		$showfirstSelected = '';
 		foreach($addedTags as $tag){
+			// Hide if already shown
 			if(str_replace(' ','-',$t->name) == strtolower(str_replace(' ','-',$tag))) $found = false;
 		}
-		if($found){
-			echo '<div style="padding:5px 0;border-bottom:1px solid #ececec;"><label><input checked type="checkbox" id="' .  str_replace(' ','-',$t->name) . '" value="' . strtolower(str_replace(' ','-',$t->name)) .'" name="tagtype-tags[]" />' . ucwords($t->name) . '</label></div>';
+		if(strtolower(str_replace(' ','-',$t->name)) == $showfirst) {
+			$showfirstSelected = 'checked="checked"';
+		}
+		if($found && ucwords($t->name) != 'Big Moments'){
+			echo '<div style="padding:5px 0;border-bottom:1px solid #ececec;"><label><input checked type="checkbox" id="' .  str_replace(' ','-',$t->name) . '" value="' . strtolower(str_replace(' ','-',$t->name)) .'" name="tagtype-tags[]" />' . ucwords($t->name) . '<input type="radio" value="' . strtolower(str_replace(' ','-',$t->name)) . '" name="tagtype-showfirst[]" style="float:right;margin-top: 3px;" ' . $showfirstSelected . '/></label></div>';
 		}
 	}
 	echo '<div id="tagtype-addnew" style="padding:5px 0;border-bottom:1px solid #ececec;"><input type="input" id="tagtype-input" class="newtag form-input-tip" size="16" name="posttag-user-submitted"/> <input type="button" id="tagtype-button" class="button tagadd" value="Add" /></div>';
@@ -138,6 +170,9 @@ function tagtype_save_postdata( $post_id ) {
   // Sanitize user input.
   if(isset($_POST['tagtype-tags']) && is_array($_POST['tagtype-tags']) ){
   	wp_set_post_terms( $post_id, $_POST['tagtype-tags'], 'post_tag' );
+  }
+  if(isset($_POST['tagtype-showfirst']) && is_array($_POST['tagtype-showfirst']) ){
+  	update_post_meta($post_id, 'tagtype-showfirst', $_POST['tagtype-showfirst']);
   }
   
 }
