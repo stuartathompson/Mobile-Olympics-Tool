@@ -192,7 +192,7 @@ function ajax_tags_loop() {
  	$nonce = $_POST['ajaxTagNonce'];
  		
  	if(!wp_verify_nonce($nonce,'globe_ajax_tags_nonce'))
- 		die('Not a valid request ' . $nonce);
+ 		die('<article>Sorry, an error occurred. Please refresh the page and try again.</article>.');
 
  	wp_reset_postdata();
  	
