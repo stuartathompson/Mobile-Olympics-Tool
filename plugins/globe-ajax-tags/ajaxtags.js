@@ -49,7 +49,7 @@ jQuery('document').ready(function($){
 	//bind filters select
 	$filterSel.on("change", function( event ) {
 		var filter = this.value;
-		addFilters(filter,filter);
+		addFilters(filter.replace(/ /g,'-'),filter.replace(/-/g,' '));
 	});
 
 	//bind tag item btn, except on single article pages
@@ -60,7 +60,7 @@ jQuery('document').ready(function($){
 		}
 		var filter = $(this).data('filter'),
 			filterLabel = $(this).text();
-		addFilters(filter,filterLabel);
+		addFilters(filter.replace(/ /g,'-'),filterLabel);
 		return false;
 	});
 	}
@@ -147,7 +147,7 @@ jQuery('document').ready(function($){
 				//add class to mobile tag
 				$('.ajaxtags-option:contains("' + label + '")').addClass('ajaxtags-on');
 				//disable this filter in dropdown
-				$filterSel.find('option[value="' + label + '"]').prop("disabled", true);
+				$filterSel.find('option[value="' + tag + '"]').prop("disabled", true);
 				//set dropdown to first option
 				$filterSel.find('option')[0].selected = true;				
 				//init choose filters
@@ -297,7 +297,7 @@ jQuery('document').ready(function($){
 			$filtersCont.find('span[data-filter="' + $(this).text() + '"]').fadeOut();
 		} else {
 			var filter = $(this).text();
-			addFilters(filter,filter);
+			addFilters(filter.replace(/ /g,'-'),filter);
 		}
 	});
 	

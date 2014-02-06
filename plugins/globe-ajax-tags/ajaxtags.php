@@ -79,9 +79,9 @@ function ajax_tags_create_front_end(){
 				foreach($acceptedFilters as $filter){
 					// Check if tag already selected
 					$disabled = '';
-					if(in_array($filter,$tagArr)) $disabled = ' disabled';
+					if(in_array(strtolower(str_replace(' ','-',$filter)),$tagArr)) $disabled = ' disabled';
 					// Show option in dropdown
-					echo "<option value='" . $filter . "' " . $disabled . ">" . $filter . "</option>";
+					echo "<option value='" . strtolower(str_replace(' ','-',$filter)) . "' " . $disabled . ">" . $filter . "</option>";
 				}
 			?>
 			</select>
