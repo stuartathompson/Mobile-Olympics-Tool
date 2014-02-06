@@ -18,4 +18,12 @@ $('#tagtype-button').click(function(){
 	addTagItem();
 	return false;
 })
+var checkedCount = 0;
+$('#tagtype_sectionid input[type="checkbox"]').each(function(){
+	if($(this).prop('checked')) checkedCount++;
+})
+$('#tagtype_sectionid input[type="checkbox"]').click(function(){
+	if(checkedCount == 0) $(this).parent().find('input[type="radio"]').prop('checked',true);
+	checkedCount++;
+});
 });
