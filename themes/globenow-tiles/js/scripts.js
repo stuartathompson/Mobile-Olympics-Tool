@@ -222,5 +222,17 @@ $(function() {
 		$(this).addClass('omnitureSeenThisPost');
 	},{'offset':'50%'});
 	
+	$('#home-highlights a').click(function(){
+		interactiveTracking("Olympic Blog - Link - Big Moments");
+	});
+	$('#home-nav a').click(function(){
+		interactiveTracking("Olympic Blog - Link - Live Updates");
+	});
+	$('#filterSelect').change(function(){
+		interactiveTracking("Olympic Blog - Link - Tag dropdown - " + $(this).val());
+	});	
+	$('.tag a').click(function(){
+		interactiveTracking("Olympic Blog - Link - Tag link - " + $(this).text());
+	});	
 
 });
