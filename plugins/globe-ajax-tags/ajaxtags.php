@@ -31,7 +31,7 @@ function ajax_tags_create_front_end(){
  	// Sports for use in filters
 	$acceptedFilters = array(
 		"Hockey",
-		//"Alpine skiing",
+		"Alpine skiing",
 		//"Biathlon",
 		"Bobsleigh",
 		//"Cross-country skiing",
@@ -162,7 +162,7 @@ function ajax_tags_create_mobile_front_end(){
 	// Sports for use in filters
 	$acceptedFilters = array(
 		"Hockey",
-		//"Alpine skiing",
+		"Alpine skiing",
 		//"Biathlon",
 		"Bobsleigh",
 		//"Cross-country skiing",

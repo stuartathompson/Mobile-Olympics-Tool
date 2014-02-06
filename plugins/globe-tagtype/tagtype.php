@@ -45,7 +45,7 @@ function tagtype_inner_custom_box( $post ) {
   <?php
   	// Sports for use in filters
 	$acceptedFilters = array(
-		//"Alpine skiing",
+		"Alpine skiing",
 		//"Biathlon",
 		"Bobsleigh",
 		//"Cross-country skiing",
