@@ -31,10 +31,22 @@
 					}
 					if($posttags){
 						$i = 0;
+						$showfirst = get_post_meta($post->ID, 'tagtype-showfirst', true);
+						$showfirst = $showfirst[0];
 						foreach($posttags as $posttag){
-							if($i == 0)	echo '<a href="' . get_bloginfo('url') . '?tags=' . str_replace(' ','-',$posttag->name) . '" title="Filter by tag: ' . $posttag->name . '">' . '<span class="glyphicon ' . $glyphicon . '"></span>' . '<span>' . $posttag->name . '</a></span>';	
-							$i++;
+							// Check to see which is selected tag to show
+							if($posttag->name == $showfirst){
+								echo '<a href="' . get_bloginfo('url') . '?tags=' . str_replace(' ','-',$posttag->name) . '" title="Filter by tag: ' . str_replace('-',' ',$posttag->name) . '">' . '<span class="glyphicon ' . $glyphicon . '"></span>' . '<span>' . str_replace('-',' ',$posttag->name). '</a></span>';	
+								$i++;
+							}	
 						}
+						if($i==0){
+							$j = 0;
+							foreach($posttags as $posttag){
+								if($j==0) echo '<a href="' . get_bloginfo('url') . '?tags=' . str_replace(' ','-',$posttag->name) . '" title="Filter by tag: ' . str_replace('-',' ',$posttag->name) . '">' . '<span class="glyphicon ' . $glyphicon . '"></span>' . '<span>' . str_replace('-',' ',$posttag->name) . '</a></span>';
+								$j++;
+							}
+						}		
 					}
 				}
 			?>
