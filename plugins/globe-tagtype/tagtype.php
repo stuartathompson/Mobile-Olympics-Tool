@@ -166,7 +166,6 @@ function tagtype_save_postdata( $post_id ) {
 
   /* OK, its safe for us to save the data now. */
 
-
   // Sanitize user input.
   if(isset($_POST['tagtype-tags']) && is_array($_POST['tagtype-tags']) ){
   	wp_set_post_terms( $post_id, $_POST['tagtype-tags'], 'post_tag' );
