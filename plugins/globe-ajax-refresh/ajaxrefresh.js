@@ -3,7 +3,7 @@ jQuery(document).ready(function($) {
 	// Declare variables
 	var postIds = '',
 		responseHtml = '',
-		checkTime = 5000;
+		checkTime = 20000;
 
 	// Check for new posts
 	function ajaxCheckNewPosts(){
@@ -53,7 +53,6 @@ jQuery(document).ready(function($) {
 	// Regularly trigger check for new posts on home
 	if($('body').hasClass('home')){
 		var ajaxRefreshT = setInterval(function(){
-			console.log('checking');
 			ajaxCheckNewPosts();
 		},checkTime);
 	}
