@@ -32,19 +32,18 @@ add_action( 'add_meta_boxes', 'apibox_box' );
 
 
 function apibox_inner_custom_box( $post ) {
-
+	
   // Add an nonce field so we can check for it later.
   wp_nonce_field( 'apibox_inner_custom_box', 'apibox_box_nonce' );
 
   $apiboxSelect = get_post_meta($post->ID, 'apibox', true);
-  $apiboxSelect = $apiboxSelect[0];
   $selectedOn = 'checked';
   $selectedAll = '';
   if($apiboxSelect == 'everywhere'){
   	$selectedOn = '';
   	$selectedAll='checked';
   }
-  echo '<p><label><input ' . $selectedOn . ' type="radio" value="on" name="apibox[]" /> Just the Olympics blog</label><p><label><input ' . $selectedAll . ' type="radio" value="everywhere" name="apibox[]" /> All websites and apps</label><br />';
+  echo '<p><label><input ' . $selectedOn . ' type="radio" value="on" name="apibox" /> Just the Olympics blog</label><p><label><input ' . $selectedAll . ' type="radio" value="everywhere" name="apibox" /> All websites and apps</label><br />';
 
   echo '<div style="padding-top:5px;display:block;width:100%;"></div><input type="submit" value="Submit" name="apibox-save" id="apibox-save-post" value="Save" class="button" />';
 
@@ -87,9 +86,8 @@ function apibox_save_postdata( $post_id ) {
   }
 
   /* OK, its safe for us to save the data now. */
-  update_post_meta($post_id, 'apibox', '1234');
   
-  if(isset($_POST['apibox']) && is_array($_POST['apibox']) ){
+  if(isset($_POST['apibox']) ){
   	update_post_meta($post_id, 'apibox', $_POST['apibox']);
   }
   
