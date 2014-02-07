@@ -53,7 +53,7 @@
 			</div>
 			<div class="datetime">
 			<?php 
-				$deskdiff = human_time_diff( get_the_time('U'), current_time('timestamp') );
+				$deskdiff = human_time_diff( get_the_modified_time('U'), current_time('timestamp') );
 				$replace = array(
 		        	'mins' => 'minutes'
     			);
