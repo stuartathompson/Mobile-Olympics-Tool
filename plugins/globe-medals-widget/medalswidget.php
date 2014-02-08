@@ -75,8 +75,8 @@ function create_medals_twitter_front_end(){
 # Config
 $jsonUrl = "http://mapi.sochi2014.com/v1/en/olympic/medal/rating";
 $userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:26.0) Gecko/20100101 Firefox/26.0";
-$logoUrl = "http://i.imgur.com/5aGPtf1.png";
-$headerUrl = "http://i.imgur.com/wOTbOrJ.png";
+$logoUrl = plugin_dir_url( __FILE__ ) . "medal-widget-header.png";
+$headerUrl = plugin_dir_url( __FILE__ ) . "medal-widget-banner.png";
 date_default_timezone_set('America/Toronto');
 
 # Uncomment for Testing with the specified local file
