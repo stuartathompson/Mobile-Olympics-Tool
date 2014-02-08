@@ -112,7 +112,7 @@ html body section.reutersOlympicsWidget.medalCountWidget section.widgetBody tabl
 	-webkit-border-radius:50%;
 }
 .emptyMessage{
-	margin-top:10px;
+	margin:15px 0 !important;
 }
 .totalHeader{
 	padding-right: 10px !important;
@@ -133,7 +133,7 @@ html body #page-medals section.reutersOlympicsWidget section {
 #page-medals .resultsSubview{
 	display:none;
 }
-#page-medals resultsSubview2, html body #page-medals section.reutersOlympicsWidget.scheduleWidget .inactive {
+#page-medals resultsSubview2, html body #page-medals section.reutersOlympicsWidget.scheduleWidget .inactive, html body #page-medals section.reutersOlympicsWidget.resultsConnection .inactive {
 	display:block !important;
 }
 html body #page-medals section.reutersOlympicsWidget.scheduleWidget .constrainHeight {
