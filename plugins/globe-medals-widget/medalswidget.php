@@ -70,17 +70,17 @@ function medals_widget_create_front_end_full(){
 }
 
 function create_medals_twitter_front_end(){
-# Alasdair McKie - Feb 5 2014 - Read in a JSON and spit out the Top 5 countries 
+# Alasdair McKie - Feb 5 2014 - Read in a JSON and spit out the Top 5 countries
 
 # Config
 $jsonUrl = "http://mapi.sochi2014.com/v1/en/olympic/medal/rating";
 $userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:26.0) Gecko/20100101 Firefox/26.0";
-$logoUrl = "http://i.imgur.com/5aGPtf1.png";
-$headerUrl = "http://i.imgur.com/wOTbOrJ.png";
+$logoUrl = plugin_dir_url( __FILE__ ) . "medal-widget-header.png";
+$headerUrl = plugin_dir_url( __FILE__ ) . "medal-widget-banner.png";
 date_default_timezone_set('America/Toronto');
 
 # Uncomment for Testing with the specified local file
-#$jsonUrl = plugin_dir_url( __FILE__ ) . "sample2.json";
+####$jsonUrl = "sample2.json";
 
 # Set up the params we need to pass in the HTTP session
 $options = array('http' => array('user_agent' => $userAgent));
@@ -90,9 +90,24 @@ $context = stream_context_create($options);
 $jsonData = json_decode(file_get_contents($jsonUrl,false,$context),true);
 
 # Find the countries we care about and copy the data in a new keyed array called top5
-foreach ($jsonData as $country) {
-  if (($country[rank] > 0) && ($country[rank] <6)) {
-    $top5[$country[rank]] = $country;
+$canadaFound = false;
+
+for ($i = 0; $i < 5; $i++) {
+  $country = $jsonData[$i];
+  $top5[$i] = $country;
+  if ($country[name] == 'Canada') {
+    $canadaFound = true;
+  }
+}
+
+if (!($canadaFound)) {
+  while (($i < count($jsonData)) && (!($canadaFound))) {
+    $country = $jsonData[$i];
+    if ($country[name] == 'Canada') {
+      $top5[5] = $country;
+      $canadaFound = true;
+    }
+    $i++;
   }
 }
 
@@ -102,7 +117,7 @@ foreach ($jsonData as $country) {
 <meta name="twitter:card" content="com.twitter:medalcount"/>
 <meta name="twitter:site" content="2014Sochi"/>
 <meta name="twitter:dateprefix" content="as of" />
-<meta name="twitter:date" content="<?php echo date('h:ia F jS', time()) ?> EST"/>
+<meta name="twitter:date" content="<?php echo date('h:ia F jS', time()) ?>"/>
 <meta name="twitter:logo" content="<?php echo $logoUrl ?>"/>
 <meta name="twitter:logo:width" content="640"/>
 <meta name="twitter:logo:height" content="135"/>
@@ -112,14 +127,24 @@ foreach ($jsonData as $country) {
 <?php
 
 # Spit out the meta tags for the top 5
-for ($i=1; $i<6; $i++) {
-  $thisCountry = $top5[$i];
- 
-  echo "<meta name=\"twitter:country" . $i . "\" content=\"" . $thisCountry['name'] . "\"/>\n";
-  echo "<meta name=\"twitter:country" . $i . ":gold\" content=\"" . $thisCountry['gold'] . "\"/>\n";
-  echo "<meta name=\"twitter:country" . $i . ":silver\" content=\"" . $thisCountry['silver'] . "\"/>\n";
-  echo "<meta name=\"twitter:country" . $i . ":bronze\" content=\"" . $thisCountry['bronze'] . "\"/>\n";
-  echo "<meta name=\"twitter:country" . $i . ":total\" content=\"" . $thisCountry['total'] . "\"/>\n";
+for ($i=0; $i<5; $i++) {
+ $thisCountry = $top5[$i];
+
+ echo "<meta name=\"twitter:country" . $i . "\" content=\"" . $thisCountry['name'] . "\"/>\n";
+ echo "<meta name=\"twitter:country" . $i . ":gold\" content=\"" . $thisCountry['gold'] . "\"/>\n";
+ echo "<meta name=\"twitter:country" . $i . ":silver\" content=\"" . $thisCountry['silver'] . "\"/>\n";
+ echo "<meta name=\"twitter:country" . $i . ":bronze\" content=\"" . $thisCountry['bronze'] . "\"/>\n";
+ echo "<meta name=\"twitter:country" . $i . ":total\" content=\"" . $thisCountry['total'] . "\"/>\n";
+}
+
+# If Canada isn't in the Top 5, we need to append Canada's results
+if (isset($top5[5])) {
+ $thisCountry = $top5[5];
+ echo "<meta name=\"twitter:country_add" . "\" content=\"" . $thisCountry['name'] . "\"/>\n";
+ echo "<meta name=\"twitter:country_add" . ":gold\" content=\"" . $thisCountry['gold'] . "\"/>\n";
+ echo "<meta name=\"twitter:country_add" . ":silver\" content=\"" . $thisCountry['silver'] . "\"/>\n";
+ echo "<meta name=\"twitter:country_add" . ":bronze\" content=\"" . $thisCountry['bronze'] . "\"/>\n";
+ echo "<meta name=\"twitter:country_add" . ":total\" content=\"" . $thisCountry['total'] . "\"/>\n";
 }
 
 }
