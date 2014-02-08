@@ -104,5 +104,91 @@ function register_apibox_settings() {
 }
 
 function apibox_admin_scripts(){
-	wp_enqueue_script( 'apibox-admin', plugin_dir_url( __FILE__ ) . 'apibox.js', array( 'jquery' ) );
+	//wp_enqueue_script( 'apibox-admin', plugin_dir_url( __FILE__ ) . 'apibox.js', array( 'jquery' ) );
 }
+
+// Add column to all posts screen
+function apibox_columns_head($defaults){
+	$defaults['apibox_column'] = 'Distribution';
+	return $defaults;
+}
+function apibox_columns_content($column_name,$post_ID){
+	if($column_name = 'apibox_column'){
+		 $apiboxSelect = get_post_meta($post_ID, 'apibox', true);
+		  $selectedOn = 'checked';
+		  $selectedAll = '';
+		  if($apiboxSelect == 'everywhere'){
+		  	$selectedOn = '';
+		  	$selectedAll='checked';
+		  }
+		  echo '<p><label><input ' . $selectedOn . ' type="radio" value="on" name="apibox-' . $post_ID . '" /> Blog</label><p><label><input ' . $selectedAll . ' type="radio" value="everywhere" name="apibox-' . $post_ID . '" /> Everywhere</label><br />';
+	}
+}
+function apibox_columns_save(){
+	return 'yes';
+/*
+	global $wpdb;
+	
+	$post_id = $_POST['postID'];
+	$apibox_value = $_POST['apiboxValue'];
+	
+	update_post_meta($post_id, 'apibox', $apibox_value);
+	
+	return 'Success';
+*/
+	
+	die();
+		
+}
+add_action( 'admin_footer', 'apibox_columns_javascript' );
+
+function apibox_columns_javascript(){
+?>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+	$('.apibox_column input[type="radio"]').click(function(){
+		var postID = $(this).attr('name').split('-')[1],	
+			apiboxValue = $(this).val(),
+			action = 'my_action';
+		var data = {
+			action:action,
+			postID:postID,
+			apiboxValue:apiboxValue
+		}
+		$.post(ajaxurl, data, function(response) {
+			console.log(response);
+		});
+	})
+	});
+</script>
+<?php
+}
+
+add_action( 'wp_ajax_my_action', 'my_action_callback' );
+function my_action_callback() {
+
+	global $wpdb; // this is how you get access to the database
+
+	$post_id = $_POST['postID'];
+	$apibox_value = $_POST['apiboxValue'];
+	
+	update_post_meta($post_id, 'apibox', $apibox_value);
+	
+	echo 'Success';
+	
+	die(); // this is required to return a proper result
+}
+
+// REMOVE DEFAULT CATEGORY COLUMN
+function apibox_columns_remove($defaults) {
+    // to get defaults column names:
+    // print_r($defaults);
+    unset($defaults['categories']);
+    unset($defaults['comments']);
+    return $defaults;
+}
+
+add_action("wp_ajax_apibox_columns", "apibox_columns_save");
+add_filter('manage_post_posts_columns', 'apibox_columns_remove');
+add_filter('manage_posts_columns', 'apibox_columns_head');
+add_action('manage_posts_custom_column', 'apibox_columns_content', 10, 2);
