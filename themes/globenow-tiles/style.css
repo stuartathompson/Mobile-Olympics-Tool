@@ -448,7 +448,7 @@ margin-left: 15px;
 	display:block;
 	float:right;
 	width:12px;
-	margin:8px 15px 5px 0;
+	margin:12px 15px 5px 0;
 }
 #search-box{
 	margin-top:-50px;
@@ -811,6 +811,9 @@ and (orientation : landscape) {
 	}
 	#mobile-header #header-olympics-home{
 		display:none;
+	}
+	#mobile-header #mobile-header-search{
+		margin-top:8px;
 	}
 	#menu-about-button{
 		margin-top: -1px;
