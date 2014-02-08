@@ -187,11 +187,17 @@ article h2 a:hover{
 	margin:0 40px;
 	overflow:hidden;
 }
+article .twitter-tweet{
+	width:100% !important;
+}
 /* Post types */
 .breaking h2{
 }
 .breaking .date span, .breaking .date span a{
 	color:#d60000;
+}
+.tag-medal .datedate a span{
+	color:#D9A441;
 }
 /* Meta */
 .date-container{

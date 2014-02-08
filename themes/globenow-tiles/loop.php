@@ -36,6 +36,7 @@
 						foreach($posttags as $posttag){
 							// Check to see which is selected tag to show
 							if($posttag->name == $showfirst){
+								if($posttag->name == 'medal') $glyphicon = 'glyphicon-certificate';
 								echo '<a href="' . get_bloginfo('url') . '?tags=' . str_replace(' ','-',$posttag->name) . '" title="Filter by tag: ' . str_replace('-',' ',$posttag->name) . '">' . '<span class="glyphicon ' . $glyphicon . '"></span>' . '<span>' . str_replace('-',' ',$posttag->name). '</a></span>';	
 								$i++;
 							}	
