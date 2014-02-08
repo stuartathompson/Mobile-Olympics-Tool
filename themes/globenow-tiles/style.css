@@ -183,12 +183,16 @@ article h2 a{
 article h2 a:hover{
 	color:#000;
 }
+article h3{
+    margin: 30px 0 -5px;
+}
 .post-content{
 	margin:0 40px;
 	overflow:hidden;
 }
 article .twitter-tweet{
 	width:100% !important;
+    margin:10px 0 40px !important;
 }
 /* Post types */
 .breaking h2{
