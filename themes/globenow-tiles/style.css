@@ -190,10 +190,10 @@ article h3{
 	margin:0 40px;
 	overflow:hidden;
 }
-article .twitter-tweet{
+/*article .twitter-tweet{
 	width:100% !important;
-    margin:10px 0 40px !important;
-}
+margin:10px 0 40px !important;
+}*/
 /* Post types */
 .breaking h2{
 }
@@ -1005,7 +1005,7 @@ and (orientation : landscape) {
 	.footer{
 		margin:0 39px;
 	}
-}
+	
 /* Smartphones: Globe header */
 @media only screen and (max-width:541px) and (min-width:420px) {
 	#mobile-header #mobile-header-logo{
