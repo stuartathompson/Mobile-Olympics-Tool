@@ -43,6 +43,7 @@
 		
 				endif;
 			?>
+		<div class="single-loadmore"><a href="<?php bloginfo('url'); ?>"><img width="25px" height="25px" src="http://olympics.theglobeandmail.com/wp-content/themes/globenow-tiles/img/logo-leaf.png?!" /><br /><br />View all posts from Sochi Live »</a></div>
 	</div>
 	</section>
 	<!-- /section -->
