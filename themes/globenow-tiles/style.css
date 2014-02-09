@@ -263,7 +263,21 @@ margin:10px 0 40px !important;
 }
 .single .standalone{
 }
-
+.single .single-loadmore{
+	padding: 20px 0 30px;
+	width: 100%;
+	text-align: center;
+	float: left;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 50px;
+}
+.single .single-loadmore a{
+	display:block;
+	width:100%;
+	color:#333;
+	padding:13px 0 5px 0;
+	text-align: center;
+}
 /* tags */
 .tags {
 clear: both;
@@ -301,9 +315,6 @@ background: url("http://beta.images.theglobeandmail.com/static/ROB/interactives/
 /* Post types */
 .fullwidth h2{
 	display:none;
-}
-.single .fullwidth h2{
-	display:block;
 }
 /* social */
 .gig-button-container{
@@ -407,7 +418,7 @@ background: url("http://beta.images.theglobeandmail.com/static/ROB/interactives/
 #mobile-header #mobile-header-logo{
 	width:230px;
 	display: block;
-	margin:5px 0 0;
+	margin:8px 0 0;
 	float:left;
 }
 #menu-search-button{
@@ -762,7 +773,7 @@ margin: 0 auto;
 		display:none;
 	}
 	#mobile-header-logo{
-		margin:5px 0 0 20px !important;
+		margin:8px 0 0 20px !important;
 	}
 	#mobile-about-button{
 		margin-right:10px;
