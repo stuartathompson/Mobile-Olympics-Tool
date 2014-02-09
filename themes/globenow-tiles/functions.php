@@ -271,12 +271,12 @@ function globe_social_share(){
 			}
 			$i++;
 		}
-	$title=get_the_title();
+	$title=urlencode(get_the_title());
 	$url=urlencode(get_permalink());
 	$summary= urlencode(get_the_excerpt());
 	$summary = str_replace("/<[^>]*>/","",(string)$sumnary);
 
-	?>http://www.facebook.com/sharer.php?s=100&amp;p[title]=<?php echo $title;?>&amp;p[summary]=<?php echo $summary;?>&amp;p[url]=<?php echo $url; ?>&amp;p[images][0]=<?php echo $image;?>">
+	?>http://www.facebook.com/sharer.php?<?php if(function_exists('is_mobile')){ if(is_mobile()){ echo 'm2w&amp;'; } } ?>s=100&amp;p[title]=<?php echo $title;?>&amp;p[summary]=<?php echo $summary;?>&amp;p[url]=<?php echo $url; ?>&amp;p[images][0]=<?php echo $image;?>">
 			<img src="http://beta.images.theglobeandmail.com/static/ROB/interactives/crisis/images/fb20over.png" /></a></div>
 			<div title="Copy link to clipboard" class="lk share-reaction-icon"><a data-url="<?php the_permalink(); ?>" href="#copy"><img src="<?php bloginfo('template_url'); ?>/img/lk20over.png" /></a></div>
 			<div title="Email" class="email share-reaction-icon"><a href="mailto:?subject=<?php the_title(); ?> - The Globe and Mail&body=<?php the_title(); ?> - <?php the_permalink() ?>"><img src="http://beta.images.theglobeandmail.com/static/national/timetolead/wealth/images/em-share-50b.png" /></a></div>
