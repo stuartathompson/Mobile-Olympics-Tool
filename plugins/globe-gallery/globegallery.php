@@ -44,12 +44,12 @@ function globe_gallery($atts){
 	foreach($images as $image){
 		if($i==0){
 		// Show image
-		$imageSrc = wp_get_attachment_image_src( $image->ID, 'large' );
-		echo "<div class='wp-caption gi-gallery-image gallery-icon showing'>" . '<a href="' . $imageSrc[0] . '">' . wp_get_attachment_image($image->ID,'large') . "</a><p class='wp-caption-text'>" . $image->post_excerpt . "</a></p></div>";
+		$imageSrc = wp_get_attachment_image_src( $image->ID, 'native' );
+		echo "<div class='wp-caption gi-gallery-image gallery-icon showing'>" . '<a href="' . $imageSrc[0] . '">' . wp_get_attachment_image($image->ID,'native') . "</a><p class='wp-caption-text'>" . $image->post_excerpt . "</a></p></div>";
 		} else  {
 		// Leave source blank
 		// Get image source (necessary step for PHP 5.3 or newer)
-		$imageSrc = wp_get_attachment_image_src( $image->ID, 'large' );
+		$imageSrc = wp_get_attachment_image_src( $image->ID, 'native' );
 		// Echo image and container but leave source blank. Load source via JS.
 		echo "<div class='wp-caption gi-gallery-image gallery-icon'>" . '<a href="' . $imageSrc[0] . '"><img src="" data-image-src="' . $imageSrc[0] . "\" alt=\"\" /></a><p class='wp-caption-text'>" . $image->post_excerpt . "</a></p></div>";
 		}
@@ -87,13 +87,13 @@ if(is_home() || is_single() || is_front_page()){
 	foreach($images as $image){
 		if($i==0){
 		// Show image
-		$imageSrc = wp_get_attachment_image_src( $image->ID, 'large' );
-		$output .= "<div class='wp-caption gi-gallery-image gallery-icon showing'><div class='gi-gallery-image-container'>" . '<a href="' . $imageSrc[0] . '">' . wp_get_attachment_image($image->ID,'large') . "</a></div>";
+		$imageSrc = wp_get_attachment_image_src( $image->ID, 'native' );
+		$output .= "<div class='wp-caption gi-gallery-image gallery-icon showing'><div class='gi-gallery-image-container'>" . '<a href="' . $imageSrc[0] . '">' . wp_get_attachment_image($image->ID,'native') . "</a></div>";
 		if(strlen($image->post_excerpt) > 0) $output .= "<p class='wp-caption-text'>" . $image->post_excerpt . "</p>";
 		$output .= "</div>";
 		} else  {
 		// Leave source blank
-		$imageSrc = wp_get_attachment_image_src( $image->ID, 'large' );
+		$imageSrc = wp_get_attachment_image_src( $image->ID, 'native' );
 		$output .= "<div class='wp-caption gi-gallery-image gallery-icon'><div class='gi-gallery-image-container'>" . '<a href="' . $imageSrc[0] . '"><img src="" data-image-src="' . $imageSrc[0] . "\" alt=\"\" /></a></div>";
 		if(strlen($image->post_excerpt) > 0) $output .= "<p class='wp-caption-text'>" . $image->post_excerpt . "</p>";
 		$output .= "</div>";
