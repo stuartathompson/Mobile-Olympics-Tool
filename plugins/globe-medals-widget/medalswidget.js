@@ -22,17 +22,19 @@ var t = setInterval(function(){
 },100);
 }
 $('body,html').on('click','.globe-medals-widget .elongation',function(){
+	console.log('yes');
 	window.location.href = window.location.href.split('?')[0].split('#')[0] + '/medals';
 	return false;
 })
 $('.globe-medals-widget .globe-medals-nav').click(function(){
 	if($(this).hasClass('selected')){
 		$('.globe-medals-plusminus').text('+ Show top medal counts');
-		$('.reutersOlympicsWidget,.medalCountWidget').slideUp(function(){
-			showSmallerVersion();
-		});
+		$('.globe-medals-showmore a').hide();
+		$('.reutersOlympicsWidget,.medalCountWidget').hide();
+		showSmallerVersion();
 	} else {
-		$('.reutersOlympicsWidget,.medalCountWidget').slideDown();
+		$('.reutersOlympicsWidget,.medalCountWidget').show();
+		$('.globe-medals-showmore a').show();
 		$('.globe-medals-plusminus').text('- Hide top medal counts');
 	}
 	$(this).toggleClass('selected');

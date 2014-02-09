@@ -41,6 +41,7 @@ function medals_widget_create_front_end(){
 		});
 	});
 	</script>
+ 	<div class="globe-medals-showmore"><a href="<?php bloginfo('url'); ?>/medals">Show All Medals</a></div>
 	</div>
 	
 <?php 
@@ -75,12 +76,9 @@ function create_medals_twitter_front_end(){
 # Config
 $jsonUrl = "http://mapi.sochi2014.com/v1/en/olympic/medal/rating";
 $userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:26.0) Gecko/20100101 Firefox/26.0";
-$logoUrl = plugin_dir_url( __FILE__ ) . "medal-widget-header.png";
-$headerUrl = plugin_dir_url( __FILE__ ) . "medal-widget-banner.png";
+$logoUrl = "http://on.theglobeandmail.com/wp-content/plugins/globe-medals-widget/medal-widget-header.png";
+$headerUrl = "http://on.theglobeandmail.com/wp-content/plugins/globe-medals-widget/medal-widget-banner.png";
 date_default_timezone_set('America/Toronto');
-
-# Uncomment for Testing with the specified local file
-####$jsonUrl = "sample2.json";
 
 # Set up the params we need to pass in the HTTP session
 $options = array('http' => array('user_agent' => $userAgent));
@@ -113,28 +111,28 @@ if (!($canadaFound)) {
 
 # Spit out the standing stuff with a couple of values filled in on the fly
 ?>
-
-<meta name="twitter:card" content="com.twitter:medalcount"/>
-<meta name="twitter:site" content="2014Sochi"/>
+<meta name="twitter:site" content="@GlobeOlympics"/>
+<meta name="twitter:card" content="medalcount"/>
 <meta name="twitter:dateprefix" content="as of" />
 <meta name="twitter:date" content="<?php echo date('h:ia F jS', time()) ?>"/>
-<meta name="twitter:logo" content="<?php echo $logoUrl ?>"/>
-<meta name="twitter:logo:width" content="640"/>
-<meta name="twitter:logo:height" content="135"/>
-<meta name="twitter:headers" content="<?php echo $headerUrl ?>"/>
-<meta name="twitter:headers:width" content="640"/>
-<meta name="twitter:headers:height" content="59"/>
+<meta name="twitter:image0" content="<?php echo $logoUrl ?>"/>
+<meta name="twitter:image0:width" content="640"/>
+<meta name="twitter:image0:height" content="135"/>
+<meta name="twitter:image1" content="<?php echo $headerUrl ?>"/>
+<meta name="twitter:image1:width" content="640"/>
+<meta name="twitter:image1:height" content="59"/>
 <?php
 
 # Spit out the meta tags for the top 5
 for ($i=0; $i<5; $i++) {
  $thisCountry = $top5[$i];
+ $thisNum = ($i + 1);
 
- echo "<meta name=\"twitter:country" . $i . "\" content=\"" . $thisCountry['name'] . "\"/>\n";
- echo "<meta name=\"twitter:country" . $i . ":gold\" content=\"" . $thisCountry['gold'] . "\"/>\n";
- echo "<meta name=\"twitter:country" . $i . ":silver\" content=\"" . $thisCountry['silver'] . "\"/>\n";
- echo "<meta name=\"twitter:country" . $i . ":bronze\" content=\"" . $thisCountry['bronze'] . "\"/>\n";
- echo "<meta name=\"twitter:country" . $i . ":total\" content=\"" . $thisCountry['total'] . "\"/>\n";
+ echo "<meta name=\"twitter:country" . $thisNum . "\" content=\"" . $thisCountry['name'] . "\"/>\n";
+ echo "<meta name=\"twitter:country" . $thisNum . ":gold\" content=\"" . $thisCountry['gold'] . "\"/>\n";
+ echo "<meta name=\"twitter:country" . $thisNum . ":silver\" content=\"" . $thisCountry['silver'] . "\"/>\n";
+ echo "<meta name=\"twitter:country" . $thisNum . ":bronze\" content=\"" . $thisCountry['bronze'] . "\"/>\n";
+ echo "<meta name=\"twitter:country" . $thisNum . ":total\" content=\"" . $thisCountry['total'] . "\"/>\n";
 }
 
 # If Canada isn't in the Top 5, we need to append Canada's results
@@ -146,5 +144,6 @@ if (isset($top5[5])) {
  echo "<meta name=\"twitter:country_add" . ":bronze\" content=\"" . $thisCountry['bronze'] . "\"/>\n";
  echo "<meta name=\"twitter:country_add" . ":total\" content=\"" . $thisCountry['total'] . "\"/>\n";
 }
+
 
 }
