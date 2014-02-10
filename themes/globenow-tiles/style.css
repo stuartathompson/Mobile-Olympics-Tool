@@ -57,6 +57,9 @@ iframe{
 	max-width:100%;
 	border:0;
 }
+iframe.twitter-tweet{
+	width:100%;
+}
 a {
 	color:red;
 	text-decoration:none !important;
@@ -190,10 +193,6 @@ article h3{
 	margin:0 40px;
 	overflow:hidden;
 }
-/*article .twitter-tweet{
-	width:100% !important;
-margin:10px 0 40px !important;
-}*/
 /* Post types */
 .breaking h2{
 }
