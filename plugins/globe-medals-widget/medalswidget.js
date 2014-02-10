@@ -22,7 +22,6 @@ var t = setInterval(function(){
 },100);
 }
 $('body,html').on('click','.globe-medals-widget .elongation',function(){
-	console.log('yes');
 	window.location.href = window.location.href.split('?')[0].split('#')[0] + '/medals';
 	return false;
 })

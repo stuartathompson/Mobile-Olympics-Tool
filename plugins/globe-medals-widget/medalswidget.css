@@ -117,7 +117,7 @@ html body section.reutersOlympicsWidget article, html body section.reutersOlympi
 .reutersOlympicsWidget .widgetShowMore{
 	font-size: 11px;
 	display:none;
-}
+}#page-medals .reutersOlympicsWidget .widgetShowMore{ display:block; }
 .reutersOlympicsWidget span.medal {
 	padding:0 !important;
 }
@@ -185,9 +185,6 @@ html body section.reutersOlympicsWidget.medalCountWidget section.widgetBody tabl
 	}
 	.widgetShowMore, .medalCount, .subview{
 		background-color:white !important;
-	}
-	.widgetShowMore{
-		display:none !important;
 	}
 	.globe-medals-plusminus{
 		margin:5px 0;
