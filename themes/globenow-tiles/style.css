@@ -251,7 +251,7 @@ article h3{
 .content #tgam_video{
 	width:100% !important;
 }
-.single h3.moreposts,.search h3.searchresults{
+h3.moreposts,h3.searchresults{
 	font-size: 13px;
 	text-transform: uppercase;
 	margin:20px 0 -11px !important;
@@ -262,7 +262,7 @@ article h3{
 }
 .single .standalone{
 }
-.single .single-loadmore{
+.single-loadmore{
 	padding: 20px 0 30px;
 	width: 100%;
 	text-align: center;
@@ -270,7 +270,7 @@ article h3{
 	border-bottom: 1px solid #ddd;
 	margin-bottom: 50px;
 }
-.single .single-loadmore a{
+.single-loadmore a{
 	display:block;
 	width:100%;
 	color:#333;
@@ -896,7 +896,7 @@ and (orientation : landscape) {
 	.single .standalone{
 		padding-bottom:0 !important;
 	}
-	.single h3.moreposts{
+	h3.moreposts{
 		margin:40px 0 10px !important;
 	}
 	article h2, .breaking h2{
