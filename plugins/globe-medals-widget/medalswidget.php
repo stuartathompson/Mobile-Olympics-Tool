@@ -64,6 +64,21 @@ function medals_widget_create_front_end_full(){
 			"el": "#tr_results_connection_076a560ba4f3",
 			"sort": "total"
 		});
+		var medalIntervalCount = 0,
+			medalInterval = setInterval(function(){
+			medalIntervalCount++;
+			if($('.widgetShowMore')){
+				clearInterval(medalInterval);
+				var elongationInterval = setInterval(function(){
+					if($('.widgetShowMore .elongation')){
+						$('.elongation').trigger('click');
+						$('.elongation').hide();
+						clearInterval(elongationInterval);
+					}
+				},500);
+			}
+			if(medalIntervalCount > 30) clearInterval(medalInterval);
+		},500);
 	});
 	</script>
 

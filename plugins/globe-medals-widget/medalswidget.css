@@ -117,7 +117,14 @@ html body section.reutersOlympicsWidget article, html body section.reutersOlympi
 .reutersOlympicsWidget .widgetShowMore{
 	font-size: 11px;
 	display:none;
-}#page-medals .reutersOlympicsWidget .widgetShowMore{ display:block; }
+}
+#page-medals .reutersOlympicsWidget .widgetShowMore{ display:block; }
+#page-medals .reutersOlympicsWidget .elongation{
+	width:0;
+	height:0;
+	display: block;
+	overflow: hidden;
+}
 .reutersOlympicsWidget span.medal {
 	padding:0 !important;
 }
