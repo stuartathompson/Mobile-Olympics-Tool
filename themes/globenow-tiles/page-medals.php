@@ -11,16 +11,8 @@
 		<p>Keep track of Canada's place in the medal rankings throughout the Games.</p>
 		<p>This table will be updated live every time a medal is awarded.</p>
 	</article>
-	
-	<article id="page-medals">
-			<?php if(function_exists('globe_social_share')) globe_social_share(); ?>
-		<div class="clearfloat"></div>	
-			<?php if(function_exists('medals_widget_create_front_end_full')) medals_widget_create_front_end_full(); ?>
-		
-	</article>
-	
-	<?php
-				$isMobile = false;
+		<?php
+			$isMobile = false;
 			if(function_exists('is_mobile')) $isMobile = is_mobile();
 			if($isMobile){
 			?>
@@ -32,7 +24,15 @@ flex1AC=fnTktWP('a'+'1',300,50,1,'ajax',nc);
 document.getElementById('ad-unit-flex1AC').innerHTML = flex1AC;
 </script>	
 </div>
-			<?php } else { ?>
+			<?php } ?>
+	<article id="page-medals">
+			<?php if(function_exists('globe_social_share')) globe_social_share(); ?>
+		<div class="clearfloat"></div>	
+			<?php if(function_exists('medals_widget_create_front_end_full')) medals_widget_create_front_end_full(); ?>
+		
+	</article>
+	
+ <?php if(!$isMobile) { ?>
 	<div class="ad-unit-square">
 
 <div id="ad-unit-flex1AC"></div>
