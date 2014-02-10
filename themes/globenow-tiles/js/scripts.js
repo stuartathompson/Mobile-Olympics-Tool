@@ -233,6 +233,19 @@ $(function() {
 	});	
 	$('.tag a').click(function(){
 		interactiveTracking("Olympic Blog - Link - Tag link - " + $(this).text());
-	});	
-
+	});
+	
+	// Check for Twitter cards and resize
+	var twitterCardCount = 0;
+	var twitterInterval = setInterval(function(){
+		if($('body').find('iframe').hasClass('twitter-tweet')){
+			clearInterval(twitterInterval);
+			$('body').find('iframe.twitter-tweet').each(function(){
+				$(this).css('max-width','98%').css('max-width','100%');
+			});
+		} else if(twitterCardCount > 5){
+			clearInterval(twitterInterval);
+		}
+	},1000)
+	
 });
