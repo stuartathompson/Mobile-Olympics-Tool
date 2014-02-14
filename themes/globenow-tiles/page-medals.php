@@ -10,7 +10,9 @@
 	<div style="text-align:center"><img src="http://on.theglobeandmail.com/wp-content/uploads/2014/02/pathicon.png" width="95px" style="width:95px !important;margin:0 auto;" /></div>
  		<h1 style="font-size:30px;margin-top:15px">Sochi medal count</h1>
 		<p>Keep track of Canada's place in the medal rankings throughout the Games.</p>
-		<p>This table will be updated live every time a medal is awarded.	<p>Scroll <strong>below the medal count</strong> for stories about Canada's medals.</p>
+		<p>This table will be updated live every time a medal is awarded.</p>
+		<p>Scroll <strong>below the medal count</strong> for stories about Canada's medals.</p>
+		
 	</article>
 		<?php
 			$isMobile = false;
@@ -30,7 +32,10 @@ document.getElementById('ad-unit-flex1AC').innerHTML = flex1AC;
 			<?php if(function_exists('globe_social_share')) globe_social_share(); ?>
 		<div class="clearfloat"></div>	
 			<?php if(function_exists('medals_widget_create_front_end_full')) medals_widget_create_front_end_full(); ?>
-		
+	<div id="methodology">
+	<p style="font-size:10px;color:grey;line-height:1.25em;">Our methodology: Countries are ranked by total medals.</p>
+	<p style="font-size:10px;color:grey;line-height:1.25em;">If there is a tie, we sort by most gold, then by most silver, and finally by most bronze.</p>	
+	</div>
 	</article>
 	
  <?php if(!$isMobile) { ?>
