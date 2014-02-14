@@ -236,21 +236,21 @@ $(function() {
 	});
 	
 	// Check for Twitter cards and resize
-	var twitterCardCount = 0;
-	var twitterInterval = setInterval(function(){
-		if($('body').find('iframe').hasClass('twitter-tweet')){
-			clearInterval(twitterInterval);
-			$('body').find('iframe.twitter-tweet').each(function(){
-					$(this).css('max-width','98%').css('max-width','100%').css('width','100%');
-			});
-			setTimeout(function(){
-				$('body').find('iframe.twitter-tweet').each(function(){
-					$(this).css('max-width','98%').css('max-width','100%').css('width','100%');
-				});
-			},2000);
-		} else if(twitterCardCount > 5){
-			clearInterval(twitterInterval);
-		}
-	},1000)
+	// var twitterCardCount = 0;
+	// var twitterInterval = setInterval(function(){
+	// 	if($('body').find('iframe').hasClass('twitter-tweet')){
+	// 		clearInterval(twitterInterval);
+	// 		$('body').find('iframe.twitter-tweet').each(function(){
+	// 				$(this).css('max-width','98%').css('max-width','100%').css('width','100%');
+	// 		});
+	// 		setTimeout(function(){
+	// 			$('body').find('iframe.twitter-tweet').each(function(){
+	// 				$(this).css('max-width','98%').css('max-width','100%').css('width','100%');
+	// 			});
+	// 		},2000);
+	// 	} else if(twitterCardCount > 5){
+	// 		clearInterval(twitterInterval);
+	// 	}
+	// },1000)
 	
 });

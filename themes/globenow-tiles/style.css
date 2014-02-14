@@ -58,8 +58,9 @@ iframe{
 	border:0;
 }
 iframe.twitter-tweet{
-	width:100%;
+	max-width:100%;
 }
+
 a {
 	color:red;
 	text-decoration:none !important;
