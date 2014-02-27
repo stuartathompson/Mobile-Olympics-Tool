@@ -180,6 +180,10 @@ html body section.reutersOlympicsWidget.medalCountWidget section.widgetBody tabl
 }
 /* Smartphones -------------------------------*/
 @media screen and (max-width: 480px) {
+	.globe-medals-nav {
+		padding-right: 10px !important;
+		padding-left: 10px !important;
+	}
 	.globe-medals-widget{
 		margin:-5px 0 5px;
 	}

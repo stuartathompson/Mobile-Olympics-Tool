@@ -12,7 +12,7 @@ add_action( 'wp_enqueue_scripts', 'medals_widget_scripts' );
 
 function medals_widget_scripts(){
 	wp_enqueue_script('globe_medals_widget',plugin_dir_url( __FILE__ ) . 'medalswidget.js',array( 'jquery','modernizr'));
-	wp_enqueue_style('globe_medals_widget',plugin_dir_url( __FILE__ ) . 'medalswidget.css',array(),'1.0.0');
+	wp_enqueue_style('globe_medals_widget',plugin_dir_url( __FILE__ ) . 'medalswidget.css',array(),'1.0.1');
 }
 
 function medals_widget_create_front_end(){
